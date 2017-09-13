@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { fromJS, List } from "immutable";
 
 import * as selectors from "../index";
