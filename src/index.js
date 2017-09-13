@@ -6,13 +6,8 @@ import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 import AppContainer from "./containers/AppContainer";
-
-import createHistory from "history/createBrowserHistory";
 import registerServiceWorker from "./registerServiceWorker";
-
 import rootReducer from "./reducers/index";
-import Auth from "./auth/auth";
-import { authSuccess } from "./actions/index";
 
 const middleware = [];
 
@@ -23,26 +18,10 @@ const store = createStore(
     // other store enhancers if any
   )
 );
-export const history = createHistory();
-const auth = new Auth();
-
-const jwtToken = localStorage.getItem("id_token");
-
-// If we have a token, consider the user to be signed in and update state
-if (jwtToken) {
-  const accessToken = localStorage.getItem("access_token");
-  store.dispatch(authSuccess(accessToken, jwtToken));
-}
-
-const handleAuthentication = (nextState, replace) => {
-  if (/access_token|id_token|error/.test(nextState.location.hash)) {
-    auth.handleAuthentication();
-  }
-};
 
 render(
   <Provider store={store}>
-    <AppContainer auth={auth} handleAuthentication={handleAuthentication} />
+    <AppContainer />
   </Provider>,
   document.getElementById("root")
 );
