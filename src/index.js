@@ -1,18 +1,27 @@
 /* eslint-env browser */
 import React from "react";
 import { render } from "react-dom";
-import App from "./App";
-import registerServiceWorker from "../service_worker/registerServiceWorker";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
 
+import registerServiceWorker from "./registerServiceWorker";
+import App from "./components/App";
 import rootReducer from "./reducers/index";
 
-const store = createStore(rootReducer);
+const middleware = [];
+
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(
+    applyMiddleware(...middleware)
+    // other store enhancers if any
+  )
+);
 
 render(
   <Provider store={store}>
-    <div />
+    <App />
   </Provider>,
   document.getElementById("root")
 );
