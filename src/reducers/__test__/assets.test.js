@@ -50,6 +50,7 @@ describe("assets reducer", () => {
         dispatchedTimestamp: null
       }
     ]);
+    const dispatchedTimestamp = "1605890201";
 
     expect(
       reducer(initialState, {
@@ -57,9 +58,9 @@ describe("assets reducer", () => {
         name: "drone",
         id: "h28S97Sn3",
         comment: "aerial kit",
-        state: "received",
+        state: "dispatched",
         receivedTimestamp: "1505310201",
-        dispatchedTimestamp: null
+        dispatchedTimestamp
       })
     ).toEqual(expectedState);
   });
@@ -68,12 +69,13 @@ describe("assets reducer", () => {
     const initialState = List([]);
     const expectedState = List([
       {
+        type: types.DISPATCH_ASSET,
         name: "drone",
         id: "h28S97Sn3",
         comment: "aerial kit",
-        state: "received",
+        state: "dispatched",
         receivedTimestamp: "1505310201",
-        dispatchedTimestamp: null
+        dispatchedTimestamp: "1605890201"
       }
     ]);
 
@@ -83,14 +85,14 @@ describe("assets reducer", () => {
         name: "drone",
         id: "h28S97Sn3",
         comment: "aerial kit",
-        state: "received",
+        state: "dispatched",
         receivedTimestamp: "1505310201",
-        dispatchedTimestamp: null
+        dispatchedTimestamp: "1605890201"
       })
     ).toEqual(expectedState);
   });
 
-  it("should handle EDIT_ASSET for received assets", () => {
+  it("should handle EDIT_ASSET of name for received assets", () => {
     const initialState = List([]);
     const expectedState = List([
       {
@@ -103,12 +105,70 @@ describe("assets reducer", () => {
       }
     ]);
 
+    const updateObj = { name: "3d printer" };
+
+    expect(
+      reducer(initialState, {
+        type: types.EDIT_ASSET,
+        name: "3d printer",
+        id: "h28S97Sn3",
+        comment: "aerial kit for data collection",
+        state: "received",
+        receivedTimestamp: "1505310201",
+        dispatchedTimestamp: null
+      })
+    ).toEqual(expectedState);
+  });
+
+  it("should handle EDIT_ASSET of comment for received assets", () => {
+    const initialState = List([]);
+    const expectedState = List([
+      {
+        name: "drone",
+        id: "h28S97Sn3",
+        comment: "aerial kit",
+        state: "received",
+        receivedTimestamp: "1505310201",
+        dispatchedTimestamp: null
+      }
+    ]);
+
+    const updateObj = { comment: "aerial kit for data collection" };
+
     expect(
       reducer(initialState, {
         type: types.EDIT_ASSET,
         name: "drone",
         id: "h28S97Sn3",
+        comment: "aerial kit for data collection",
+        state: "received",
+        receivedTimestamp: "1505310201",
+        dispatchedTimestamp: null
+      })
+    ).toEqual(expectedState);
+  });
+
+  it("should not permit editing of id", () => {
+    const initialState = List([]);
+    const expectedState = List([
+      {
+        name: "drone",
+        id: "h28S97Sn3",
         comment: "aerial kit",
+        state: "received",
+        receivedTimestamp: "1505310201",
+        dispatchedTimestamp: null
+      }
+    ]);
+
+    const updateObj = { id: "jmf93jhn" };
+
+    expect(
+      reducer(initialState, {
+        type: types.EDIT_ASSET,
+        name: "drone",
+        id: "h28S97Sn3",
+        comment: "aerial kit for data collection",
         state: "received",
         receivedTimestamp: "1505310201",
         dispatchedTimestamp: null
@@ -125,9 +185,11 @@ describe("assets reducer", () => {
         comment: "aerial kit",
         state: "dispatched",
         receivedTimestamp: "1505310201",
-        dispatchedTimestamp: null
+        dispatchedTimestamp: "1605890201"
       }
     ]);
+
+    const updateObj = { comment: "aerial kit for data collection" };
 
     expect(
       reducer(initialState, {
@@ -137,7 +199,7 @@ describe("assets reducer", () => {
         comment: "aerial kit",
         state: "dispatched",
         receivedTimestamp: "1505310201",
-        dispatchedTimestamp: null
+        dispatchedTimestamp: "1605890201"
       })
     ).toEqual(expectedState);
   });
