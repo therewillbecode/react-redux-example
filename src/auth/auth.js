@@ -1,6 +1,6 @@
 import auth0 from "auth0-js";
 
-import { AUTH_CONFIG } from "./auth-config";
+import { AUTH_CONFIG } from "./authConfig";
 import { history } from "../index";
 
 const { domain, clientId, callbackUrl } = AUTH_CONFIG;

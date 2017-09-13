@@ -11,7 +11,8 @@ import registerServiceWorker from "./registerServiceWorker";
 import App from "./components/App";
 import rootReducer from "./reducers/index";
 import Loading from "./components/Loading";
-import { authSucess } from "./actions/index";
+import auth from "./auth/auth";
+import { authSuccess } from "./actions/index";
 
 const middleware = [];
 
@@ -28,7 +29,7 @@ const jwtToken = localStorage.getItem("id_token");
 // If we have a token, consider the user to be signed in and update state
 if (jwtToken) {
   const accessToken = localStorage.getItem("access_token");
-  store.dispatch(authSucess(accessToken, jwtToken));
+  store.dispatch(authSuccess(accessToken, jwtToken));
 }
 
 const handleAuthentication = (nextState, replace) => {
