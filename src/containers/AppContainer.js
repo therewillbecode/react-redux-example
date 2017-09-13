@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, BrowserRouter as Router } from "react-router-dom";
+import { Route, Router } from "react-router-dom";
 import createHistory from "history/createBrowserHistory";
 import { connect } from "react-redux";
 import auth0 from "auth0-js";
@@ -12,18 +12,13 @@ import RequireAuth from "./HOC/RequireAuth";
 
 import { authSuccess, loggedOut } from "../actions/index";
 import { isAuthenticated } from "../selectors/index";
-import { AUTH_CONFIG } from "./auth/auth-config";
+import { AUTH_CONFIG } from "../auth/authConfig";
 
 const { domain, clientId, callbackUrl } = AUTH_CONFIG;
 
-const handleAuthentication = (nextState, replace) => {
-  if (/access_token|id_token|error/.test(nextState.location.hash)) {
-    auth.handleAuthentication();
-  }
-};
-
 class AppContainer extends Component {
-  constructor() {
+  constructor(props) {
+    super(props);
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
     this.handleAuthentication = this.handleAuthentication.bind(this);
@@ -41,12 +36,12 @@ class AppContainer extends Component {
   }
 
   componentDidMount() {
-    this.idToken = localStorage.getItem("id_token");
+    const idToken = localStorage.getItem("id_token");
 
     // If we have a token, consider the user to be signed in and update state
     if (idToken) {
       const accessToken = localStorage.getItem("access_token");
-      store.dispatch(authSuccess(accessToken, idToken));
+      this.props.authSuccess(accessToken, idToken);
     }
   }
 
@@ -97,17 +92,17 @@ class AppContainer extends Component {
   }
 
   render() {
-    const { isAuthenticated, auth, handleAuthentication } = this.props;
+    const { isAuthenticated } = this.props;
 
     return (
       <Router history={this.history} component={App}>
         <div>
           <AppHeader
-            login={auth.login}
-            logout={auth.logout}
+            login={this.login}
+            logout={this.logout}
             isAuthenticated={isAuthenticated}
           />
-          <Route path="/" render={props => <App auth={auth} {...props} />} />
+          <Route path="/" render={props => <App {...props} />} />
           <Route path="/assets" render={props => <Assets {...props} />} />
           <Route
             path="/loading"
@@ -131,7 +126,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     authSuccess: (idToken, accessToken) => {
-      dispatch(authSucess(idToken, accessToken));
+      dispatch(authSuccess(idToken, accessToken));
     },
     loggedOut: () => {
       dispatch(loggedOut());
@@ -139,4 +134,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps)(mapDispatchToProps)(AppContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);
