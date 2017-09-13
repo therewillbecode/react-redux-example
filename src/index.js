@@ -22,7 +22,7 @@ const store = createStore(
   )
 );
 
-const history = createHistory();
+export const history = createHistory();
 export const routes = (
   <Router history={history} component={App}>
     <div>
