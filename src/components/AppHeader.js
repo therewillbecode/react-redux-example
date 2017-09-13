@@ -3,15 +3,15 @@ import { Link } from "react-router-dom";
 
 class AppHeader extends Component {
   render() {
-    const { isAuthenticated, auth } = this.props;
+    const { isAuthenticated, login, logout } = this.props;
 
     return (
       <div>
-        <Link to="/home">Home</Link>
-        {!isAuthenticated ? <button onClick={auth.login}>Log In</button> : null}
+        <Link to="/">Home</Link>
+        {!isAuthenticated ? <button onClick={login}>Log In</button> : null}
         {isAuthenticated ? (
           <div>
-            <button onClick={auth.logout}>Log Out</button>
+            <button onClick={logout}>Log Out</button>
             <Link to="/assets">Assets</Link>
           </div>
         ) : null}
