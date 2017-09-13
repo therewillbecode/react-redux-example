@@ -10,3 +10,10 @@ export function receiveAsset(id, name, timestamp, comment) {
     state: "received"
   };
 }
+
+export function dispatchAsset(id) {
+  return {
+    type: types.DISPATCH_ASSET,
+    id
+  };
+}
