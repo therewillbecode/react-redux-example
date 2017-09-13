@@ -12,7 +12,7 @@ describe("assets reducer", () => {
     expect(reducer(initialState, {})).toEqual(expectedState);
   });
 
-  describe.only("when receiving assets", () => {
+  describe("when receiving assets", () => {
     it("should handle the receiving of assets", () => {
       const name = "drone";
       const id = "h28S97Sn3";
@@ -40,28 +40,31 @@ describe("assets reducer", () => {
       ).toEqual(expectedState);
     });
 
-    it("timestamp should not change if already received asset is received again", () => {
-      const name = "drone";
-      const id = "h28S97Sn3";
-      const comment = "aerial kit";
-      const state = "receive";
-      const receivedTimestamp = "1505310201";
-      const dispatchedTimestamp = "1605890201";
-      const initialState = List([
-        {
-          name,
-          id,
-          comment,
-          state,
-          receivedTimestamp,
-          dispatchedTimestamp
-        }
-      ]);
+    it.only(
+      "timestamp should not change if already received asset is received again",
+      () => {
+        const name = "drone";
+        const id = "h28S97Sn3";
+        const comment = "aerial kit";
+        const state = "receive";
+        const receivedTimestamp = "1505310201";
+        const dispatchedTimestamp = "1605890201";
+        const initialState = List([
+          {
+            name,
+            id,
+            comment,
+            state,
+            receivedTimestamp,
+            dispatchedTimestamp
+          }
+        ]);
 
-      expect(reducer(initialState, actions.receiveAsset(id, "999"))).toEqual(
-        initialState
-      );
-    });
+        expect(reducer(initialState, actions.receiveAsset(id, "999"))).toEqual(
+          initialState
+        );
+      }
+    );
   });
 
   describe("when dispatching assets", () => {
@@ -78,7 +81,7 @@ describe("assets reducer", () => {
           comment,
           state: "received",
           receivedTimestamp,
-          dispatchedTimestamp
+          dispatchedTimestamp: null
         }
       ]);
       const expectedState = List([

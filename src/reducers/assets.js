@@ -1,21 +1,38 @@
 import { List } from "immutable";
 
 import * as types from "../actions/types";
+import { findAssetById } from "../selectors/index";
 
-const inititialState = List([]);
+const initialState = List([]);
 
-export default function assets(state = inititialState, action) {
+export default function assets(state = initialState, action) {
   switch (action.type) {
     case types.RECEIVE_ASSET:
-      const { id, name, timestamp, comment } = action;
-      return state.push({
-        id,
-        name,
-        state: "received",
-        receivedTimestamp: timestamp,
-        dispatchedTimestamp: null,
-        comment
-      });
+      const assetExists = findAssetById(state, action.id) !== undefined;
+      return assetExists
+        ? state
+        : state.push({
+            id: action.id,
+            name: action.name,
+            state: "received",
+            receivedTimestamp: action.timestamp,
+            dispatchedTimestamp: null,
+            comment: action.comment
+          });
+
+    case types.DISPATCH_ASSET:
+      return state.update(
+        state.findIndex(({ id }) => id === action.id),
+        asset => {
+          if (asset.state === "dispatched") {
+            return asset; // don't update asset if already dispatched
+          } else {
+            asset.dispatchedTimestamp = action.timestamp;
+            asset.state = "dispatched";
+            return asset;
+          }
+        }
+      );
 
     default:
       return state;
