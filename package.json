@@ -9,14 +9,16 @@
     "eslint-plugin-react": "^7.3.0",
     "husky": "^0.14.3",
     "prettier-eslint": "^8.0.0",
-    "react-scripts": "1.0.13"
+    "react-scripts": "1.0.13",
+    "redux-devtools-extension": "^2.13.2"
   },
   "dependencies": {
     "immutable": "^3.8.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.6",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "reselect": "^3.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
