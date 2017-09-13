@@ -22,6 +22,20 @@ const store = createStore(
   )
 );
 
+const jwtToken = localStorage.getItem("id_token");
+
+// If we have a token, consider the user to be signed in and update state
+if (jwtToken) {
+  const accessToken = localStorage.getItem("access_token");
+  store.dispatch(authSucess(accessToken, jwtToken));
+}
+
+const handleAuthentication = (nextState, replace) => {
+  if (/access_token|id_token|error/.test(nextState.location.hash)) {
+    auth.handleAuthentication();
+  }
+};
+
 export const history = createHistory();
 export const routes = (
   <Router history={history} component={App}>
