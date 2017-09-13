@@ -2,7 +2,7 @@
 import { List, fromJS } from "immutable";
 
 import reducer from "../assets";
-import * as types from "../../actions/types";
+import * as actions from "../../actions/index";
 
 describe("assets reducer", () => {
   it("should return the initial state", () => {
@@ -12,167 +12,251 @@ describe("assets reducer", () => {
     expect(reducer(initialState, {})).toEqual(expectedState);
   });
 
-  it("should handle RECEIVE_ASSET", () => {
-    const initialState = List([]);
-    const expectedState = List([
-      {
-        name: "drone",
-        id: "h28S97Sn3",
-        comment: "aerial kit",
-        state: "received",
-        receivedTimestamp: "1505310201",
-        dispatchedTimestamp: null
-      }
-    ]);
+  describe("when receiving assets", () => {
+    it("should handle the receiving of assets", () => {
+      const name = "drone";
+      const id = "h28S97Sn3";
+      const comment = "aerial kit";
+      const state = "received";
+      const receivedTimestamp = "1505310201";
+      const dispatchedTimestamp = null;
+      const initialState = List([]);
+      const expectedState = List([
+        {
+          name,
+          id,
+          comment,
+          state,
+          receivedTimestamp,
+          dispatchedTimestamp
+        }
+      ]);
 
-    expect(
-      reducer(initialState, {
-        type: types.RECEIVE_ASSET,
-        name: "drone",
-        id: "h28S97Sn3",
-        comment: "aerial kit",
-        state: "received",
-        receivedTimestamp: "1505310201",
-        dispatchedTimestamp: null
-      })
-    ).toEqual(expectedState);
+      expect(
+        reducer(
+          initialState,
+          actions.receiveAsset(id, name, receivedTimestamp, comment)
+        )
+      ).toEqual(expectedState);
+    });
+
+    it("timestamp should not change if already received asset is received again", () => {
+      const name = "drone";
+      const id = "h28S97Sn3";
+      const comment = "aerial kit";
+      const state = "receive";
+      const receivedTimestamp = "1505310201";
+      const dispatchedTimestamp = "1605890201";
+      const initialState = List([
+        {
+          name,
+          id,
+          comment,
+          state,
+          receivedTimestamp,
+          dispatchedTimestamp
+        }
+      ]);
+
+      expect(reducer(initialState, actions.receiveAsset(id, "999"))).toEqual(
+        initialState
+      );
+    });
   });
 
-  it("should handle DISPATCH_ASSET for received assets", () => {
-    const initialState = List([]);
-    const expectedState = List([
-      {
-        name: "drone",
-        id: "h28S97Sn3",
-        comment: "aerial kit",
-        state: "received",
-        receivedTimestamp: "1505310201",
-        dispatchedTimestamp: null
-      }
-    ]);
-    const dispatchedTimestamp = "1605890201";
+  describe("when dispatching assets", () => {
+    it("should handle the dispatching of received assets", () => {
+      const name = "drone";
+      const id = "h28S97Sn3";
+      const comment = "aerial kit";
+      const receivedTimestamp = "1505310201";
+      const dispatchedTimestamp = "1605890201";
+      const initialState = List([
+        {
+          name,
+          id,
+          comment,
+          state: "received",
+          receivedTimestamp,
+          dispatchedTimestamp
+        }
+      ]);
+      const expectedState = List([
+        {
+          name,
+          id,
+          comment,
+          state: "dispatched",
+          receivedTimestamp,
+          dispatchedTimestamp
+        }
+      ]);
 
-    expect(
-      reducer(initialState, {
-        type: types.DISPATCH_ASSET,
-        name: "drone",
-        id: "h28S97Sn3",
-        comment: "aerial kit",
-        state: "dispatched",
-        receivedTimestamp: "1505310201",
-        dispatchedTimestamp
-      })
-    ).toEqual(expectedState);
+      expect(
+        reducer(initialState, actions.dispatchAsset(id, dispatchedTimestamp))
+      ).toEqual(expectedState);
+    });
+
+    it("timestamp should not change if already dispatched asset is dispatched again", () => {
+      const name = "drone";
+      const id = "h28S97Sn3";
+      const comment = "aerial kit";
+      const state = "dispatched";
+      const receivedTimestamp = "1505310201";
+      const dispatchedTimestamp = "1605890201";
+      const initialState = List([
+        {
+          name,
+          id,
+          comment,
+          state,
+          receivedTimestamp,
+          dispatchedTimestamp
+        }
+      ]);
+
+      expect(reducer(initialState, actions.dispatchAsset(id, "999"))).toEqual(
+        initialState
+      );
+    });
   });
 
-  it("should not be able to dispatch assets which are already marked dispatched", () => {
-    const initialState = List([]);
-    const expectedState = List([
-      {
-        type: types.DISPATCH_ASSET,
-        name: "drone",
-        id: "h28S97Sn3",
-        comment: "aerial kit",
-        state: "dispatched",
-        receivedTimestamp: "1505310201",
-        dispatchedTimestamp: "1605890201"
-      }
-    ]);
+  describe("when editing assets", () => {
+    it("should handle name edits for received assets", () => {
+      const id = "h28S97Sn3";
+      const name = "drone";
+      const newName = "uav";
+      const comment = "aerial kit";
+      const state = "received";
+      const receivedTimestamp = "1505310201";
+      const dispatchedTimestamp = null;
+      const initialState = List([
+        {
+          name,
+          id,
+          comment,
+          state,
+          receivedTimestamp,
+          dispatchedTimestamp
+        }
+      ]);
+      const expectedState = List([
+        {
+          name: newName,
+          id,
+          comment,
+          state,
+          receivedTimestamp,
+          dispatchedTimestamp
+        }
+      ]);
 
-    expect(
-      reducer(initialState, {
-        type: types.DISPATCH_ASSET,
-        name: "drone",
-        id: "h28S97Sn3",
-        comment: "aerial kit",
-        state: "dispatched",
-        receivedTimestamp: "1505310201",
-        dispatchedTimestamp: "1605890201"
-      })
-    ).toEqual(expectedState);
-  });
+      expect(reducer(initialState, actions.editAssetName(id, newName))).toEqual(
+        expectedState
+      );
+    });
 
-  it("should handle name edits for received assets", () => {
-    const initialState = List([]);
-    const expectedState = List([
-      {
-        name: "drone",
-        id: "h28S97Sn3",
-        comment: "aerial kit",
-        state: "received",
-        receivedTimestamp: "1505310201",
-        dispatchedTimestamp: null
-      }
-    ]);
+    it("should handle comment edits for received assets", () => {
+      const id = "h28S97Sn3";
+      const name = "drone";
+      const comment = "aerial kit";
+      const newComment = "aerial kit for data collection";
+      const state = "received";
+      const receivedTimestamp = "1505310201";
+      const dispatchedTimestamp = null;
+      const initialState = List([
+        {
+          name,
+          id,
+          comment,
+          state,
+          receivedTimestamp,
+          dispatchedTimestamp
+        }
+      ]);
+      const expectedState = List([
+        {
+          name,
+          id,
+          comment: newComment,
+          state,
+          receivedTimestamp,
+          dispatchedTimestamp
+        }
+      ]);
 
-    const updateObj = { name: "3d printer" };
+      expect(
+        reducer(initialState, actions.editAssetComment(id, newComment))
+      ).toEqual(expectedState);
+    });
 
-    expect(
-      reducer(initialState, {
-        type: types.EDIT_ASSET,
-        name: "3d printer",
-        id: "h28S97Sn3",
-        comment: "aerial kit for data collection",
-        state: "received",
-        receivedTimestamp: "1505310201",
-        dispatchedTimestamp: null
-      })
-    ).toEqual(expectedState);
-  });
+    it("should not allow editing of dispatched asset comments", () => {
+      const id = "h28S97Sn3";
+      const name = "drone";
+      const comment = "aerial kit";
+      const newComment = "aerial kit for data collection";
+      const state = "dispatched";
+      const receivedTimestamp = "1505310201";
+      const dispatchedTimestamp = null;
+      const initialState = List([
+        {
+          name,
+          id,
+          comment,
+          state,
+          receivedTimestamp,
+          dispatchedTimestamp
+        }
+      ]);
+      const expectedState = List([
+        {
+          name,
+          id,
+          comment,
+          state,
+          receivedTimestamp,
+          dispatchedTimestamp
+        }
+      ]);
 
-  it("should handle comment edits for received assets", () => {
-    const initialState = List([]);
-    const expectedState = List([
-      {
-        name: "drone",
-        id: "h28S97Sn3",
-        comment: "aerial kit",
-        state: "received",
-        receivedTimestamp: "1505310201",
-        dispatchedTimestamp: null
-      }
-    ]);
+      expect(
+        reducer(initialState, actions.editAssetComment(id, newComment))
+      ).toEqual(expectedState);
+    });
 
-    const updateObj = { comment: "aerial kit for data collection" };
+    it("should not allow editing of dispatched asset names", () => {
+      const id = "h28S97Sn3";
+      const name = "drone";
+      const newName = "uav";
+      const comment = "aerial kit";
+      const newComment = "aerial kit for data collection";
+      const state = "dispatched";
+      const receivedTimestamp = "1505310201";
+      const dispatchedTimestamp = null;
+      const initialState = List([
+        {
+          name,
+          id,
+          comment,
+          state,
+          receivedTimestamp,
+          dispatchedTimestamp
+        }
+      ]);
+      const expectedState = List([
+        {
+          name,
+          id,
+          comment,
+          state,
+          receivedTimestamp,
+          dispatchedTimestamp
+        }
+      ]);
 
-    expect(
-      reducer(initialState, {
-        type: types.EDIT_ASSET,
-        name: "drone",
-        id: "h28S97Sn3",
-        comment: "aerial kit for data collection",
-        state: "received",
-        receivedTimestamp: "1505310201",
-        dispatchedTimestamp: null
-      })
-    ).toEqual(expectedState);
-  });
-
-  it("should not allow editing of dispatched assets", () => {
-    const initialState = List([]);
-    const expectedState = List([
-      {
-        name: "drone",
-        id: "h28S97Sn3",
-        comment: "aerial kit",
-        state: "dispatched",
-        receivedTimestamp: "1505310201",
-        dispatchedTimestamp: "1605890201"
-      }
-    ]);
-
-    const updateObj = { comment: "aerial kit for data collection" };
-
-    expect(
-      reducer(initialState, {
-        type: types.EDIT_ASSET,
-        name: "drone",
-        id: "h28S97Sn3",
-        comment: "aerial kit",
-        state: "dispatched",
-        receivedTimestamp: "1505310201",
-        dispatchedTimestamp: "1605890201"
-      })
-    ).toEqual(expectedState);
+      expect(reducer(initialState, actions.editAssetName(id, newName))).toEqual(
+        expectedState
+      );
+    });
   });
 });
