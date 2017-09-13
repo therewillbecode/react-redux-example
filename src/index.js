@@ -3,16 +3,10 @@ import React from "react";
 import { render } from "react-dom";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
-import { Route, Link, BrowserRouter as Router } from "react-router-dom";
-import createHistory from "history/createBrowserHistory";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 import registerServiceWorker from "./registerServiceWorker";
-import App from "./components/App";
-import Home from "./components/Home";
-import Loading from "./components/Loading";
-import RequireAuth from "./containers/HOC/RequireAuth";
-import AppHeader from "./components/AppHeader";
+
 import AppContainer from "./containers/AppContainer";
 
 import rootReducer from "./reducers/index";
@@ -44,11 +38,9 @@ const handleAuthentication = (nextState, replace) => {
   }
 };
 
-export const history = createHistory();
-
 render(
   <Provider store={store}>
-    <AppContainer />
+    <AppContainer auth={auth} handleAuthentication={handleAuthentication} />
   </Provider>,
   document.getElementById("root")
 );
