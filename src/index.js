@@ -11,6 +11,7 @@ import registerServiceWorker from "./registerServiceWorker";
 import App from "./components/App";
 import rootReducer from "./reducers/index";
 import Loading from "./components/Loading";
+import { authSucess } from "./actions/index";
 
 const middleware = [];
 
