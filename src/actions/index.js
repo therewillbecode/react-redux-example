@@ -17,3 +17,10 @@ export function dispatchAsset(id) {
     id
   };
 }
+
+export function editAsset(id) {
+  return {
+    type: types.DISPATCH_ASSET,
+    id
+  };
+}
