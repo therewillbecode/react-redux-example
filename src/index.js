@@ -3,16 +3,20 @@ import React from "react";
 import { render } from "react-dom";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
-import { Route, Router } from "react-router-dom";
+import { Route, Link, BrowserRouter as Router } from "react-router-dom";
 import createHistory from "history/createBrowserHistory";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 import registerServiceWorker from "./registerServiceWorker";
 import App from "./components/App";
 import Home from "./components/Home";
-import rootReducer from "./reducers/index";
 import Loading from "./components/Loading";
-import auth from "./auth/auth";
+import RequireAuth from "./containers/HOC/RequireAuth";
+import AppHeader from "./components/AppHeader";
+import AppContainer from "./containers/AppContainer";
+
+import rootReducer from "./reducers/index";
+import Auth from "./auth/auth";
 import { authSuccess } from "./actions/index";
 
 const middleware = [];
@@ -25,6 +29,7 @@ const store = createStore(
   )
 );
 
+export const auth = new Auth();
 const jwtToken = localStorage.getItem("id_token");
 
 // If we have a token, consider the user to be signed in and update state
@@ -40,24 +45,11 @@ const handleAuthentication = (nextState, replace) => {
 };
 
 export const history = createHistory();
-export const routes = (
-  <Router history={history} component={App}>
-    <div>
-      <Route path="/" render={props => <App auth={auth} {...props} />} />
-      <Route path="/home" render={props => <Home auth={auth} {...props} />} />
-      <Route
-        path="/loading"
-        render={props => {
-          handleAuthentication(props);
-          return <Loading {...props} />;
-        }}
-      />
-    </div>
-  </Router>
-);
 
 render(
-  <Provider store={store}>{routes}</Provider>,
+  <Provider store={store}>
+    <AppContainer />
+  </Provider>,
   document.getElementById("root")
 );
 
