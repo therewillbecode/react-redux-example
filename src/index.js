@@ -23,13 +23,17 @@ const store = createStore(
 
 const history = createHistory();
 
-export const routes = (
-  <Router history={history} component={App}>
-    <div>
-      <Route path="/" render={props => <App {...props} />} />
-    </div>
-  </Router>
-);
+<Router history={history} component={App}>
+  <div>
+    <Route path="/" render={props => <App {...props} />} />
+    <Route
+      path="/loading"
+      render={props => {
+        return <Loading {...props} />;
+      }}
+    />
+  </div>
+</Router>;
 
 render(
   <Provider store={store}>{routes}</Provider>,
