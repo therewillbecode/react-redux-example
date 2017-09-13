@@ -22,7 +22,9 @@
     "prettier-fix": "./node_modules/eslint/bin/eslint.js src --fix",
     "precommit": "npm run lint",
     "premerge": "npm test",
-    "test": "react-scripts test --env=jsdom",
+    "test": "docker-compose run --rm web react-scripts test --env=jsdom",
+    "coverage":
+      "docker-compose run --rm web react-scripts test --coverage --env=jsdom",
     "eject": "react-scripts eject"
   }
 }
