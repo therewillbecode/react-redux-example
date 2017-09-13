@@ -3,19 +3,55 @@ import { List } from "immutable";
 import * as selectors from "../index";
 
 describe("selectors", () => {
-  it("should find asset by id", () => {
-    const searchId = "h84Ia301";
+  describe("findAssetById", () => {
+    it("should find asset by id", () => {
+      const searchId = "h84Ia301";
+      const assets = List([
+        {
+          id: searchId
+        },
+        {
+          id: "43vmn4Z2"
+        }
+      ]);
+
+      expect(selectors.findAssetById(assets, searchId)).toEqual({
+        id: searchId
+      });
+    });
+  });
+
+  describe("filterAssetsByState", () => {
     const assets = List([
       {
-        id: searchId
+        state: "received"
       },
       {
-        id: "43vmn4Z2"
+        state: "dispatched"
       }
     ]);
+    it("should filter in received assets", () => {
+      expect(selectors.filterAssetsByState(assets, "received")).toEqual(
+        List([
+          {
+            state: "received"
+          }
+        ])
+      );
+    });
 
-    expect(selectors.findAssetById(assets, searchId)).toEqual({
-      id: searchId
+    it("should filter in dispatched assets", () => {
+      expect(selectors.filterAssetsByState(assets, "dispatched")).toEqual(
+        List([
+          {
+            state: "dispatched"
+          }
+        ])
+      );
+    });
+
+    it("should return all assets if filter is undefined", () => {
+      expect(selectors.filterAssetsByState(assets, undefined)).toEqual(assets);
     });
   });
 });
