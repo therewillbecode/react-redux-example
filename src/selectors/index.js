@@ -1,8 +1,8 @@
 import { createSelector } from "reselect";
 
-export const assetsSelector = state => state.get("assets");
+export const assetsSelector = state => state.assets;
 
-export const authSelector = state => state.get("auth");
+export const authSelector = state => state.auth;
 
 export const findAssetById = (assets, searchId) =>
   assets.find(({ id }) => id === searchId);
@@ -19,5 +19,5 @@ export const filterAssetsByState = (assets, filter) => {
   }
 };
 
-export const isAuthenticated = auth =>
-  authSelector(auth).get("isAuthenticated");
+export const isAuthenticated = state =>
+  authSelector(state).get("isAuthenticated");
