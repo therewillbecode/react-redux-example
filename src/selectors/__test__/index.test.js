@@ -1,8 +1,17 @@
-import { List } from "immutable";
+import { fromJS, List } from "immutable";
 
 import * as selectors from "../index";
 
 describe("selectors", () => {
+  describe("assetsSelector", () => {
+    it("should return assets", () => {
+      const assets = List([]);
+      const state = fromJS({ assets, auth: {} });
+
+      expect(selectors.assetsSelector(state)).toEqual(List([]));
+    });
+  });
+
   describe("findAssetById", () => {
     it("should find asset by id", () => {
       const searchId = "h84Ia301";
