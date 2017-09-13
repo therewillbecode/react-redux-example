@@ -92,7 +92,7 @@ describe("assets reducer", () => {
     ).toEqual(expectedState);
   });
 
-  it("should handle EDIT_ASSET of name for received assets", () => {
+  it("should handle name edits for received assets", () => {
     const initialState = List([]);
     const expectedState = List([
       {
@@ -120,7 +120,7 @@ describe("assets reducer", () => {
     ).toEqual(expectedState);
   });
 
-  it("should handle EDIT_ASSET of comment for received assets", () => {
+  it("should handle comment edits for received assets", () => {
     const initialState = List([]);
     const expectedState = List([
       {
@@ -134,34 +134,6 @@ describe("assets reducer", () => {
     ]);
 
     const updateObj = { comment: "aerial kit for data collection" };
-
-    expect(
-      reducer(initialState, {
-        type: types.EDIT_ASSET,
-        name: "drone",
-        id: "h28S97Sn3",
-        comment: "aerial kit for data collection",
-        state: "received",
-        receivedTimestamp: "1505310201",
-        dispatchedTimestamp: null
-      })
-    ).toEqual(expectedState);
-  });
-
-  it("should not permit editing of id", () => {
-    const initialState = List([]);
-    const expectedState = List([
-      {
-        name: "drone",
-        id: "h28S97Sn3",
-        comment: "aerial kit",
-        state: "received",
-        receivedTimestamp: "1505310201",
-        dispatchedTimestamp: null
-      }
-    ]);
-
-    const updateObj = { id: "jmf93jhn" };
 
     expect(
       reducer(initialState, {
