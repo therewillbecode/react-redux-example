@@ -3,29 +3,28 @@ import { Route, BrowserRouter as Router } from "react-router-dom";
 import { connect } from "react-redux";
 
 import App from "../components/App";
-import Home from "../components/Home";
+import Assets from "../components/Assets";
 import Loading from "../components/Loading";
 import AppHeader from "../components/AppHeader";
 
 import RequireAuth from "./HOC/RequireAuth";
 
-import { isAuthenticated } from "./selectors/index";
-
-import createHistory from "history/createBrowserHistory";
-
-const history = createHistory();
+import { isAuthenticated } from "../selectors/index";
 
 class AppContainer extends Component {
   render() {
-    const { isAuthenticated, auth, handleAuthentication } = this.props;
+    const { isAuthenticated, auth, handleAuthentication, history } = this.props;
 
     return (
       <Router history={history} component={App}>
         <div>
-          <AppHeader isAuthenticated={isAuthenticated} />
+          <AppHeader
+            login={auth.login}
+            logout={auth.logout}
+            isAuthenticated={isAuthenticated}
+          />
           <Route path="/" render={props => <App auth={auth} {...props} />} />
-          <Route path="/home" render={props => <Home {...props} />} />
-          <Route path="/assets" render={props => <Home {...props} />} />
+          <Route path="/assets" render={props => <Assets {...props} />} />
           <Route
             path="/loading"
             render={props => {
@@ -45,6 +44,4 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {};
-
-export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);
+export default connect(mapStateToProps)(AppContainer);

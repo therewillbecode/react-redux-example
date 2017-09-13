@@ -5,9 +5,10 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 
-import registerServiceWorker from "./registerServiceWorker";
-
 import AppContainer from "./containers/AppContainer";
+
+import createHistory from "history/createBrowserHistory";
+import registerServiceWorker from "./registerServiceWorker";
 
 import rootReducer from "./reducers/index";
 import Auth from "./auth/auth";
@@ -22,8 +23,9 @@ const store = createStore(
     // other store enhancers if any
   )
 );
+export const history = createHistory();
+const auth = new Auth();
 
-export const auth = new Auth();
 const jwtToken = localStorage.getItem("id_token");
 
 // If we have a token, consider the user to be signed in and update state
