@@ -18,9 +18,10 @@ export function dispatchAsset(id) {
   };
 }
 
-export function editAsset(id) {
+export function editAsset(id, newName) {
   return {
-    type: types.DISPATCH_ASSET,
-    id
+    type: types.EDIT_ASSET,
+    id,
+    newName
   };
 }

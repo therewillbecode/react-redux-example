@@ -32,4 +32,17 @@ describe("actions", () => {
 
     expect(actions.dispatchAsset(id)).toEqual(expectedAction);
   });
+
+  it("should create an action to edit asset name", () => {
+    const id = "gi4uH53s";
+    const newName = "truck";
+
+    const expectedAction = {
+      type: types.EDIT_ASSET,
+      id,
+      newName
+    };
+
+    expect(actions.editAsset(id, newName)).toEqual(expectedAction);
+  });
 });
