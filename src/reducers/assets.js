@@ -7,8 +7,9 @@ const initialState = List([]);
 
 export default function assets(state = initialState, action) {
   switch (action.type) {
-    case types.RECEIVE_ASSET:
+    case types.RECEIVE_ASSET: {
       const assetExists = findAssetById(state, action.id) !== undefined;
+
       return assetExists
         ? state
         : state.push({
@@ -19,8 +20,9 @@ export default function assets(state = initialState, action) {
             dispatchedTimestamp: null,
             comment: action.comment
           });
+    }
 
-    case types.DISPATCH_ASSET:
+    case types.DISPATCH_ASSET: {
       return state.update(
         state.findIndex(({ id }) => id === action.id),
         asset => {
@@ -29,10 +31,42 @@ export default function assets(state = initialState, action) {
           } else {
             asset.dispatchedTimestamp = action.timestamp;
             asset.state = "dispatched";
+
             return asset;
           }
         }
       );
+    }
+
+    case types.EDIT_ASSET_NAME: {
+      return state.update(
+        state.findIndex(({ id }) => id === action.id),
+        asset => {
+          if (asset.state === "dispatched") {
+            return asset; // don't edit asset if dispatched
+          } else {
+            asset.name = action.newName;
+
+            return asset;
+          }
+        }
+      );
+    }
+
+    case types.EDIT_ASSET_COMMENT: {
+      return state.update(
+        state.findIndex(({ id }) => id === action.id),
+        asset => {
+          if (asset.state === "dispatched") {
+            return asset; // don't edit asset if dispatched
+          } else {
+            asset.comment = action.newComment;
+
+            return asset;
+          }
+        }
+      );
+    }
 
     default:
       return state;

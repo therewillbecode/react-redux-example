@@ -40,31 +40,28 @@ describe("assets reducer", () => {
       ).toEqual(expectedState);
     });
 
-    it.only(
-      "timestamp should not change if already received asset is received again",
-      () => {
-        const name = "drone";
-        const id = "h28S97Sn3";
-        const comment = "aerial kit";
-        const state = "receive";
-        const receivedTimestamp = "1505310201";
-        const dispatchedTimestamp = "1605890201";
-        const initialState = List([
-          {
-            name,
-            id,
-            comment,
-            state,
-            receivedTimestamp,
-            dispatchedTimestamp
-          }
-        ]);
+    it("timestamp should not change if already received asset is received again", () => {
+      const name = "drone";
+      const id = "h28S97Sn3";
+      const comment = "aerial kit";
+      const state = "receive";
+      const receivedTimestamp = "1505310201";
+      const dispatchedTimestamp = "1605890201";
+      const initialState = List([
+        {
+          name,
+          id,
+          comment,
+          state,
+          receivedTimestamp,
+          dispatchedTimestamp
+        }
+      ]);
 
-        expect(reducer(initialState, actions.receiveAsset(id, "999"))).toEqual(
-          initialState
-        );
-      }
-    );
+      expect(reducer(initialState, actions.receiveAsset(id, "999"))).toEqual(
+        initialState
+      );
+    });
   });
 
   describe("when dispatching assets", () => {
