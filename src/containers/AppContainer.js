@@ -2,12 +2,22 @@ import React, { Component } from "react";
 import { Route, BrowserRouter as Router } from "react-router-dom";
 import { connect } from "react-redux";
 
+import App from "../components/App";
+import Home from "../components/Home";
+import Loading from "../components/Loading";
+import AppHeader from "../components/AppHeader";
+
+import RequireAuth from "./HOC/RequireAuth";
+
 import { isAuthenticated } from "./selectors/index";
-import "./App.css";
+
+import createHistory from "history/createBrowserHistory";
+
+const history = createHistory();
 
 class AppContainer extends Component {
   render() {
-    const { isAuthenticated } = this.props;
+    const { isAuthenticated, auth, handleAuthentication } = this.props;
 
     return (
       <Router history={history} component={App}>
@@ -37,6 +47,4 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {};
 
-const AppContainer = connect(mapStateToProps, mapDispatchToProps)(AppContainer);
-
-export default AppContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);
