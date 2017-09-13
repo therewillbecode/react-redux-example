@@ -9,6 +9,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 import registerServiceWorker from "./registerServiceWorker";
 import App from "./components/App";
+import Home from "./components/Home";
 import rootReducer from "./reducers/index";
 import Loading from "./components/Loading";
 import auth from "./auth/auth";
@@ -42,10 +43,12 @@ export const history = createHistory();
 export const routes = (
   <Router history={history} component={App}>
     <div>
-      <Route path="/" render={props => <App {...props} />} />
+      <Route path="/" render={props => <App auth={auth} {...props} />} />
+      <Route path="/home" render={props => <Home auth={auth} {...props} />} />
       <Route
         path="/loading"
         render={props => {
+          handleAuthentication(props);
           return <Loading {...props} />;
         }}
       />
