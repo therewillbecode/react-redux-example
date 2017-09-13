@@ -33,3 +33,11 @@ export function editAssetComment(id, newComment) {
     newComment
   };
 }
+
+export function authSuccess(accessToken, accessToken, idToken) {
+  return {
+    type: types.AUTH_SUCCESS,
+    accessToken,
+    idToken
+  };
+}
