@@ -23,13 +23,15 @@ describe("actions", () => {
 
   it("should create an action to dispatch asset", () => {
     const id = "gi4uH53s";
+    const timestamp = "1505310201";
 
     const expectedAction = {
       type: types.DISPATCH_ASSET,
-      id
+      id,
+      timestamp
     };
 
-    expect(actions.dispatchAsset(id)).toEqual(expectedAction);
+    expect(actions.dispatchAsset(id, timestamp)).toEqual(expectedAction);
   });
 
   it("should create an action to edit asset name", () => {

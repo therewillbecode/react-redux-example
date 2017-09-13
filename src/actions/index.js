@@ -10,10 +10,11 @@ export function receiveAsset(id, name, timestamp, comment) {
   };
 }
 
-export function dispatchAsset(id) {
+export function dispatchAsset(id, timestamp) {
   return {
     type: types.DISPATCH_ASSET,
-    id
+    id,
+    timestamp
   };
 }
 
