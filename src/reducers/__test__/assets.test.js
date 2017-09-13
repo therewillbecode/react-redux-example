@@ -12,7 +12,7 @@ describe("assets reducer", () => {
     expect(reducer(initialState, {})).toEqual(expectedState);
   });
 
-  describe("when receiving assets", () => {
+  describe.only("when receiving assets", () => {
     it("should handle the receiving of assets", () => {
       const name = "drone";
       const id = "h28S97Sn3";
