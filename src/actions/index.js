@@ -6,8 +6,7 @@ export function receiveAsset(id, name, timestamp, comment) {
     id,
     name,
     timestamp,
-    comment,
-    state: "received"
+    comment
   };
 }
 

@@ -13,8 +13,7 @@ describe("actions", () => {
       id,
       name,
       timestamp,
-      comment,
-      state: "received"
+      comment
     };
 
     expect(actions.receiveAsset(id, name, timestamp, comment)).toEqual(
