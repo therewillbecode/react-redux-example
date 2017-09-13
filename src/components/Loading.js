@@ -17,7 +17,7 @@ class Loading extends Component {
 
     return (
       <div style={style}>
-        <img src="loading.svg" alt="loading" />
+        <img src="img/loading.svg" alt="loading" />
       </div>
     );
   }

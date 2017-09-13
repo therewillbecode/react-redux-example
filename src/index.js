@@ -10,6 +10,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import registerServiceWorker from "./registerServiceWorker";
 import App from "./components/App";
 import rootReducer from "./reducers/index";
+import Loading from "./components/Loading";
 
 const middleware = [];
 
@@ -22,18 +23,19 @@ const store = createStore(
 );
 
 const history = createHistory();
-
-<Router history={history} component={App}>
-  <div>
-    <Route path="/" render={props => <App {...props} />} />
-    <Route
-      path="/loading"
-      render={props => {
-        return <Loading {...props} />;
-      }}
-    />
-  </div>
-</Router>;
+export const routes = (
+  <Router history={history} component={App}>
+    <div>
+      <Route path="/" render={props => <App {...props} />} />
+      <Route
+        path="/loading"
+        render={props => {
+          return <Loading {...props} />;
+        }}
+      />
+    </div>
+  </Router>
+);
 
 render(
   <Provider store={store}>{routes}</Provider>,
