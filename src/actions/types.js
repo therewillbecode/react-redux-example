@@ -1,0 +1,2 @@
+export const TOGGLE_ASSET_STATE = "TOGGLE_ASSET_STATE";
+export const ADD_ASSET = "ADD_ASSET";
