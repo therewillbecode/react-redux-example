@@ -3,6 +3,8 @@ import React from "react";
 import { render } from "react-dom";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
+import { Route, Router } from "react-router-dom";
+import createHistory from "history/createBrowserHistory";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 import registerServiceWorker from "./registerServiceWorker";
@@ -19,10 +21,18 @@ const store = createStore(
   )
 );
 
+const history = createHistory();
+
+export const routes = (
+  <Router history={history} component={App}>
+    <div>
+      <Route path="/" render={props => <App {...props} />} />
+    </div>
+  </Router>
+);
+
 render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <Provider store={store}>{routes}</Provider>,
   document.getElementById("root")
 );
 
