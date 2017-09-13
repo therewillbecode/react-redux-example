@@ -34,10 +34,16 @@ export function editAssetComment(id, newComment) {
   };
 }
 
-export function authSuccess(accessToken, accessToken, idToken) {
+export function authSuccess(accessToken, idToken) {
   return {
     type: types.AUTH_SUCCESS,
     accessToken,
     idToken
+  };
+}
+
+export function loggedOut() {
+  return {
+    type: types.LOGGED_OUT
   };
 }

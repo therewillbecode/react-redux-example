@@ -1,7 +1,32 @@
 import { Map } from "immutable";
 
-const init = Map([]);
+import { AUTH_SUCCESS, LOGGED_OUT } from "../actions/types";
 
-export default function auth(auth = init, action) {
-  return auth;
+const initialState = Map({
+  isAuthenticated: false,
+  accessToken: null,
+  idToken: null
+});
+
+export default function auth(state = initialState, action) {
+  switch (action.type) {
+    case AUTH_SUCCESS: {
+      return Map({
+        isAuthenticated: true,
+        accessToken: action.accessToken,
+        idToken: action.idToken
+      });
+    }
+
+    case LOGGED_OUT: {
+      return Map({
+        isAuthenticated: false,
+        accessToken: null,
+        idToken: null
+      });
+    }
+
+    default:
+      return state;
+  }
 }
