@@ -18,10 +18,18 @@ export function dispatchAsset(id) {
   };
 }
 
-export function editAsset(id, newName) {
+export function editAssetName(id, newName) {
   return {
-    type: types.EDIT_ASSET,
+    type: types.EDIT_ASSET_NAME,
     id,
     newName
+  };
+}
+
+export function editAssetComment(id, newComment) {
+  return {
+    type: types.EDIT_ASSET_COMMENT,
+    id,
+    newComment
   };
 }

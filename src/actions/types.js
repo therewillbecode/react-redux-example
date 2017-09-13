@@ -1,3 +1,4 @@
 export const DISPATCH_ASSET = "DISPATCH_ASSET";
 export const RECEIVE_ASSET = "RECEIVE_ASSET";
-export const EDIT_ASSET = "EDIT_ASSET";
+export const EDIT_ASSET_NAME = "EDIT_ASSET_NAME";
+export const EDIT_ASSET_COMMENT = "EDIT_ASSET_COMMENT";

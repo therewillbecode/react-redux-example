@@ -38,11 +38,24 @@ describe("actions", () => {
     const newName = "truck";
 
     const expectedAction = {
-      type: types.EDIT_ASSET,
+      type: types.EDIT_ASSET_NAME,
       id,
       newName
     };
 
-    expect(actions.editAsset(id, newName)).toEqual(expectedAction);
+    expect(actions.editAssetName(id, newName)).toEqual(expectedAction);
+  });
+
+  it("should create an action to edit asset comment", () => {
+    const id = "gi4uH53s";
+    const newComment = "on road";
+
+    const expectedAction = {
+      type: types.EDIT_ASSET_COMMENT,
+      id,
+      newComment
+    };
+
+    expect(actions.editAssetComment(id, newComment)).toEqual(expectedAction);
   });
 });
