@@ -19,18 +19,25 @@ const AssetsList = ({ assets, history }) => (
     </Table.Header>
 
     <Table.Body>
-      {assets.map(({ id, name, state, comment }) => (
-        <Table.Row key={id} onClick={() => navigateToAsset(history, id)}>
-          <Table.Cell textAlign="center">{id}</Table.Cell>
-          <Table.Cell textAlign="center">{name}</Table.Cell>
-          <Table.Cell textAlign="center">{state}</Table.Cell>
-          <Table.Cell textAlign="center">John</Table.Cell>
-          <Table.Cell textAlign="center">Approved</Table.Cell>
-          <Table.Cell textAlign="left">None</Table.Cell>
-        </Table.Row>
-      ))}
+      {assets.map(
+        ({
+          id,
+          name,
+          status,
+          receivedTimestamp,
+          dispatchedTimestamp,
+          comment
+        }) => (
+          <Table.Row key={id} onClick={() => navigateToAsset(history, id)}>
+            <Table.Cell textAlign="center">{id}</Table.Cell>
+            <Table.Cell textAlign="center">{name}</Table.Cell>
+            <Table.Cell textAlign="center">{status}</Table.Cell>
+            <Table.Cell textAlign="center">{receivedTimestamp}</Table.Cell>
+            <Table.Cell textAlign="center">{dispatchedTimestamp}</Table.Cell>
+            <Table.Cell textAlign="left">{comment}</Table.Cell>
+          </Table.Row>
+        )
+      )}
     </Table.Body>
   </Table>
 );
-
-export default withRouter(AssetsList);
