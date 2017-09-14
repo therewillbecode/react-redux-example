@@ -38,7 +38,7 @@ class AppContainer extends Component {
       redirectUri: auth0CallbackUrl,
       audience: `https://${auth0Domain}/userinfo`,
       responseType: "id_token",
-      scope: "openid"
+      scope: "openid profile"
     });
   }
 
