@@ -1,12 +1,18 @@
 import React, { Component } from "react";
-import AssetsItem from "../components/AssetsItem";
+import { connect } from "react-redux";
+
+import AssetItem from "../components/AssetItem";
+import { findAssetById } from "../selectors/index";
 
 class AssetItemContainer extends Component {
   render() {
-    const { id } = this.props.match.params;
-
-    return <AssetsItem id={id} />;
+    const { asset } = this.props;
+    return <AssetItem asset={asset} />;
   }
 }
 
-export default AssetItemContainer;
+const mapStateToProps = (state, ownProps) => ({
+  asset: findAssetById(state, ownProps.match.params.id)
+});
+
+export default connect(mapStateToProps)(AssetItemContainer);
