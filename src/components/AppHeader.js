@@ -23,8 +23,10 @@ class AppHeader extends Component {
         </Menu.Item>
         {isAuthenticated ? (
           <Menu.Item name="assets">
-            <Icon name="barcode" />
-            <Link to="/assets">Assets</Link>
+            <Link to="/assets">
+              <Icon name="barcode" />
+              Assets
+            </Link>
           </Menu.Item>
         ) : null}
         {!isAuthenticated ? (
