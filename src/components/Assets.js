@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 
+import AssetsListContainer from "../containers/AssetsListContainer";
+
 class Assets extends Component {
   render() {
-    const { assets } = this.props;
-
     return (
       <div>
         <h2>Welcome to the Assets page</h2>
+        <AssetsListContainer />
       </div>
     );
   }
