@@ -2,7 +2,7 @@
 import { List, fromJS } from "immutable";
 
 import reducer from "../assets";
-import * as actions from "../../actions/index";
+import * as types from "../../actions/types";
 
 describe("assets reducer", () => {
   it("should return the initial state", () => {
@@ -33,10 +33,13 @@ describe("assets reducer", () => {
       ]);
 
       expect(
-        reducer(
-          initialState,
-          actions.receiveAsset(id, name, receivedTimestamp, comment)
-        )
+        reducer(initialState, {
+          type: types.RECEIVE_ASSET,
+          id,
+          name,
+          comment,
+          timestamp: receivedTimestamp
+        })
       ).toEqual(expectedState);
     });
 
@@ -58,9 +61,15 @@ describe("assets reducer", () => {
         }
       ]);
 
-      expect(reducer(initialState, actions.receiveAsset(id, "999"))).toEqual(
-        initialState
-      );
+      expect(
+        reducer(initialState, {
+          type: types.RECEIVE_ASSET,
+          id,
+          name,
+          comment,
+          timestamp: "86799078"
+        })
+      ).toEqual(initialState);
     });
   });
 
@@ -93,7 +102,11 @@ describe("assets reducer", () => {
       ]);
 
       expect(
-        reducer(initialState, actions.dispatchAsset(id, dispatchedTimestamp))
+        reducer(initialState, {
+          type: types.DISPATCH_ASSET,
+          id,
+          timestamp: dispatchedTimestamp
+        })
       ).toEqual(expectedState);
     });
 
@@ -115,9 +128,13 @@ describe("assets reducer", () => {
         }
       ]);
 
-      expect(reducer(initialState, actions.dispatchAsset(id, "999"))).toEqual(
-        initialState
-      );
+      expect(
+        reducer(initialState, {
+          type: types.DISPATCH_ASSET,
+          id,
+          timestamp: "83897486"
+        })
+      ).toEqual(initialState);
     });
   });
 
@@ -151,9 +168,13 @@ describe("assets reducer", () => {
         }
       ]);
 
-      expect(reducer(initialState, actions.editAssetName(id, newName))).toEqual(
-        expectedState
-      );
+      expect(
+        reducer(initialState, {
+          type: types.EDIT_ASSET_NAME,
+          id,
+          newComment
+        })
+      ).toEqual(expectedState);
     });
 
     it("should handle comment edits for received assets", () => {
@@ -186,7 +207,11 @@ describe("assets reducer", () => {
       ]);
 
       expect(
-        reducer(initialState, actions.editAssetComment(id, newComment))
+        reducer(initialState, {
+          type: types.EDIT_ASSET_COMMENT,
+          id,
+          newComment
+        })
       ).toEqual(expectedState);
     });
 
@@ -220,7 +245,11 @@ describe("assets reducer", () => {
       ]);
 
       expect(
-        reducer(initialState, actions.editAssetComment(id, newComment))
+        reducer(initialState, {
+          type: types.EDIT_ASSET_COMMENT,
+          id,
+          newComment
+        })
       ).toEqual(expectedState);
     });
 
@@ -254,9 +283,13 @@ describe("assets reducer", () => {
         }
       ]);
 
-      expect(reducer(initialState, actions.editAssetName(id, newName))).toEqual(
-        expectedState
-      );
+      expect(
+        reducer(initialState, {
+          type: types.EDIT_ASSET_NAME,
+          id,
+          newName
+        })
+      ).toEqual(expectedState);
     });
   });
 });
