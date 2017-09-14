@@ -104,7 +104,7 @@ class AppContainer extends Component {
 
     return (
       <Router history={this.history} component={App}>
-        <div>
+        <div style={{ width: "100%", height: "100%" }}>
           <AppHeader
             login={this.login}
             logout={this.logout}
