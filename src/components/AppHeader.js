@@ -17,15 +17,14 @@ class AppHeader extends Component {
 
     return (
       <Sidebar as={Menu} direction="top" visible inverted>
-        <Menu.Item name="title">
-          <h3>Supply Chain Project</h3>
-        </Menu.Item>
-        <Menu.Item name="home">
-          <Icon name="home" />
-          <Link to="/">Home</Link>
+        <Menu.Item link name="title">
+          <Link to="/">
+            {" "}
+            <h1>Supply Chain Project</h1>
+          </Link>
         </Menu.Item>
         {isAuthenticated ? (
-          <Menu.Item name="assets">
+          <Menu.Item link name="assets">
             <Link to="/assets">
               <Icon name="barcode" />
               Assets
@@ -33,13 +32,13 @@ class AppHeader extends Component {
           </Menu.Item>
         ) : null}
         {!isAuthenticated ? (
-          <Menu.Item onClick={login} name="Login">
+          <Menu.Item link position="right" onClick={login} name="Login">
             <Icon name="sign in" />
             Login
           </Menu.Item>
         ) : null}
         {isAuthenticated ? (
-          <Menu.Item onClick={logout} name="Logout">
+          <Menu.Item link position="right" onClick={logout} name="Logout">
             <Icon name="sign out" />
             Logout
           </Menu.Item>
