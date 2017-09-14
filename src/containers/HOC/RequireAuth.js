@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router";
 
 export class AuthenticatedComponent extends Component {
   componentWillMount() {
@@ -33,7 +32,7 @@ function RequireAuth(ComposedComponent) {
     composedComponent: ComposedComponent
   });
 
-  return withRouter(connect(mapStateToProps)(AuthenticatedComponent));
+  return connect(mapStateToProps)(AuthenticatedComponent);
 }
 
 export default RequireAuth;
