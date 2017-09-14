@@ -4,6 +4,7 @@ import { withRouter } from "react-router";
 
 import AssetsList from "../components/AssetsList";
 import AssetFilter from "../components/AssetFilter";
+import { filterAssets } from "../selectors/index";
 
 class AssetsListContainer extends PureComponent {
   constructor(props) {
@@ -24,11 +25,10 @@ class AssetsListContainer extends PureComponent {
   render() {
     const { assets } = this.props;
     const { statusFilter } = this.state;
-
     const filteredAssets =
       statusFilter === "all"
         ? assets
-        : assets.filter(({ status }) => status === statusFilter);
+        : filterAssets(assets, ({ status }) => status === statusFilter);
 
     return (
       <div>

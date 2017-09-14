@@ -7,17 +7,7 @@ export const authSelector = state => state.auth;
 export const findAssetById = (assets, searchId) =>
   assets.find(({ id }) => id === searchId);
 
-export const filterAssetsByState = (assets, filter) => {
-  switch (filter) {
-    case "received":
-      return assets.filter(({ state }) => state === "received");
-    case "dispatched":
-      return assets.filter(({ state }) => state === "dispatched");
-
-    default:
-      return assets;
-  }
-};
+export const filterAssets = (assets, predicate) => assets.filter(predicate);
 
 export const isAuthenticated = state =>
   authSelector(state).get("isAuthenticated");
