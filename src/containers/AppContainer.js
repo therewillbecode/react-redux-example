@@ -5,7 +5,10 @@ import { connect } from "react-redux";
 import auth0 from "auth0-js";
 
 import App from "../components/App";
-import Assets from "../components/Assets";
+
+import AssetsContainer from "./AssetsContainer"; //
+import AssetItemContainer from "./AssetItemContainer"; //
+
 import Loading from "../components/Loading";
 import AppHeader from "../components/AppHeader";
 import RequireAuth from "./HOC/RequireAuth";
@@ -14,7 +17,7 @@ import { authSuccess, loggedOut } from "../actions/index";
 import { isAuthenticated } from "../selectors/index";
 
 const auth0Domain = "therewillbecode.auth0.com";
-const auth0ClientId = "yqWzBSv0zfQEstOyMveQBu4Rw3bqbiT";
+const auth0ClientId = "2yqWzBSv0zfQEstOyMveQBu4Rw3bqbiT";
 const auth0CallbackUrl = "http://localhost:3000/loading";
 
 class AppContainer extends Component {
@@ -80,6 +83,7 @@ class AppContainer extends Component {
   }
 
   logout() {
+    console.log("logged out");
     // Clear access token and ID token from local storage
     localStorage.removeItem("access_token");
     localStorage.removeItem("id_token");
@@ -95,6 +99,7 @@ class AppContainer extends Component {
     let expiresAt = JSON.parse(localStorage.getItem("expires_at"));
     return new Date().getTime() < expiresAt;
   }
+
   render() {
     const { isAuthenticated } = this.props;
 
@@ -107,12 +112,20 @@ class AppContainer extends Component {
             isAuthenticated={isAuthenticated}
           />
           <Route path="/" render={props => <App {...props} />} />
-          <Route path="/assets" render={props => <Assets {...props} />} />
+          <Route
+            path="/assets"
+            render={props => <AssetsContainer {...props} />}
+          />
+          <Route path="/asset/:id" component={AssetItemContainer} />
           <Route
             path="/loading"
             render={props => {
-              this.handleAuthentication();
-              return <Loading {...props} />;
+              return (
+                <Loading
+                  handleAuthentication={this.handleAuthentication}
+                  {...props}
+                />
+              );
             }}
           />
         </div>
