@@ -20,7 +20,7 @@ const AssetsList = ({ assets, history }) => (
 
     <Table.Body>
       {assets.map(({ id, name, state, comment }) => (
-        <Table.Row onClick={() => navigateToAsset(history, id)}>
+        <Table.Row key={id} onClick={() => navigateToAsset(history, id)}>
           <Table.Cell textAlign="center">{id}</Table.Cell>
           <Table.Cell textAlign="center">{name}</Table.Cell>
           <Table.Cell textAlign="center">{state}</Table.Cell>
