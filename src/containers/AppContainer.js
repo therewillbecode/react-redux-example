@@ -110,12 +110,12 @@ class AppContainer extends Component {
             logout={this.logout}
             isAuthenticated={isAuthenticated}
           />
-          <Route path="/" render={props => <App {...props} />} />
+          <Route path="/" component={App} />
+          <Route path="/assets" component={RequireAuth(AssetsContainer)} />
           <Route
-            path="/assets"
-            render={props => <AssetsContainer {...props} />}
+            path="/asset/:id"
+            component={RequireAuth(AssetItemContainer)}
           />
-          <Route path="/asset/:id" component={AssetItemContainer} />
           <Route
             path="/loading"
             render={props => {
