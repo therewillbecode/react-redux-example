@@ -17,7 +17,7 @@ describe("assets reducer", () => {
       const name = "drone";
       const id = "h28S97Sn3";
       const comment = "aerial kit";
-      const state = "received";
+      const status = "received";
       const receivedTimestamp = "1505310201";
       const dispatchedTimestamp = null;
       const initialState = List([]);
@@ -26,7 +26,7 @@ describe("assets reducer", () => {
           name,
           id,
           comment,
-          state,
+          status,
           receivedTimestamp,
           dispatchedTimestamp
         }
@@ -47,7 +47,7 @@ describe("assets reducer", () => {
       const name = "drone";
       const id = "h28S97Sn3";
       const comment = "aerial kit";
-      const state = "received";
+      const status = "received";
       const receivedTimestamp = "1505310201";
       const dispatchedTimestamp = null;
       const initialState = List([]);
@@ -56,7 +56,7 @@ describe("assets reducer", () => {
           name,
           id,
           comment,
-          state,
+          status,
           receivedTimestamp,
           dispatchedTimestamp
         }
@@ -77,7 +77,7 @@ describe("assets reducer", () => {
       const name = "drone";
       const id = "h28S97Sn3";
       const comment = "aerial kit";
-      const state = "receive";
+      const status = "receive";
       const receivedTimestamp = "1505310201";
       const dispatchedTimestamp = "1605890201";
       const initialState = List([
@@ -85,7 +85,7 @@ describe("assets reducer", () => {
           name,
           id,
           comment,
-          state,
+          status,
           receivedTimestamp,
           dispatchedTimestamp
         }
@@ -115,7 +115,7 @@ describe("assets reducer", () => {
           name,
           id,
           comment,
-          state: "received",
+          status: "received",
           receivedTimestamp,
           dispatchedTimestamp: null
         }
@@ -125,7 +125,7 @@ describe("assets reducer", () => {
           name,
           id,
           comment,
-          state: "dispatched",
+          status: "dispatched",
           receivedTimestamp,
           dispatchedTimestamp
         }
@@ -144,7 +144,7 @@ describe("assets reducer", () => {
       const name = "drone";
       const id = "h28S97Sn3";
       const comment = "aerial kit";
-      const state = "dispatched";
+      const status = "dispatched";
       const receivedTimestamp = "1505310201";
       const dispatchedTimestamp = "1605890201";
       const initialState = List([
@@ -152,7 +152,7 @@ describe("assets reducer", () => {
           name,
           id,
           comment,
-          state,
+          status,
           receivedTimestamp,
           dispatchedTimestamp
         }
@@ -174,7 +174,7 @@ describe("assets reducer", () => {
       const name = "drone";
       const newName = "uav";
       const comment = "aerial kit";
-      const state = "received";
+      const status = "received";
       const receivedTimestamp = "1505310201";
       const dispatchedTimestamp = null;
       const initialState = List([
@@ -182,7 +182,7 @@ describe("assets reducer", () => {
           name,
           id,
           comment,
-          state,
+          status,
           receivedTimestamp,
           dispatchedTimestamp
         }
@@ -192,7 +192,7 @@ describe("assets reducer", () => {
           name: newName,
           id,
           comment,
-          state,
+          status,
           receivedTimestamp,
           dispatchedTimestamp
         }
@@ -212,7 +212,7 @@ describe("assets reducer", () => {
       const name = "drone";
       const comment = "aerial kit";
       const newComment = "aerial kit for data collection";
-      const state = "received";
+      const status = "received";
       const receivedTimestamp = "1505310201";
       const dispatchedTimestamp = null;
       const initialState = List([
@@ -220,7 +220,7 @@ describe("assets reducer", () => {
           name,
           id,
           comment,
-          state,
+          status,
           receivedTimestamp,
           dispatchedTimestamp
         }
@@ -230,7 +230,7 @@ describe("assets reducer", () => {
           name,
           id,
           comment: newComment,
-          state,
+          status,
           receivedTimestamp,
           dispatchedTimestamp
         }
@@ -250,7 +250,7 @@ describe("assets reducer", () => {
       const name = "drone";
       const comment = "aerial kit";
       const newComment = "aerial kit for data collection";
-      const state = "dispatched";
+      const status = "dispatched";
       const receivedTimestamp = "1505310201";
       const dispatchedTimestamp = null;
       const initialState = List([
@@ -258,7 +258,7 @@ describe("assets reducer", () => {
           name,
           id,
           comment,
-          state,
+          status,
           receivedTimestamp,
           dispatchedTimestamp
         }
@@ -268,7 +268,7 @@ describe("assets reducer", () => {
           name,
           id,
           comment,
-          state,
+          status,
           receivedTimestamp,
           dispatchedTimestamp
         }
@@ -289,7 +289,7 @@ describe("assets reducer", () => {
       const newName = "uav";
       const comment = "aerial kit";
       const newComment = "aerial kit for data collection";
-      const state = "dispatched";
+      const status = "dispatched";
       const receivedTimestamp = "1505310201";
       const dispatchedTimestamp = null;
       const initialState = List([
@@ -297,7 +297,7 @@ describe("assets reducer", () => {
           name,
           id,
           comment,
-          state,
+          status,
           receivedTimestamp,
           dispatchedTimestamp
         }
@@ -307,7 +307,7 @@ describe("assets reducer", () => {
           name,
           id,
           comment,
-          state,
+          status,
           receivedTimestamp,
           dispatchedTimestamp
         }
