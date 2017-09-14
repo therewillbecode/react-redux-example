@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router";
 
 import {
   Sidebar,
@@ -13,22 +14,17 @@ import {
 
 class AppHeader extends Component {
   render() {
-    const { isAuthenticated, login, logout } = this.props;
+    const { isAuthenticated, login, logout, history } = this.props;
 
     return (
       <Sidebar as={Menu} direction="top" visible inverted>
-        <Menu.Item link name="title">
-          <Link to="/">
-            {" "}
-            <h1>Supply Chain Project</h1>
-          </Link>
+        <Menu.Item link onClick={() => history.push("/")} name="title">
+          <h1>Supply Chain Project</h1>
         </Menu.Item>
         {isAuthenticated ? (
-          <Menu.Item link name="assets">
-            <Link to="/assets">
-              <Icon name="barcode" />
-              Assets
-            </Link>
+          <Menu.Item link onClick={() => history.push("/assets")} name="assets">
+            <Icon name="barcode" />
+            Assets
           </Menu.Item>
         ) : null}
         {!isAuthenticated ? (
@@ -48,4 +44,4 @@ class AppHeader extends Component {
   }
 }
 
-export default AppHeader;
+export default withRouter(AppHeader);
