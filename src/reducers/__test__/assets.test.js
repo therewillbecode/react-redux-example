@@ -66,7 +66,7 @@ describe("assets reducer", () => {
         reducer(initialState, {
           type: types.RECEIVE_ASSET,
           id,
-          name: undefined
+          name: undefined,
           comment,
           timestamp: receivedTimestamp
         })
