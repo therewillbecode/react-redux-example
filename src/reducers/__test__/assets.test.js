@@ -172,7 +172,7 @@ describe("assets reducer", () => {
         reducer(initialState, {
           type: types.EDIT_ASSET_NAME,
           id,
-          newComment
+          newName
         })
       ).toEqual(expectedState);
     });
