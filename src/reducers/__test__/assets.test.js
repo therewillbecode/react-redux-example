@@ -43,6 +43,36 @@ describe("assets reducer", () => {
       ).toEqual(expectedState);
     });
 
+    it("should not add asset to invetory if name is undefined", () => {
+      const name = "drone";
+      const id = "h28S97Sn3";
+      const comment = "aerial kit";
+      const state = "received";
+      const receivedTimestamp = "1505310201";
+      const dispatchedTimestamp = null;
+      const initialState = List([]);
+      const expectedState = List([
+        {
+          name,
+          id,
+          comment,
+          state,
+          receivedTimestamp,
+          dispatchedTimestamp
+        }
+      ]);
+
+      expect(
+        reducer(initialState, {
+          type: types.RECEIVE_ASSET,
+          id,
+          name: undefined
+          comment,
+          timestamp: receivedTimestamp
+        })
+      ).toEqual(initialState);
+    });
+
     it("timestamp should not change if already received asset is received again", () => {
       const name = "drone";
       const id = "h28S97Sn3";

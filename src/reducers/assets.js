@@ -10,16 +10,20 @@ export default function assets(state = initialState, action) {
     case types.RECEIVE_ASSET: {
       const assetExists = findAssetById(state, action.id) !== undefined;
 
-      return assetExists
-        ? state
-        : state.push({
-            id: action.id,
-            name: action.name,
-            state: "received",
-            receivedTimestamp: action.timestamp,
-            dispatchedTimestamp: null,
-            comment: action.comment
-          });
+      if (action.name === undefined || action.name === null) {
+        return state;
+      } else {
+        return assetExists
+          ? state
+          : state.push({
+              id: action.id,
+              name: action.name,
+              state: "received",
+              receivedTimestamp: action.timestamp,
+              dispatchedTimestamp: null,
+              comment: action.comment
+            });
+      }
     }
 
     case types.DISPATCH_ASSET: {
