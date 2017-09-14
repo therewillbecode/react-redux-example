@@ -1,3 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HOC should pass correct props 1`] = `<wrapper />`;
+
+exports[`RequireAuth should pass correct props 1`] = `<wrapper />`;

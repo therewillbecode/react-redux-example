@@ -14,9 +14,9 @@ const Component = () => <div />;
 Component.displayName = "CustomComponent";
 const mockStore = configureStore([]);
 
-describe("HOC", () => {
+describe("RequireAuth", () => {
   const RequireAuthComponent = RequireAuth(Component);
-  const initialState = fromJS({ auth: { isAuthenticated: true } });
+  const initialState = { auth: fromJS({ isAuthenticated: true }) };
   let wrapper = null;
 
   beforeEach(() => {
