@@ -17,7 +17,6 @@ const auth0Domain = "therewillbecode.auth0.com";
 const auth0ClientId = "yqWzBSv0zfQEstOyMveQBu4Rw3bqbiT";
 const auth0CallbackUrl = "http://localhost:3000/loading";
 
-console.log(process.env);
 class AppContainer extends Component {
   constructor(props) {
     super(props);
@@ -56,6 +55,7 @@ class AppContainer extends Component {
   }
 
   handleAuthentication() {
+    //  console.log("called");
     this.auth0.parseHash((err, authResult) => {
       console.log(authResult, err);
       if (authResult && authResult.idToken) {
@@ -70,17 +70,18 @@ class AppContainer extends Component {
   }
 
   setSession({ expiresIn, idToken }) {
-    // Set the time that the token will expire at
+    // Set the time that the access token will expire at
     let expiresAt = JSON.stringify(expiresIn * 1000 + new Date().getTime());
     localStorage.setItem("id_token", idToken); // JSON web token - decode on server side
     localStorage.setItem("expires_at", expiresAt);
+    this.props.authSuccess(idToken);
     // navigate to the assets route
     this.history.replace("/assets");
   }
 
   logout() {
-    console.log("logged out");
-    // Clear ID token from local storage
+    // Clear access token and ID token from local storage
+    localStorage.removeItem("access_token");
     localStorage.removeItem("id_token");
     localStorage.removeItem("expires_at");
     this.props.loggedOut();
@@ -90,11 +91,10 @@ class AppContainer extends Component {
 
   isAuthenticated() {
     // Check whether the current time is past the
-    // token's expiry time
+    // access token's expiry time
     let expiresAt = JSON.parse(localStorage.getItem("expires_at"));
     return new Date().getTime() < expiresAt;
   }
-
   render() {
     const { isAuthenticated } = this.props;
 
