@@ -1,5 +1,3 @@
-import { createSelector } from "reselect";
-
 export const assetsSelector = state => state.assets;
 
 export const authSelector = state => state.auth;

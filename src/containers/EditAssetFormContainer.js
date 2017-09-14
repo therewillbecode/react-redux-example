@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
+import EditAssetForm from "../components/EditAssetForm";
 import {
   editAssetName,
   editAssetComment,
   dispatchAsset
 } from "../actions/index";
 import { findAssetById } from "../selectors/index";
-import EditAssetForm from "../components/ReceiveAssetForm";
 
 class EditAssetFormContainer extends Component {
   constructor(props) {
@@ -47,14 +47,17 @@ class EditAssetFormContainer extends Component {
 
   render() {
     const { name, comment } = this.state;
-    const { dispatchAsset } = this.props;
-
+    const { dispatchAsset, asset } = this.props;
+    const { status } = asset;
+    const dispatched = status === "dispatched";
     return (
       <EditAssetForm
         name={name}
         comment={comment}
         handleCommentChange={this.handleCommentChange}
         handleNameChange={this.handleNameChange}
+        dispatched={dispatched}
+        dispatchAsset={dispatchAsset}
         handleSubmit={this.handleSubmit}
       />
     );
@@ -66,7 +69,6 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  console.log(ownProps);
   return {
     editAssetName: name => dispatch(editAssetName(ownProps.id, name)),
     editAssetComment: comment =>
@@ -75,4 +77,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-export default connect(undefined, mapDispatchToProps)(EditAssetFormContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(
+  EditAssetFormContainer
+);

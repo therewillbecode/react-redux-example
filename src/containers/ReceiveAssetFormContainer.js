@@ -47,12 +47,6 @@ class ReceiveAssetFormContainer extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    active: 5
-  };
-};
-
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     receiveAsset: (name, comment) => dispatch(receiveAsset(name, comment))

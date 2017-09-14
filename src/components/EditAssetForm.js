@@ -1,33 +1,45 @@
 import React from "react";
-import { Form } from "semantic-ui-react";
+import { Button, Form } from "semantic-ui-react";
 
 const EditAssetForm = ({
+  dispatched,
+  dispatchAsset,
   handleSubmit,
   handleNameChange,
   handleCommentChange,
-  handleDispatch,
   name,
   comment
 }) => (
   <div>
-    <h2>Edit Asset</h2>
     <Form onSubmit={handleSubmit}>
       <Form.Group>
-        <Form.Input
-          placeholder="Name"
-          name="name"
-          value={name}
-          onChange={handleNameChange}
-        />
-        <Form.Input
-          placeholder="Comment"
-          name="comment"
-          value={comment}
-          onChange={handleCommentChange}
-        />
-        <Form.Button content="Submit" label="edit" />
+        <Form.Field>
+          <label>Edit Name</label>
+          <Form.Input
+            disabled={dispatched}
+            name="name"
+            value={name}
+            onChange={handleNameChange}
+          />
+        </Form.Field>
+        <Form.Field>
+          <label>Edit Comment</label>
+          <Form.Input
+            name="comment"
+            value={comment}
+            onChange={handleCommentChange}
+          />
+        </Form.Field>
+        <Form.Field>
+          <Form.Button content="Update Asset" />
+        </Form.Field>
       </Form.Group>
     </Form>
+    <Button
+      disabled={dispatched}
+      onClick={dispatchAsset}
+      content="Dispatch Asset"
+    />
   </div>
 );
 

@@ -1,16 +1,7 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
 
-import {
-  Sidebar,
-  Segment,
-  Button,
-  Menu,
-  Image,
-  Icon,
-  Header
-} from "semantic-ui-react";
+import { Sidebar, Menu, Icon } from "semantic-ui-react";
 
 class AppHeader extends Component {
   render() {
