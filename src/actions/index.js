@@ -1,11 +1,12 @@
 import * as types from "./types";
+import cuid from "cuid";
 
-export function receiveAsset(id, name, timestamp, comment) {
+export function receiveAsset(name, comment) {
   return {
     type: types.RECEIVE_ASSET,
-    id,
+    id: cuid(),
     name,
-    timestamp,
+    timestamp: Date.now(),
     comment
   };
 }
@@ -14,7 +15,7 @@ export function dispatchAsset(id, timestamp) {
   return {
     type: types.DISPATCH_ASSET,
     id,
-    timestamp
+    timestamp: Date.now()
   };
 }
 

@@ -16,9 +16,7 @@ describe("actions", () => {
       comment
     };
 
-    expect(actions.receiveAsset(id, name, timestamp, comment)).toEqual(
-      expectedAction
-    );
+    expect(actions.receiveAsset(id, name, comment)).toEqual(expectedAction);
   });
 
   it("should create an action to dispatch asset", () => {
@@ -31,7 +29,7 @@ describe("actions", () => {
       timestamp
     };
 
-    expect(actions.dispatchAsset(id, timestamp)).toEqual(expectedAction);
+    expect(actions.dispatchAsset(id)).toEqual(expectedAction);
   });
 
   it("should create an action to edit asset name", () => {
