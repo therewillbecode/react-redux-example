@@ -17,6 +17,9 @@ class AppHeader extends Component {
 
     return (
       <Sidebar as={Menu} direction="top" visible inverted>
+        <Menu.Item name="title">
+          <h3>Supply Chain Project</h3>
+        </Menu.Item>
         <Menu.Item name="home">
           <Icon name="home" />
           <Link to="/">Home</Link>
