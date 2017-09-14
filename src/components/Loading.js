@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 
 class Loading extends Component {
+  componentDidMount() {
+    this.props.handleAuthentication();
+  }
+
   render() {
     const style = {
       position: "absolute",
@@ -17,6 +21,7 @@ class Loading extends Component {
 
     return (
       <div style={style}>
+        <h1>Authenticating ... </h1>
         <img src="img/loading.svg" alt="loading" />
       </div>
     );
