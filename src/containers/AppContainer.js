@@ -100,7 +100,7 @@ class AppContainer extends Component {
     const { isAuthenticated } = this.props;
 
     return (
-      <Router history={this.history} component={App}>
+      <Router history={this.history}>
         <div style={{ width: "100%", height: "100%" }}>
           <AppHeader
             login={this.login}

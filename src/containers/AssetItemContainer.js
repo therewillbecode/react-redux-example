@@ -12,7 +12,7 @@ class AssetItemContainer extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  asset: findAssetById(state, ownProps.match.params.id)
+  asset: findAssetById(state.assets, ownProps.match.params.id)
 });
 
 export default connect(mapStateToProps)(AssetItemContainer);
