@@ -1,11 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Table } from "semantic-ui-react";
-import { withRouter } from "react-router";
 
-const navigateToAsset = (history, id) => history.push(`/asset/${id}`);
-
-const AssetsList = ({ assets, history }) => (
+const AssetsList = ({ assets, navigateToAsset }) => (
   <Table celled padded inverted selectable>
     <Table.Header>
       <Table.Row>
@@ -28,7 +25,7 @@ const AssetsList = ({ assets, history }) => (
           dispatchedTimestamp,
           comment
         }) => (
-          <Table.Row key={id} onClick={() => navigateToAsset(history, id)}>
+          <Table.Row key={id} onClick={() => navigateToAsset(id)}>
             <Table.Cell textAlign="center">{id}</Table.Cell>
             <Table.Cell textAlign="center">{name}</Table.Cell>
             <Table.Cell textAlign="center">{status}</Table.Cell>
@@ -41,3 +38,5 @@ const AssetsList = ({ assets, history }) => (
     </Table.Body>
   </Table>
 );
+
+export default AssetsList;
