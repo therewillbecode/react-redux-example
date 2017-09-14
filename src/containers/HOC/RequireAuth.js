@@ -29,11 +29,11 @@ export class AuthenticatedComponent extends Component {
 
 function RequireAuth(ComposedComponent) {
   const mapStateToProps = state => ({
-    authenticated: state.get("auth").get("isAuthenticated"),
+    authenticated: state.auth.get("isAuthenticated"),
     composedComponent: ComposedComponent
   });
 
-  return connect(mapStateToProps)(AuthenticatedComponent);
+  return withRouter(connect(mapStateToProps)(AuthenticatedComponent));
 }
 
-export default withRouter(RequireAuth);
+export default RequireAuth;
