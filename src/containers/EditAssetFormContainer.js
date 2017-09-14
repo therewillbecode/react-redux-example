@@ -40,13 +40,14 @@ class EditAssetFormContainer extends Component {
       return;
     }
 
-    this.props.receiveAsset(name, comment);
+    this.props.editAssetComment(comment);
+    this.props.editAssetName(name);
     this.setState({ name: "", comment: "" });
   }
 
   render() {
     const { name, comment } = this.state;
-    const { editAssetName, editAssetComment, dispatchAsset } = this.props;
+    const { dispatchAsset } = this.props;
 
     return (
       <EditAssetForm
@@ -65,9 +66,11 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => {
+  console.log(ownProps);
   return {
     editAssetName: name => dispatch(editAssetName(ownProps.id, name)),
-    editAssetComment: comment => dispatch(editAssetName(ownProps.id, comment)),
+    editAssetComment: comment =>
+      dispatch(editAssetComment(ownProps.id, comment)),
     dispatchAsset: () => dispatch(dispatchAsset(ownProps.id))
   };
 };
