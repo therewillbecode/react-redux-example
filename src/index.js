@@ -8,6 +8,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import AppContainer from "./containers/AppContainer";
 import registerServiceWorker from "./registerServiceWorker";
 import rootReducer from "./reducers/index";
+import "semantic-ui-css/semantic.min.css";
 
 const middleware = [];
 
