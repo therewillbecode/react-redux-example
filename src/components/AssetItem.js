@@ -7,4 +7,4 @@ const AssetItem = ({ asset }) => (
   </div>
 );
 
-export default AssetsItem;
+export default AssetItem;
