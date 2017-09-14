@@ -25,7 +25,11 @@ class ReceiveAssetFormContainer extends Component {
 
   handleSubmit() {
     const { name, comment } = this.state;
-    console.log(name, comment, "submited");
+
+    if (!name) {
+      return;
+    }
+
     this.props.receiveAsset(name, comment);
     this.setState({ name: "", comment: "" });
   }
