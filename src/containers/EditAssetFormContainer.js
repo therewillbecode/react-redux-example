@@ -50,13 +50,13 @@ class EditAssetFormContainer extends Component {
     const { dispatchAsset, asset } = this.props;
     const { status } = asset;
     const dispatched = status === "dispatched";
+
     return (
       <EditAssetForm
         name={name}
         comment={comment}
         handleCommentChange={this.handleCommentChange}
         handleNameChange={this.handleNameChange}
-        dispatched={dispatched}
         dispatchAsset={dispatchAsset}
         handleSubmit={this.handleSubmit}
       />
@@ -64,19 +64,12 @@ class EditAssetFormContainer extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => ({
-  asset: findAssetById(state.assets, ownProps.id)
-});
-
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch, { asset }) => {
   return {
-    editAssetName: name => dispatch(editAssetName(ownProps.id, name)),
-    editAssetComment: comment =>
-      dispatch(editAssetComment(ownProps.id, comment)),
-    dispatchAsset: () => dispatch(dispatchAsset(ownProps.id))
+    editAssetName: name => dispatch(editAssetName(asset.id, name)),
+    editAssetComment: comment => dispatch(editAssetComment(asset.id, comment)),
+    dispatchAsset: () => dispatch(dispatchAsset(asset.id))
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  EditAssetFormContainer
-);
+export default connect(undefined, mapDispatchToProps)(EditAssetFormContainer);
