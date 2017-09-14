@@ -6,27 +6,27 @@ import { withRouter } from "react-router";
 const navigateToAsset = (history, id) => history.push(`/asset/${id}`);
 
 const AssetsList = ({ assets, history }) => (
-  <Table celled inverted selectable>
+  <Table celled padded inverted selectable>
     <Table.Header>
       <Table.Row>
-        <Table.HeaderCell>ID</Table.HeaderCell>
-        <Table.HeaderCell>Name</Table.HeaderCell>
-        <Table.HeaderCell>Status</Table.HeaderCell>
-        <Table.HeaderCell>Time Received</Table.HeaderCell>
-        <Table.HeaderCell>Time Dispatched</Table.HeaderCell>
-        <Table.HeaderCell>Comments</Table.HeaderCell>
+        <Table.HeaderCell textAlign="center">ID</Table.HeaderCell>
+        <Table.HeaderCell textAlign="center">Name</Table.HeaderCell>
+        <Table.HeaderCell textAlign="center">Status</Table.HeaderCell>
+        <Table.HeaderCell textAlign="center">Time Received</Table.HeaderCell>
+        <Table.HeaderCell textAlign="center">Time Dispatched</Table.HeaderCell>
+        <Table.HeaderCell textAlign="center">Comments</Table.HeaderCell>
       </Table.Row>
     </Table.Header>
 
     <Table.Body>
       {assets.map(({ id, name, state, comment }) => (
         <Table.Row onClick={() => navigateToAsset(history, id)}>
-          <Table.Cell>{id}</Table.Cell>
-          <Table.Cell>{name}</Table.Cell>
-          <Table.Cell>{state}</Table.Cell>
-          <Table.Cell>John</Table.Cell>
-          <Table.Cell>Approved</Table.Cell>
-          <Table.Cell>None</Table.Cell>
+          <Table.Cell textAlign="center">{id}</Table.Cell>
+          <Table.Cell textAlign="center">{name}</Table.Cell>
+          <Table.Cell textAlign="center">{state}</Table.Cell>
+          <Table.Cell textAlign="center">John</Table.Cell>
+          <Table.Cell textAlign="center">Approved</Table.Cell>
+          <Table.Cell textAlign="left">None</Table.Cell>
         </Table.Row>
       ))}
     </Table.Body>
