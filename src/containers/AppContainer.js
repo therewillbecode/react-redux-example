@@ -12,10 +12,12 @@ import RequireAuth from "./HOC/RequireAuth";
 
 import { authSuccess, loggedOut } from "../actions/index";
 import { isAuthenticated } from "../selectors/index";
-import { AUTH_CONFIG } from "../auth/authConfig";
 
-const { domain, clientId, callbackUrl } = AUTH_CONFIG;
+const auth0Domain = "therewillbecode.auth0.com";
+const auth0ClientId = "yqWzBSv0zfQEstOyMveQBu4Rw3bqbiT";
+const auth0CallbackUrl = "http://localhost:3000/loading";
 
+console.log(process.env);
 class AppContainer extends Component {
   constructor(props) {
     super(props);
@@ -24,13 +26,18 @@ class AppContainer extends Component {
     this.handleAuthentication = this.handleAuthentication.bind(this);
     this.isAuthenticated = this.isAuthenticated.bind(this);
     this.history = createHistory();
+    this.history.listen(({ pathname, hash }) => {
+      if (pathname === "/loading" && /access_token|id_token|error/.test(hash)) {
+        this.handleAuthentication();
+      }
+    });
 
     this.auth0 = new auth0.WebAuth({
-      domain,
-      clientID: clientId,
-      redirectUri: callbackUrl,
-      audience: `https://${domain}/userinfo`,
-      responseType: "token id_token",
+      domain: auth0Domain,
+      clientID: auth0ClientId,
+      redirectUri: auth0CallbackUrl,
+      audience: `https://${auth0Domain}/userinfo`,
+      responseType: "id_token",
       scope: "openid"
     });
   }
@@ -50,7 +57,9 @@ class AppContainer extends Component {
   }
 
   handleAuthentication() {
+    //  console.log("called");
     this.auth0.parseHash((err, authResult) => {
+      console.log(authResult, err);
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
         this.history.replace("/assets");
@@ -107,7 +116,7 @@ class AppContainer extends Component {
           <Route
             path="/loading"
             render={props => {
-              this.handleAuthentication(props);
+              this.handleAuthentication();
               return <Loading {...props} />;
             }}
           />
