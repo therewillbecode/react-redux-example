@@ -4,7 +4,6 @@ import { AUTH_SUCCESS, LOGGED_OUT } from "../actions/types";
 
 const initialState = Map({
   isAuthenticated: false,
-  accessToken: null,
   idToken: null
 });
 
@@ -13,7 +12,6 @@ export default function auth(state = initialState, action) {
     case AUTH_SUCCESS: {
       return Map({
         isAuthenticated: true,
-        accessToken: action.accessToken,
         idToken: action.idToken
       });
     }
@@ -21,7 +19,6 @@ export default function auth(state = initialState, action) {
     case LOGGED_OUT: {
       return Map({
         isAuthenticated: false,
-        accessToken: null,
         idToken: null
       });
     }

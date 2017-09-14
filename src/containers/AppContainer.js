@@ -27,7 +27,7 @@ class AppContainer extends Component {
     this.isAuthenticated = this.isAuthenticated.bind(this);
     this.history = createHistory();
     this.history.listen(({ pathname, hash }) => {
-      if (pathname === "/loading" && /access_token|id_token|error/.test(hash)) {
+      if (pathname === "/loading" && /id_token|error/.test(hash)) {
         this.handleAuthentication();
       }
     });
@@ -47,8 +47,7 @@ class AppContainer extends Component {
 
     // If we have a token, consider the user to be signed in and update state
     if (idToken) {
-      const accessToken = localStorage.getItem("access_token");
-      this.props.authSuccess(accessToken, idToken);
+      this.props.authSuccess(idToken);
     }
   }
 
@@ -57,10 +56,9 @@ class AppContainer extends Component {
   }
 
   handleAuthentication() {
-    //  console.log("called");
     this.auth0.parseHash((err, authResult) => {
       console.log(authResult, err);
-      if (authResult && authResult.accessToken && authResult.idToken) {
+      if (authResult && authResult.idToken) {
         this.setSession(authResult);
         this.history.replace("/assets");
       } else if (err) {
@@ -71,21 +69,18 @@ class AppContainer extends Component {
     });
   }
 
-  setSession({ expiresIn, idToken, accessToken }) {
-    // Set the time that the access token will expire at
+  setSession({ expiresIn, idToken }) {
+    // Set the time that the token will expire at
     let expiresAt = JSON.stringify(expiresIn * 1000 + new Date().getTime());
-    localStorage.setItem("access_token", accessToken);
     localStorage.setItem("id_token", idToken); // JSON web token - decode on server side
     localStorage.setItem("expires_at", expiresAt);
-    this.props.authSuccess(accessToken, idToken);
     // navigate to the assets route
     this.history.replace("/assets");
   }
 
   logout() {
     console.log("logged out");
-    // Clear access token and ID token from local storage
-    localStorage.removeItem("access_token");
+    // Clear ID token from local storage
     localStorage.removeItem("id_token");
     localStorage.removeItem("expires_at");
     this.props.loggedOut();
@@ -95,7 +90,7 @@ class AppContainer extends Component {
 
   isAuthenticated() {
     // Check whether the current time is past the
-    // access token's expiry time
+    // token's expiry time
     let expiresAt = JSON.parse(localStorage.getItem("expires_at"));
     return new Date().getTime() < expiresAt;
   }
@@ -134,8 +129,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    authSuccess: (idToken, accessToken) => {
-      dispatch(authSuccess(idToken, accessToken));
+    authSuccess: idToken => {
+      dispatch(authSuccess(idToken));
     },
     loggedOut: () => {
       dispatch(loggedOut());
