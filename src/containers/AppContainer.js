@@ -4,15 +4,12 @@ import createHistory from "history/createBrowserHistory";
 import { connect } from "react-redux";
 import auth0 from "auth0-js";
 
-import App from "../components/App";
-
 import AssetsContainer from "./AssetsContainer"; //
 import AssetItemContainer from "./AssetItemContainer"; //
-
-import Loading from "../components/Loading";
+import App from "../components/App";
 import AppHeader from "../components/AppHeader";
+import Loading from "../components/Loading";
 import RequireAuth from "./HOC/RequireAuth";
-
 import { authSuccess, loggedOut } from "../actions/index";
 import { isAuthenticated } from "../selectors/index";
 
