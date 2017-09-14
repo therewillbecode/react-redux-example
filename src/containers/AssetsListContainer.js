@@ -11,6 +11,6 @@ class AssetsListContainer extends Component {
   }
 }
 
-const mapStateToProps = ({ assets }) => ({ assets }); // really need to ge this?
+const mapStateToProps = ({ assets }) => ({ assets });
 
 export default connect(mapStateToProps)(AssetsListContainer);
