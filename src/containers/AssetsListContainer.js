@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 
 import AssetsList from "../components/AssetsList";
 
-class AssetsListContainer extends Component {
+class AssetsListContainer extends PureComponent {
   render() {
     const { assets } = this.props;
 
