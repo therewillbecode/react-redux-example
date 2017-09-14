@@ -1,10 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { receiveAsset } from "../actions/index";
-import ReceiveAssetForm from "../components/ReceiveAssetForm";
+import {
+  editAssetName,
+  editAssetComment,
+  dispatchAsset
+} from "../actions/index";
+import { findAssetById } from "../selectors/index";
+import EditAssetForm from "../components/ReceiveAssetForm";
 
-class ReceiveAssetFormContainer extends Component {
+class EditAssetFormContainer extends Component {
   constructor(props) {
     super(props);
     this.state = { name: "", comment: "" };
@@ -13,12 +18,19 @@ class ReceiveAssetFormContainer extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    const { name, comment } = this.props.asset;
+    this.setState({ name, comment });
+  }
+
   handleNameChange(e, { name, value }) {
     this.setState({ name: value });
+    console.log(this.state);
   }
 
   handleCommentChange(e, { name, value }) {
     this.setState({ comment: value });
+    console.log(this.state);
   }
 
   handleSubmit() {
@@ -34,9 +46,10 @@ class ReceiveAssetFormContainer extends Component {
 
   render() {
     const { name, comment } = this.state;
+    const { editAssetName, editAssetComment, dispatchAsset } = this.props;
 
     return (
-      <ReceiveAssetForm
+      <EditAssetForm
         name={name}
         comment={comment}
         handleCommentChange={this.handleCommentChange}
@@ -47,18 +60,16 @@ class ReceiveAssetFormContainer extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    active: 5
-  };
-};
+const mapStateToProps = (state, ownProps) => ({
+  asset: findAssetById(state.assets, ownProps.id)
+});
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    receiveAsset: (name, comment) => dispatch(receiveAsset(name, comment))
+    editAssetName: name => dispatch(editAssetName(ownProps.id, name)),
+    editAssetComment: comment => dispatch(editAssetName(ownProps.id, comment)),
+    dispatchAsset: () => dispatch(dispatchAsset(ownProps.id))
   };
 };
 
-export default connect(undefined, mapDispatchToProps)(
-  ReceiveAssetFormContainer
-);
+export default connect(undefined, mapDispatchToProps)(EditAssetFormContainer);

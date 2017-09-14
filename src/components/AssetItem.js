@@ -1,10 +1,10 @@
 import React from "react";
 
+import EditAssetFormContainer from "../containers/EditAssetFormContainer";
+
 const AssetItem = ({ asset }) => (
   <div>
-    <h3>{asset.name}</h3>
-    {asset.id}
-    ddd
+    <EditAssetFormContainer asset={asset} />
   </div>
 );
 
