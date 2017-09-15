@@ -245,44 +245,6 @@ describe("assets reducer", () => {
       ).toEqual(expectedState);
     });
 
-    it("should not allow editing of dispatched asset comments", () => {
-      const id = "h28S97Sn3";
-      const name = "drone";
-      const comment = "aerial kit";
-      const newComment = "aerial kit for data collection";
-      const status = "dispatched";
-      const receivedTimestamp = "1505310201";
-      const dispatchedTimestamp = null;
-      const initialState = List([
-        {
-          name,
-          id,
-          comment,
-          status,
-          receivedTimestamp,
-          dispatchedTimestamp
-        }
-      ]);
-      const expectedState = List([
-        {
-          name,
-          id,
-          comment,
-          status,
-          receivedTimestamp,
-          dispatchedTimestamp
-        }
-      ]);
-
-      expect(
-        reducer(initialState, {
-          type: types.EDIT_ASSET_COMMENT,
-          id,
-          newComment
-        })
-      ).toEqual(expectedState);
-    });
-
     it("should not allow editing of dispatched asset names", () => {
       const id = "h28S97Sn3";
       const name = "drone";
