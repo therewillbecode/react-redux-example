@@ -12,7 +12,7 @@ exports[`ReceiveAssetForm renders correctly 1`] = `
   }
 >
   <Segment
-    color="black"
+    color="grey"
     inverted={true}
   >
     <Form

@@ -17,14 +17,13 @@ const ReceiveAssetForm = ({
       paddingTop: "2em"
     }}
   >
-    <Segment inverted color="grey">
-      <Form onSubmit={handleSubmit} inverted>
-        <h2 style={{ textAlign: "center" }}>Add Received Asset To Inventory</h2>
+    <Segment inverted color="grey" textAlign="center">
+      <Form inverted onSubmit={handleSubmit}>
+        <h2>Add Received Asset To Inventory</h2>
         <Form.Group inline>
           <Form.Field required error={nameErr !== null}>
             {nameErr ? <Label pointing="below">{nameErr}</Label> : null}
             <Form.Input
-              inverted
               name="name"
               label="Name"
               placeholder="Name"

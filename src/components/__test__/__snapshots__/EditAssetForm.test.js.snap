@@ -12,7 +12,7 @@ exports[`EditAssetForm renders correctly 1`] = `
   }
 >
   <Segment
-    color="black"
+    color="grey"
     inverted={true}
   >
     <Form
@@ -90,7 +90,7 @@ exports[`EditAssetForm renders correctly 1`] = `
         </FormField>
       </FormGroup>
       <Segment
-        color="black"
+        color="grey"
         inverted={true}
       >
         <div
