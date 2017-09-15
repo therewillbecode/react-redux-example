@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Icon, Image } from "semantic-ui-react";
+import { Icon } from "semantic-ui-react";
 import containersImg from "./containers.jpg";
 
 class App extends Component {
@@ -7,17 +7,15 @@ class App extends Component {
     return (
       <div>
         <h2>Automated Asset Tracking. </h2>
-
         <img
-          src={{
+          style={{
             position: "absolute",
-            width: "100vh",
-            height: "100vh",
+            width: "100vw",
             zIndex: "0"
           }}
+          alt="containers"
           src={containersImg}
         />
-
         <Icon size="massive" name="cubes" />
       </div>
     );
