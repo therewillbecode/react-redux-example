@@ -11,6 +11,7 @@ import AppContainer from "./containers/AppContainer";
 import registerServiceWorker from "./registerServiceWorker";
 import rootReducer from "./reducers/index";
 import "semantic-ui-css/semantic.min.css";
+import { downloadCSV } from "./utils";
 
 const middleware = [];
 
@@ -31,3 +32,8 @@ render(
 );
 
 registerServiceWorker();
+
+export const downloadInventoryCSV = () =>
+  downloadCSV(
+    JSON.stringify(store.getState().assets.toJS()).replace("[", " \n [")
+  );

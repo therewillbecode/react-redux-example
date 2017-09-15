@@ -36,8 +36,11 @@ const EditAssetForm = ({
       </Form.Group>
     </Form>
     <Button
-      disabled={dispatched}
       onClick={dispatchAsset}
+      icon={dispatched ? "ship" : null}
+      disabled={dispatched}
+      size="large"
+      primary
       content={dispatched ? "Dispatched" : "Dispatch Asset"}
     />
   </div>
