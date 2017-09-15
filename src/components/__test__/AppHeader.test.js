@@ -2,7 +2,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 
-import AppHeader from "../AppHeader";
+import { AppHeader } from "../AppHeader";
 
 describe("AppHeader", () => {
   beforeEach(() => {});

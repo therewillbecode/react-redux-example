@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppHeader renders correctly 1`] = `
+<div
+  style={
+    Object {
+      "height": "5vh",
+    }
+  }
+>
+  <div
+    className="ui borderless inverted pushable menu"
+    direction="top"
+    style={
+      Object {
+        "background": "#085276",
+      }
+    }
+    visible={true}
+    width="thin"
+  >
+    <div
+      className="item"
+      onClick={[Function]}
+      size="huge"
+    >
+      <i
+        aria-hidden="true"
+        className="barcode big bordered inverted icon"
+      />
+    </div>
+    <a
+      className="link item"
+      onClick={[Function]}
+    >
+      <h2>
+        Supply Chain Project
+      </h2>
+    </a>
+    <div
+      className="right link item"
+      onClick={[Function]}
+    >
+      <i
+        aria-hidden="true"
+        className="sign in icon"
+      />
+      Login
+    </div>
+  </div>
+</div>
+`;

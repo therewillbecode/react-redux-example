@@ -96,7 +96,7 @@ export class AppContainer extends Component {
   }
 
   render() {
-    const { isAuthenticated } = this.props;
+    const { isAuthenticated, downloadInventoryCSV } = this.props;
 
     return (
       <Router history={this.history}>
@@ -105,6 +105,7 @@ export class AppContainer extends Component {
             login={this.login}
             logout={this.logout}
             isAuthenticated={isAuthenticated}
+            downloadInventoryCSV={downloadInventoryCSV}
           />
           <Route
             exact
