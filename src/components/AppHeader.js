@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router";
-
 import { Sidebar, Menu, Icon } from "semantic-ui-react";
+
+import { downloadInventoryCSV } from "../index.js";
 
 class AppHeader extends Component {
   render() {
     const { isAuthenticated, login, logout, history } = this.props;
-    <Icon name="download" size="big" />;
 
     return (
       <div style={{ height: "5vh" }}>
@@ -43,7 +43,11 @@ class AppHeader extends Component {
           ) : null}
           {isAuthenticated ? (
             <Menu.Item link icon position="right" size="big" name="Download">
-              <Icon name="download" size="large" />
+              <Icon
+                name="download"
+                onClick={() => downloadInventoryCSV()}
+                size="large"
+              />
             </Menu.Item>
           ) : null}
           {isAuthenticated ? (
