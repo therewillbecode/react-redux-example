@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { fromJS, List } from "immutable";
+import { Map, List } from "immutable";
 
 import * as selectors from "../index";
 
@@ -7,9 +7,20 @@ describe("selectors", () => {
   describe("assetsSelector", () => {
     it("should return assets", () => {
       const assets = List([]);
-      const state = fromJS({ assets, auth: {} });
+      const auth = Map({});
+      const state = { assets, auth };
 
-      expect(selectors.assetsSelector(state)).toEqual(List([]));
+      expect(selectors.assetsSelector(state)).toEqual(assets);
+    });
+  });
+
+  describe("authSelector", () => {
+    it("should return auth", () => {
+      const assets = List([]);
+      const auth = Map({});
+      const state = { assets, auth };
+
+      expect(selectors.authSelector(state)).toEqual(auth);
     });
   });
 
@@ -31,37 +42,68 @@ describe("selectors", () => {
     });
   });
 
-  describe("filterAssetsByState", () => {
+  describe("filterAssetsByStatus", () => {
     const assets = List([
       {
-        state: "received"
+        status: "received"
       },
       {
-        state: "dispatched"
+        status: "dispatched"
       }
     ]);
+
     it("should filter in received assets", () => {
-      expect(selectors.filterAssetsByState(assets, "received")).toEqual(
+      expect(selectors.filterAssetsByStatus(assets, "received")).toEqual(
         List([
           {
-            state: "received"
+            status: "received"
           }
         ])
       );
     });
 
     it("should filter in dispatched assets", () => {
-      expect(selectors.filterAssetsByState(assets, "dispatched")).toEqual(
+      expect(selectors.filterAssetsByStatus(assets, "dispatched")).toEqual(
         List([
           {
-            state: "dispatched"
+            status: "dispatched"
           }
         ])
       );
     });
 
-    it("should return all assets if filter is undefined", () => {
-      expect(selectors.filterAssetsByState(assets, undefined)).toEqual(assets);
+    it("should return all assets", () => {
+      expect(selectors.filterAssetsByStatus(assets, "all")).toEqual(assets);
+    });
+  });
+
+  describe("filterAssetBySubstring", () => {
+    const assets = List([
+      {
+        name: "pear"
+      },
+      {
+        name: "apple"
+      }
+    ]);
+    const key = "name";
+    const substring = "app";
+
+    it("should return assets where value includes substring for given key", () => {
+      expect(selectors.filterAssetsBySubstring(assets, key, substring)).toEqual(
+        List([
+          {
+            name: "apple"
+          }
+        ])
+      );
+    });
+
+    it("should return all assets if substring is undefined", () => {
+      const substring = undefined;
+      expect(selectors.filterAssetsBySubstring(assets, key, substring)).toEqual(
+        assets
+      );
     });
   });
 });
