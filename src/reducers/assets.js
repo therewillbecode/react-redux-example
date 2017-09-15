@@ -3,32 +3,7 @@ import { List } from "immutable";
 import * as types from "../actions/types";
 import { findAssetById } from "../selectors/index";
 
-const initialState = List([
-  {
-    id: "cj7knowho0001345ohhh5o1iu",
-    name: "Drone",
-    status: "received",
-    receivedTimestamp: "1505407334259",
-    dispatchedTimestamp: null,
-    comment: "lorem ismif  dse actioomment"
-  },
-  {
-    id: "cj7knoykr000a345o8e5sm6d0",
-    name: "Car",
-    status: "received",
-    receivedTimestamp: "1505407634241",
-    dispatchedTimestamp: null,
-    comment: "d ismif  gactioomment"
-  },
-  {
-    id: "cj7knpraq000i345obr97w9hw",
-    name: "3D Printer",
-    status: "received",
-    receivedTimestamp: "1605407345244",
-    dispatchedTimestamp: null,
-    comment: "lorem ffg  dse actioomment"
-  }
-]);
+const initialState = List([]);
 
 export default function assets(state = initialState, action) {
   switch (action.type) {
