@@ -1,30 +1,51 @@
 import React from "react";
-import { Form } from "semantic-ui-react";
+import { Form, Label, Segment } from "semantic-ui-react";
 
 const ReceiveAssetForm = ({
   handleSubmit,
   handleNameChange,
   handleCommentChange,
   name,
-  comment
+  comment,
+  nameErr
 }) => (
-  <Form onSubmit={handleSubmit}>
-    <Form.Group>
-      <Form.Input
-        placeholder="Name"
-        name="name"
-        value={name}
-        onChange={handleNameChange}
-      />
-      <Form.Input
-        placeholder="Comment"
-        name="comment"
-        value={comment}
-        onChange={handleCommentChange}
-      />
-      <Form.Button content="Submit" />
-    </Form.Group>
-  </Form>
+  <div
+    style={{
+      width: "30%",
+      left: "35%",
+      position: "relative",
+      textColor: "white"
+    }}
+  >
+    <Segment>
+      <Form onSubmit={handleSubmit}>
+        <Form.Group inline>
+          <Form.Field required error={nameErr !== null}>
+            {nameErr ? <Label pointing="below">{nameErr}</Label> : null}
+            <Form.Input
+              inverted
+              name="name"
+              label="Name"
+              placeholder="Name"
+              value={name}
+              onChange={handleNameChange}
+            />
+          </Form.Field>
+          <Form.Field>
+            <Form.TextArea
+              inverted
+              label="Comments"
+              placeholder="Add Comments..."
+              name="Comment"
+              value={comment}
+              onChange={handleCommentChange}
+            />
+          </Form.Field>
+          <Form.Button primary content="Submit" />
+        </Form.Group>
+      </Form>
+    </Segment>
+  </div>
 );
 
 export default ReceiveAssetForm;

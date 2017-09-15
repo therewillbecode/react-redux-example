@@ -24,7 +24,7 @@ const EditAssetForm = ({
         </Form.Field>
         <Form.Field>
           <label>Edit Comment</label>
-          <Form.Input
+          <Form.TextArea
             name="comment"
             value={comment}
             onChange={handleCommentChange}

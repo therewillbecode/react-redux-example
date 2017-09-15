@@ -42,12 +42,15 @@ class AppHeader extends Component {
             </Menu.Item>
           ) : null}
           {isAuthenticated ? (
-            <Menu.Item link icon position="right" size="big" name="Download">
-              <Icon
-                name="download"
-                onClick={() => downloadInventoryCSV()}
-                size="large"
-              />
+            <Menu.Item
+              link
+              icon
+              position="right"
+              onClick={() => downloadInventoryCSV()}
+              size="big"
+              name="Download"
+            >
+              <Icon name="download" size="large" />
             </Menu.Item>
           ) : null}
           {isAuthenticated ? (
