@@ -62,7 +62,6 @@ export class AppContainer extends Component {
         this.history.replace("/assets");
       } else if (err) {
         this.history.replace("/");
-        console.log(err);
       }
     });
   }
@@ -78,7 +77,6 @@ export class AppContainer extends Component {
   }
 
   logout() {
-    console.log("logged out");
     // Clear access token and ID token from local storage
     localStorage.removeItem("access_token");
     localStorage.removeItem("id_token");

@@ -22,11 +22,11 @@ export class EditAssetFormContainer extends Component {
     this.setState({ name, comment });
   }
 
-  handleNameChange(e, { name, value }) {
+  handleNameChange(e, { value }) {
     this.setState({ name: value });
   }
 
-  handleCommentChange(e, { name, value }) {
+  handleCommentChange(e, { value }) {
     this.setState({ comment: value });
   }
 

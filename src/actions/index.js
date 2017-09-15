@@ -11,7 +11,7 @@ export function receiveAsset(name, comment) {
   };
 }
 
-export function dispatchAsset(id, timestamp) {
+export function dispatchAsset(id) {
   return {
     type: types.DISPATCH_ASSET,
     id,

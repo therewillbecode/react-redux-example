@@ -13,11 +13,11 @@ export class ReceiveAssetFormContainer extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleNameChange(e, { name, value }) {
+  handleNameChange(e, { value }) {
     this.setState({ name: value, nameErr: null });
   }
 
-  handleCommentChange(e, { name, value }) {
+  handleCommentChange(e, { value }) {
     this.setState({ comment: value });
   }
 
@@ -50,7 +50,7 @@ export class ReceiveAssetFormContainer extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = dispatch => {
   return {
     receiveAsset: (name, comment) => dispatch(receiveAsset(name, comment))
   };
