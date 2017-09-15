@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditAssetFormContainer renders correctly 1`] = `
+<EditAssetForm
+  comment=""
+  dispatchAsset={undefined}
+  dispatched={true}
+  handleCommentChange={[Function]}
+  handleNameChange={[Function]}
+  handleSubmit={[Function]}
+  id="kj48"
+  name=""
+/>
+`;
