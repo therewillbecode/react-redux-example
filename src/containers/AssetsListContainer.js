@@ -6,7 +6,7 @@ import AssetsList from "../components/AssetsList";
 import AssetFilter from "../components/AssetFilter";
 import { filterAssets } from "../selectors/index";
 
-class AssetsListContainer extends PureComponent {
+export class AssetsListContainer extends PureComponent {
   constructor(props) {
     super(props);
     this.state = { statusFilter: "all", searchQuery: "" };
