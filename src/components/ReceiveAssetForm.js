@@ -13,7 +13,8 @@ const ReceiveAssetForm = ({
     style={{
       width: "30%",
       left: "35%",
-      position: "relative"
+      position: "relative",
+      paddingTop: "2em"
     }}
   >
     <Segment inverted color="black">

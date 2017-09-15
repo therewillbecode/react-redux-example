@@ -5,7 +5,6 @@ import ReceiveAssetFormContainer from "../containers/ReceiveAssetFormContainer";
 
 const Assets = props => (
   <div>
-    <h2>Assets</h2>
     <ReceiveAssetFormContainer />
     <AssetsListContainer />
   </div>
