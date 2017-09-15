@@ -43,7 +43,7 @@ const EditAssetForm = ({
             />
           </Form.Field>
           <Form.Field width="4">
-            <div style={{ marginTop: "2em" }}>
+            <div style={{ marginTop: "2.5em" }}>
               <Form.Button inverted primary content="Update Asset" />
             </div>
           </Form.Field>
