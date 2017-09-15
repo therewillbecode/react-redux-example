@@ -1,5 +1,5 @@
-import * as types from "./types";
 import cuid from "cuid";
+import * as types from "./types";
 
 export const receiveAsset = (name, comment) => ({
   type: types.RECEIVE_ASSET,
