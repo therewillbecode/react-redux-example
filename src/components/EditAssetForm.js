@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Form, Segment } from "semantic-ui-react";
+import { Button, Form, Label, Segment } from "semantic-ui-react";
 
 const EditAssetForm = ({
   dispatched,
@@ -24,18 +24,20 @@ const EditAssetForm = ({
         <h2>Edit Asset ID: {id} </h2>
         <Form.Group>
           <Form.Field width="4">
-            <div style={{ marginTop: "1.6em" }}>
-              <label>Edit Name</label>
-              <Form.Input
-                disabled={dispatched}
-                name="name"
-                value={name}
-                onChange={handleNameChange}
-              />
-            </div>
+            <Label size="huge" inverted color="grey">
+              Edit Name
+            </Label>
+            <Form.Input
+              disabled={dispatched}
+              name="name"
+              value={name}
+              onChange={handleNameChange}
+            />
           </Form.Field>
           <Form.Field width="8">
-            <label>Edit Comment</label>
+            <Label inverted size="huge" color="grey">
+              Edit Comments
+            </Label>{" "}
             <Form.TextArea
               name="comment"
               value={comment}
@@ -43,7 +45,7 @@ const EditAssetForm = ({
             />
           </Form.Field>
           <Form.Field width="4">
-            <div style={{ marginTop: "2.5em" }}>
+            <div style={{ marginTop: "3.75em" }}>
               <Form.Button inverted primary content="Update Asset" />
             </div>
           </Form.Field>

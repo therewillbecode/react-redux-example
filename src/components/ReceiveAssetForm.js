@@ -18,31 +18,37 @@ const ReceiveAssetForm = ({
     }}
   >
     <Segment inverted color="grey" textAlign="center">
-      <Form inverted onSubmit={handleSubmit}>
+      <Form inverted onSubmit={handleSubmit} widths="equal">
         <h2>Add Received Asset To Inventory</h2>
         <Form.Group inline>
           <Form.Field required error={nameErr !== null}>
-            {nameErr ? <Label pointing="below">{nameErr}</Label> : null}
+            <Label inverted color="grey" size="huge">
+              Name
+            </Label>
             <Form.Input
               name="name"
-              label="Name"
               placeholder="Name"
               value={name}
               onChange={handleNameChange}
             />
+            {nameErr ? <Label pointing="above">{nameErr}</Label> : null}
           </Form.Field>
           <Form.Field>
+            <Label inverted color="grey" size="huge">
+              Comments
+            </Label>
             <Form.TextArea
-              label="Comments"
               placeholder="Add Comments..."
               name="Comment"
               value={comment}
               onChange={handleCommentChange}
             />
           </Form.Field>
-          <Form.Button primary content="Submit" />
         </Form.Group>
-      </Form>
+        <Segment inverted color="grey">
+          <Form.Button primary content="Submit" />
+        </Segment>
+      </Form>{" "}
     </Segment>
   </div>
 );
