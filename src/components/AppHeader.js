@@ -17,10 +17,10 @@ class AppHeader extends Component {
           visible
           borderless
           inverted
-          style={{ background: "#085276 " }}
+          style={{ background: "#085276" }}
         >
-          <Menu.Item icon size="huge">
-            <Icon name="barcode" color="black" size="huge" />
+          <Menu.Item size="huge">
+            <Icon name="barcode" bordered inverted size="big" />
           </Menu.Item>
           <Menu.Item link onClick={() => history.push("/")} name="title">
             <h2>Supply Chain Project</h2>
