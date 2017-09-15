@@ -15,7 +15,7 @@ describe("selectors", () => {
   });
 
   describe("authSelector", () => {
-    it("should return assets", () => {
+    it("should return auth", () => {
       const assets = List([]);
       const auth = Map({});
       const state = { assets, auth };
