@@ -1,5 +1,5 @@
 # Supply Chain Trial Project
-####React, Redux, Immutable, Jest, React-Router and Docker
+#### React, Redux, Immutable, Jest, React-Router and Docker
 
 ![preview](https://image.ibb.co/iDcYg5/supply_chain_preview_min.png)
 
@@ -11,8 +11,8 @@ To start the app ensure docker and docker-compose system dependencies are instal
 docker-compose-up
 
 ```
+
 Then navigate to http://localhost:3000/ in your browser.
-----
 
 
 ##### Running test suites
