@@ -36,6 +36,7 @@ export class AssetsListContainer extends PureComponent {
 
     const filteredAssets = filterAssetsBySubstring(
       filterAssetsByStatus(assets, statusFilter),
+      "name",
       searchQuery
     );
 
