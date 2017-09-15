@@ -2,11 +2,12 @@
 import React from "react";
 import renderer from "react-test-renderer";
 
-import App from "../App";
+import AssetsList from "../AssetsList";
 
-describe("App", () => {
+describe("AssetsList", () => {
+  beforeEach(() => {});
   it("renders correctly", () => {
-    const tree = renderer.create(<App />).toJSON();
+    const tree = renderer.create(<AssetsList />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

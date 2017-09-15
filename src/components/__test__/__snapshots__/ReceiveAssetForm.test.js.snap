@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReceiveAssetForm renders correctly 1`] = `
+<div
+  style={
+    Object {
+      "left": "35%",
+      "paddingTop": "2em",
+      "position": "relative",
+      "width": "30%",
+    }
+  }
+>
+  <div
+    className="ui black inverted segment"
+  >
+    <form
+      action={undefined}
+      className="ui inverted form"
+      onSubmit={[Function]}
+    >
+      <h2
+        style={
+          Object {
+            "textAlign": "center",
+          }
+        }
+      >
+        Add Received Asset To Inventory
+      </h2>
+      <div
+        className="inline fields"
+      >
+        <div
+          className="error required field"
+        >
+          <div
+            className="field"
+          >
+            <label
+              htmlFor={undefined}
+            >
+              Name
+            </label>
+            <div
+              className="ui inverted input"
+            >
+              <input
+                disabled={undefined}
+                name="name"
+                onChange={[Function]}
+                placeholder="Name"
+                required={undefined}
+                tabIndex={undefined}
+                type="text"
+                value={undefined}
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          className="field"
+        >
+          <div
+            className="field"
+          >
+            <label
+              htmlFor={undefined}
+            >
+              Comments
+            </label>
+            <textarea
+              disabled={undefined}
+              name="Comment"
+              onChange={[Function]}
+              onInput={[Function]}
+              placeholder="Add Comments..."
+              required={undefined}
+              rows={3}
+              style={
+                Object {
+                  "resize": "",
+                }
+              }
+              type={undefined}
+              value={undefined}
+            />
+          </div>
+        </div>
+        <div
+          className="field"
+        >
+          <button
+            className="ui primary button"
+            disabled={undefined}
+            onClick={[Function]}
+            required={undefined}
+            role="button"
+            tabIndex={undefined}
+            type={undefined}
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+`;

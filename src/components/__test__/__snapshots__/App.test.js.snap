@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App renders correctly 1`] = `
+<div>
+  <div
+    style={
+      Object {
+        "background": "rgba(8,82,118, 0.95)",
+        "borderRadius": "20px",
+        "color": "white",
+        "left": "32vw",
+        "paddingBottom": "4vh",
+        "paddingLeft": "4vw",
+        "paddingRight": "4vw",
+        "paddingTop": "4vh",
+        "position": "absolute",
+        "textAlign": "center",
+        "top": "30%",
+        "zIndex": "100",
+      }
+    }
+  >
+    <i
+      aria-hidden="true"
+      className="black barcode massive bordered inverted icon"
+    />
+    <div
+      style={
+        Object {
+          "marginTop": "1.75em",
+        }
+      }
+    >
+      <h1>
+        Supply Chain Project
+      </h1>
+      <h2>
+        Automated Asset Tracking for Your Organisation
+      </h2>
+    </div>
+    <button
+      className="ui massive secondary button"
+      disabled={undefined}
+      onClick={[Function]}
+      role="button"
+      style={
+        Object {
+          "marginTop": "1.75em",
+        }
+      }
+      tabIndex={undefined}
+    >
+      Get Started
+    </button>
+  </div>
+  <img
+    alt="containers"
+    src="containers.jpg"
+    style={
+      Object {
+        "left": "0",
+        "position": "relative",
+        "top": "0",
+        "width": "100vw",
+      }
+    }
+  />
+</div>
+`;

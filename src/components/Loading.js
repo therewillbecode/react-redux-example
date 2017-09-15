@@ -21,7 +21,6 @@ class Loading extends Component {
 
     return (
       <div style={style}>
-        <h1>Authenticating ... </h1>
         <img src="img/loading.svg" alt="loading" />
       </div>
     );

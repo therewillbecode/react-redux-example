@@ -1,0 +1,146 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditAssetForm renders correctly 1`] = `
+<div
+  style={
+    Object {
+      "left": "35%",
+      "padding": "3em",
+      "position": "relative",
+      "width": "30%",
+    }
+  }
+>
+  <div
+    className="ui black inverted segment"
+  >
+    <form
+      action={undefined}
+      className="ui inverted form"
+      onSubmit={[Function]}
+    >
+      <h2
+        style={
+          Object {
+            "textAlign": "center",
+          }
+        }
+      >
+        Edit Asset ID: 
+         
+      </h2>
+      <div
+        className="fields"
+      >
+        <div
+          className="four wide field"
+        >
+          <div
+            style={
+              Object {
+                "marginTop": "1.6em",
+              }
+            }
+          >
+            <label>
+              Edit Name
+            </label>
+            <div
+              className="field"
+            >
+              <div
+                className="ui input"
+              >
+                <input
+                  disabled={undefined}
+                  name="name"
+                  onChange={[Function]}
+                  required={undefined}
+                  tabIndex={undefined}
+                  type="text"
+                  value={undefined}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="eight wide field"
+        >
+          <label>
+            Edit Comment
+          </label>
+          <div
+            className="field"
+          >
+            <textarea
+              disabled={undefined}
+              name="comment"
+              onChange={[Function]}
+              onInput={[Function]}
+              required={undefined}
+              rows={3}
+              style={
+                Object {
+                  "resize": "",
+                }
+              }
+              type={undefined}
+              value={undefined}
+            />
+          </div>
+        </div>
+        <div
+          className="four wide field"
+        >
+          <div
+            style={
+              Object {
+                "marginTop": "2em",
+              }
+            }
+          >
+            <div
+              className="field"
+            >
+              <button
+                className="ui large inverted primary button"
+                disabled={undefined}
+                onClick={[Function]}
+                required={undefined}
+                role="button"
+                tabIndex={undefined}
+                type={undefined}
+              >
+                Update Asset
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="ui black inverted segment"
+      >
+        <div
+          style={
+            Object {
+              "left": "32%",
+              "position": "relative",
+            }
+          }
+        >
+          <button
+            className="ui huge primary button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            Dispatch Asset
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+`;

@@ -17,7 +17,7 @@ const auth0Domain = "therewillbecode.auth0.com";
 const auth0ClientId = "2yqWzBSv0zfQEstOyMveQBu4Rw3bqbiT";
 const auth0CallbackUrl = "http://localhost:3000/loading";
 
-exoprt class AppContainer extends Component {
+export class AppContainer extends Component {
   constructor(props) {
     super(props);
     this.login = this.login.bind(this);
