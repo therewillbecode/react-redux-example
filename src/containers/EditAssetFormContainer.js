@@ -7,7 +7,6 @@ import {
   editAssetComment,
   dispatchAsset
 } from "../actions/index";
-import { findAssetById } from "../selectors/index";
 
 class EditAssetFormContainer extends Component {
   constructor(props) {
