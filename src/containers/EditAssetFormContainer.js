@@ -55,6 +55,7 @@ class EditAssetFormContainer extends Component {
       <EditAssetForm
         name={name}
         comment={comment}
+        dispatched={dispatched}
         handleCommentChange={this.handleCommentChange}
         handleNameChange={this.handleNameChange}
         dispatchAsset={dispatchAsset}

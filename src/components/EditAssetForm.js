@@ -38,7 +38,7 @@ const EditAssetForm = ({
     <Button
       disabled={dispatched}
       onClick={dispatchAsset}
-      content="Dispatch Asset"
+      content={dispatched ? "Dispatched" : "Dispatch Asset"}
     />
   </div>
 );
