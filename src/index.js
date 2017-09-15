@@ -13,6 +13,11 @@ import rootReducer from "./reducers/index";
 import "semantic-ui-css/semantic.min.css";
 import { downloadCSV } from "./utils";
 
+export const downloadInventoryCSV = () =>
+  downloadCSV(
+    JSON.stringify(store.getState().assets.toJS()).replace("[", " \n [")
+  );
+
 const middleware = [];
 
 const store = createStore(
@@ -26,14 +31,9 @@ persistStore(store, {
 
 render(
   <Provider store={store}>
-    <AppContainer />
+    <AppContainer downloadInventoryCSV={downloadInventoryCSV} />
   </Provider>,
   document.getElementById("root")
 );
 
 registerServiceWorker();
-
-export const downloadInventoryCSV = () =>
-  downloadCSV(
-    JSON.stringify(store.getState().assets.toJS()).replace("[", " \n [")
-  );

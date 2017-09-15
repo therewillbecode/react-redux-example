@@ -8,7 +8,7 @@ import {
   dispatchAsset
 } from "../actions/index";
 
-class EditAssetFormContainer extends Component {
+export class EditAssetFormContainer extends Component {
   constructor(props) {
     super(props);
     this.state = { name: "", comment: "" };

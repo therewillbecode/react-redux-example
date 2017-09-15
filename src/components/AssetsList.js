@@ -12,7 +12,7 @@ const assetAttributes = {
 };
 
 const AssetsList = ({ assets, navigateToAsset }) => (
-  <Table celled padded inverted selectable style={{ marginTop: "0" }}>
+  <Table celled padded inverted selectable>
     <Table.Header>
       <Table.Row>
         {Object.values(assetAttributes).map(key => (

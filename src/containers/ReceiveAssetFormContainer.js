@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { receiveAsset } from "../actions/index";
 import ReceiveAssetForm from "../components/ReceiveAssetForm";
 
-class ReceiveAssetFormContainer extends Component {
+export class ReceiveAssetFormContainer extends Component {
   constructor(props) {
     super(props);
     this.state = { name: "", comment: "", nameErr: null };

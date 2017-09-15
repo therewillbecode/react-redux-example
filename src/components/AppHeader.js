@@ -2,11 +2,15 @@ import React, { Component } from "react";
 import { withRouter } from "react-router";
 import { Sidebar, Menu, Icon } from "semantic-ui-react";
 
-import { downloadInventoryCSV } from "../index.js";
-
-class AppHeader extends Component {
+export class AppHeader extends Component {
   render() {
-    const { isAuthenticated, login, logout, history } = this.props;
+    const {
+      isAuthenticated,
+      login,
+      logout,
+      history,
+      downloadInventoryCSV
+    } = this.props;
 
     return (
       <div style={{ height: "5vh" }}>

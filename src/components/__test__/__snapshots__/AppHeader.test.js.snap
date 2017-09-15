@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppHeader renders correctly 1`] = `
+<div
+  style={
+    Object {
+      "height": "5vh",
+    }
+  }
+>
+  <SidebarPushable
+    as={[Function]}
+    borderless={true}
+    direction="top"
+    inverted={true}
+    style={
+      Object {
+        "background": "#085276",
+      }
+    }
+    visible={true}
+    width="thin"
+  >
+    <MenuItem
+      size="huge"
+    >
+      <Icon
+        as="i"
+        bordered={true}
+        inverted={true}
+        name="barcode"
+        size="big"
+      />
+    </MenuItem>
+    <MenuItem
+      link={true}
+      name="title"
+      onClick={[Function]}
+    >
+      <h2>
+        Supply Chain Project
+      </h2>
+    </MenuItem>
+    <MenuItem
+      link={true}
+      name="Login"
+      onClick={undefined}
+      position="right"
+    >
+      <Icon
+        as="i"
+        name="sign in"
+      />
+      Login
+    </MenuItem>
+  </SidebarPushable>
+</div>
+`;

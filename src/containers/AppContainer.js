@@ -17,7 +17,7 @@ const auth0Domain = "therewillbecode.auth0.com";
 const auth0ClientId = "2yqWzBSv0zfQEstOyMveQBu4Rw3bqbiT";
 const auth0CallbackUrl = "http://localhost:3000/loading";
 
-class AppContainer extends Component {
+export class AppContainer extends Component {
   constructor(props) {
     super(props);
     this.login = this.login.bind(this);
@@ -96,7 +96,7 @@ class AppContainer extends Component {
   }
 
   render() {
-    const { isAuthenticated } = this.props;
+    const { isAuthenticated, downloadInventoryCSV } = this.props;
 
     return (
       <Router history={this.history}>
@@ -105,6 +105,7 @@ class AppContainer extends Component {
             login={this.login}
             logout={this.logout}
             isAuthenticated={isAuthenticated}
+            downloadInventoryCSV={downloadInventoryCSV}
           />
           <Route
             exact

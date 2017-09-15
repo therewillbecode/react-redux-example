@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReceiveAssetForm renders correctly 1`] = `
+<div
+  style={
+    Object {
+      "left": "35%",
+      "paddingTop": "2em",
+      "position": "relative",
+      "width": "30%",
+    }
+  }
+>
+  <Segment
+    color="black"
+    inverted={true}
+  >
+    <Form
+      as="form"
+      inverted={true}
+      onSubmit={undefined}
+    >
+      <h2
+        style={
+          Object {
+            "textAlign": "center",
+          }
+        }
+      >
+        Add Received Asset To Inventory
+      </h2>
+      <FormGroup
+        inline={true}
+      >
+        <FormField
+          error={true}
+          required={true}
+        >
+          <FormInput
+            as={[Function]}
+            control={[Function]}
+            inverted={true}
+            label="Name"
+            name="name"
+            onChange={undefined}
+            placeholder="Name"
+            value={undefined}
+          />
+        </FormField>
+        <FormField>
+          <FormTextArea
+            as={[Function]}
+            control={[Function]}
+            label="Comments"
+            name="Comment"
+            onChange={undefined}
+            placeholder="Add Comments..."
+            value={undefined}
+          />
+        </FormField>
+        <FormButton
+          as={[Function]}
+          content="Submit"
+          control={[Function]}
+          primary={true}
+        />
+      </FormGroup>
+    </Form>
+  </Segment>
+</div>
+`;

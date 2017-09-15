@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AssetItem renders correctly 1`] = `
+<div
+  style={
+    Object {
+      "padding": "2em",
+    }
+  }
+>
+  <Dropdown
+    additionLabel="Add "
+    additionPosition="top"
+    button={true}
+    className="icon"
+    closeOnBlur={true}
+    icon="filter"
+    minCharacters={1}
+    noResultsMessage="No results found."
+    onChange={undefined}
+    openOnFocus={true}
+    options={
+      Array [
+        Object {
+          "key": 1,
+          "text": "All",
+          "value": "all",
+        },
+        Object {
+          "key": 2,
+          "text": "Received",
+          "value": "received",
+        },
+        Object {
+          "key": 3,
+          "text": "Dispatched",
+          "value": "dispatched",
+        },
+      ]
+    }
+    renderLabel={[Function]}
+    searchInput="text"
+    selectOnBlur={true}
+    text="Filter Assets"
+  />
+  <Input
+    label="search by name"
+    name="name"
+    onChange={undefined}
+    placeholder="Name"
+    type="text"
+    value={undefined}
+  />
+</div>
+`;

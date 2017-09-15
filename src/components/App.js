@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Icon, Button } from "semantic-ui-react";
 import containersImg from "./containers.jpg";
 
-export const App = ({ isAuthenticated, login }) => (
+const App = ({ isAuthenticated, login }) => (
   <div>
     <div
       style={{

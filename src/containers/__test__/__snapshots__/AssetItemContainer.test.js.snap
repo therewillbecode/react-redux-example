@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AssetItemContainer renders correctly 1`] = `
+<AssetItem
+  asset={undefined}
+/>
+`;

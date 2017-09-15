@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading renders correctly 1`] = `
+<div
+  style={
+    Object {
+      "backgroundColor": "white",
+      "bottom": 0,
+      "display": "flex",
+      "height": "100vh",
+      "justifyContent": "center",
+      "left": 0,
+      "position": "absolute",
+      "right": 0,
+      "top": 0,
+      "width": "100vw",
+    }
+  }
+>
+  <img
+    alt="loading"
+    src="img/loading.svg"
+  />
+</div>
+`;
