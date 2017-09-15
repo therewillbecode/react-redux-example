@@ -8,32 +8,36 @@ class App extends Component {
       <div>
         <div
           style={{
-            background: "rgba(8,82,118, 0.75)", // #085276
+            background: "rgba(8,82,118, 0.95)", // #085276
             zIndex: "100",
             color: "white",
             position: "absolute",
-            left: "30vw",
-            top: "30vh",
-            padding: "5em",
+            left: "32vw",
+            top: "30%",
+            paddingLeft: "4vw",
+            paddingRight: "4vw",
+            paddingTop: "4vh",
+            paddingBottom: "4vh",
             borderRadius: "20px",
-
             textAlign: "center"
           }}
         >
           <Icon bordered inverted size="massive" color="black" name="barcode" />
-          <h1>Supply Chain Project</h1>
-          <h2>Automated Asset Tracking for your organisation</h2>
+          <div style={{ marginTop: "1.75em" }}>
+            <h1>Supply Chain Project</h1>
+            <h2>Automated Asset Tracking for Your Organisation</h2>
+          </div>
           <Button
             style={{ marginTop: "1.75em" }}
             secondary
-            size="huge"
+            size="massive"
             content="Get Started"
           />
         </div>
         <img
           style={{
             position: "relative",
-            width: "100%",
+            width: "100vw",
             left: "0",
             top: "0"
           }}
