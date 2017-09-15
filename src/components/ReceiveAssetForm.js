@@ -13,8 +13,7 @@ const ReceiveAssetForm = ({
     style={{
       width: "30%",
       left: "35%",
-      position: "relative",
-      textColor: "white"
+      position: "relative"
     }}
   >
     <Segment>
