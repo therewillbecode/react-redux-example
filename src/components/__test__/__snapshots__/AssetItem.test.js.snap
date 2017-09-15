@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AssetItem renders correctly 1`] = `
+<Connect(EditAssetFormContainer)
+  asset={undefined}
+/>
+`;

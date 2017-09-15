@@ -1,13 +1,14 @@
 /* eslint-disable */
 import React from "react";
-import renderer from "react-test-renderer";
+import ReactShallowRenderer from "react-test-renderer/shallow";
 
 import Assets from "../Assets";
 
 describe("Assets", () => {
-  beforeEach(() => {});
   it("renders correctly", () => {
-    const tree = renderer.create(<Assets />).toJSON();
+    const renderer = new ReactShallowRenderer();
+    renderer.render(<Assets />);
+    const tree = renderer.getRenderOutput();
     expect(tree).toMatchSnapshot();
   });
 });

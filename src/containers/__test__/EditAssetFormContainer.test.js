@@ -1,13 +1,14 @@
 /* eslint-disable */
 import React from "react";
-import renderer from "react-test-renderer";
+import ReactShallowRenderer from "react-test-renderer/shallow";
 
 import { EditAssetFormContainer } from "../EditAssetFormContainer";
 
 describe("EditAssetFormContainer", () => {
-  beforeEach(() => {});
   it("renders correctly", () => {
-    const tree = renderer.create(<EditAssetFormContainer />).toJSON();
+    const renderer = new ReactShallowRenderer();
+    renderer.render(<EditAssetFormContainer />);
+    const tree = renderer.getRenderOutput();
     expect(tree).toMatchSnapshot();
   });
 });

@@ -11,13 +11,14 @@ exports[`EditAssetForm renders correctly 1`] = `
     }
   }
 >
-  <div
-    className="ui black inverted segment"
+  <Segment
+    color="black"
+    inverted={true}
   >
-    <form
-      action={undefined}
-      className="ui inverted form"
-      onSubmit={[Function]}
+    <Form
+      as="form"
+      inverted={true}
+      onSubmit={undefined}
     >
       <h2
         style={
@@ -29,11 +30,9 @@ exports[`EditAssetForm renders correctly 1`] = `
         Edit Asset ID: 
          
       </h2>
-      <div
-        className="fields"
-      >
-        <div
-          className="four wide field"
+      <FormGroup>
+        <FormField
+          width="4"
         >
           <div
             style={
@@ -45,53 +44,32 @@ exports[`EditAssetForm renders correctly 1`] = `
             <label>
               Edit Name
             </label>
-            <div
-              className="field"
-            >
-              <div
-                className="ui input"
-              >
-                <input
-                  disabled={undefined}
-                  name="name"
-                  onChange={[Function]}
-                  required={undefined}
-                  tabIndex={undefined}
-                  type="text"
-                  value={undefined}
-                />
-              </div>
-            </div>
+            <FormInput
+              as={[Function]}
+              control={[Function]}
+              disabled={undefined}
+              name="name"
+              onChange={undefined}
+              value={undefined}
+            />
           </div>
-        </div>
-        <div
-          className="eight wide field"
+        </FormField>
+        <FormField
+          width="8"
         >
           <label>
             Edit Comment
           </label>
-          <div
-            className="field"
-          >
-            <textarea
-              disabled={undefined}
-              name="comment"
-              onChange={[Function]}
-              onInput={[Function]}
-              required={undefined}
-              rows={3}
-              style={
-                Object {
-                  "resize": "",
-                }
-              }
-              type={undefined}
-              value={undefined}
-            />
-          </div>
-        </div>
-        <div
-          className="four wide field"
+          <FormTextArea
+            as={[Function]}
+            control={[Function]}
+            name="comment"
+            onChange={undefined}
+            value={undefined}
+          />
+        </FormField>
+        <FormField
+          width="4"
         >
           <div
             style={
@@ -100,26 +78,20 @@ exports[`EditAssetForm renders correctly 1`] = `
               }
             }
           >
-            <div
-              className="field"
-            >
-              <button
-                className="ui large inverted primary button"
-                disabled={undefined}
-                onClick={[Function]}
-                required={undefined}
-                role="button"
-                tabIndex={undefined}
-                type={undefined}
-              >
-                Update Asset
-              </button>
-            </div>
+            <FormButton
+              as={[Function]}
+              content="Update Asset"
+              control={[Function]}
+              inverted={true}
+              primary={true}
+              size="large"
+            />
           </div>
-        </div>
-      </div>
-      <div
-        className="ui black inverted segment"
+        </FormField>
+      </FormGroup>
+      <Segment
+        color="black"
+        inverted={true}
       >
         <div
           style={
@@ -129,18 +101,18 @@ exports[`EditAssetForm renders correctly 1`] = `
             }
           }
         >
-          <button
-            className="ui huge primary button"
+          <Button
+            as="button"
+            content="Dispatch Asset"
             disabled={undefined}
-            onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
-          >
-            Dispatch Asset
-          </button>
+            icon={null}
+            onClick={undefined}
+            primary={true}
+            size="huge"
+          />
         </div>
-      </div>
-    </form>
-  </div>
+      </Segment>
+    </Form>
+  </Segment>
 </div>
 `;

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AssetFilter renders correctly 1`] = `
+exports[`AssetItem renders correctly 1`] = `
 <div
   style={
     Object {
@@ -8,112 +8,48 @@ exports[`AssetFilter renders correctly 1`] = `
     }
   }
 >
-  <div
-    aria-busy={undefined}
-    aria-disabled={undefined}
-    aria-expanded={false}
-    aria-multiselectable={undefined}
-    className="ui button dropdown icon"
-    onBlur={[Function]}
-    onChange={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onMouseDown={[Function]}
-    role="listbox"
-    tabIndex={0}
-  >
-    <div
-      aria-live="polite"
-      className="text"
-      role="alert"
-    >
-      Filter Assets
-    </div>
-    <i
-      aria-hidden="true"
-      className="filter icon"
-      onClick={[Function]}
-    />
-    <div
-      className="menu transition"
-    >
-      <div
-        aria-checked={false}
-        aria-disabled={undefined}
-        aria-selected={true}
-        className="selected item"
-        onClick={[Function]}
-        role="option"
-        style={
-          Object {
-            "pointerEvents": "all",
-          }
-        }
-      >
-        <span
-          className="text"
-        >
-          All
-        </span>
-      </div>
-      <div
-        aria-checked={false}
-        aria-disabled={undefined}
-        aria-selected={false}
-        className="item"
-        onClick={[Function]}
-        role="option"
-        style={
-          Object {
-            "pointerEvents": "all",
-          }
-        }
-      >
-        <span
-          className="text"
-        >
-          Received
-        </span>
-      </div>
-      <div
-        aria-checked={false}
-        aria-disabled={undefined}
-        aria-selected={false}
-        className="item"
-        onClick={[Function]}
-        role="option"
-        style={
-          Object {
-            "pointerEvents": "all",
-          }
-        }
-      >
-        <span
-          className="text"
-        >
-          Dispatched
-        </span>
-      </div>
-    </div>
-  </div>
-  <div
-    className="ui labeled input"
-  >
-    <div
-      className="ui label label"
-      onClick={[Function]}
-    >
-      search by name
-    </div>
-    <input
-      disabled={undefined}
-      name="name"
-      onChange={[Function]}
-      placeholder="Name"
-      tabIndex={undefined}
-      type="text"
-      value={undefined}
-    />
-  </div>
+  <Dropdown
+    additionLabel="Add "
+    additionPosition="top"
+    button={true}
+    className="icon"
+    closeOnBlur={true}
+    icon="filter"
+    minCharacters={1}
+    noResultsMessage="No results found."
+    onChange={undefined}
+    openOnFocus={true}
+    options={
+      Array [
+        Object {
+          "key": 1,
+          "text": "All",
+          "value": "all",
+        },
+        Object {
+          "key": 2,
+          "text": "Received",
+          "value": "received",
+        },
+        Object {
+          "key": 3,
+          "text": "Dispatched",
+          "value": "dispatched",
+        },
+      ]
+    }
+    renderLabel={[Function]}
+    searchInput="text"
+    selectOnBlur={true}
+    text="Filter Assets"
+  />
+  <Input
+    label="search by name"
+    name="name"
+    onChange={undefined}
+    placeholder="Name"
+    type="text"
+    value={undefined}
+  />
 </div>
 `;

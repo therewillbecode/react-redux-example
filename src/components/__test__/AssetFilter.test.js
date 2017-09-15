@@ -1,13 +1,14 @@
 /* eslint-disable */
 import React from "react";
-import renderer from "react-test-renderer";
+import ReactShallowRenderer from "react-test-renderer/shallow";
 
 import AssetFilter from "../AssetFilter";
 
-describe("AssetFilter", () => {
-  beforeEach(() => {});
+describe("AssetItem", () => {
   it("renders correctly", () => {
-    const tree = renderer.create(<AssetFilter />).toJSON();
+    const renderer = new ReactShallowRenderer();
+    renderer.render(<AssetFilter />);
+    const tree = renderer.getRenderOutput();
     expect(tree).toMatchSnapshot();
   });
 });

@@ -1,13 +1,14 @@
 /* eslint-disable */
 import React from "react";
-import renderer from "react-test-renderer";
+import ReactShallowRenderer from "react-test-renderer/shallow";
 
 import { ReceiveAssetFormContainer } from "../ReceiveAssetFormContainer";
 
 describe("ReceiveAssetFormContainer", () => {
-  beforeEach(() => {});
   it("renders correctly", () => {
-    const tree = renderer.create(<ReceiveAssetFormContainer />).toJSON();
+    const renderer = new ReactShallowRenderer();
+    renderer.render(<ReceiveAssetFormContainer />);
+    const tree = renderer.getRenderOutput();
     expect(tree).toMatchSnapshot();
   });
 });

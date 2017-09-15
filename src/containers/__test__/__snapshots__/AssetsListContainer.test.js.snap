@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AssetsListContainer renders correctly 1`] = `
+<div>
+  <AssetFilter
+    handleChange={[Function]}
+    handleSearchChange={[Function]}
+    searchQuery=""
+  />
+  <AssetsList
+    assets={undefined}
+    navigateToAsset={[Function]}
+  />
+</div>
+`;

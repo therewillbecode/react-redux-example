@@ -8,9 +8,11 @@ exports[`AppHeader renders correctly 1`] = `
     }
   }
 >
-  <div
-    className="ui borderless inverted pushable menu"
+  <SidebarPushable
+    as={[Function]}
+    borderless={true}
     direction="top"
+    inverted={true}
     style={
       Object {
         "background": "#085276",
@@ -19,34 +21,38 @@ exports[`AppHeader renders correctly 1`] = `
     visible={true}
     width="thin"
   >
-    <div
-      className="item"
-      onClick={[Function]}
+    <MenuItem
       size="huge"
     >
-      <i
-        aria-hidden="true"
-        className="barcode big bordered inverted icon"
+      <Icon
+        as="i"
+        bordered={true}
+        inverted={true}
+        name="barcode"
+        size="big"
       />
-    </div>
-    <a
-      className="link item"
+    </MenuItem>
+    <MenuItem
+      link={true}
+      name="title"
       onClick={[Function]}
     >
       <h2>
         Supply Chain Project
       </h2>
-    </a>
-    <div
-      className="right link item"
-      onClick={[Function]}
+    </MenuItem>
+    <MenuItem
+      link={true}
+      name="Login"
+      onClick={undefined}
+      position="right"
     >
-      <i
-        aria-hidden="true"
-        className="sign in icon"
+      <Icon
+        as="i"
+        name="sign in"
       />
       Login
-    </div>
-  </div>
+    </MenuItem>
+  </SidebarPushable>
 </div>
 `;

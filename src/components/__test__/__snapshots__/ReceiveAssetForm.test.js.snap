@@ -11,13 +11,14 @@ exports[`ReceiveAssetForm renders correctly 1`] = `
     }
   }
 >
-  <div
-    className="ui black inverted segment"
+  <Segment
+    color="black"
+    inverted={true}
   >
-    <form
-      action={undefined}
-      className="ui inverted form"
-      onSubmit={[Function]}
+    <Form
+      as="form"
+      inverted={true}
+      onSubmit={undefined}
     >
       <h2
         style={
@@ -28,82 +29,43 @@ exports[`ReceiveAssetForm renders correctly 1`] = `
       >
         Add Received Asset To Inventory
       </h2>
-      <div
-        className="inline fields"
+      <FormGroup
+        inline={true}
       >
-        <div
-          className="error required field"
+        <FormField
+          error={true}
+          required={true}
         >
-          <div
-            className="field"
-          >
-            <label
-              htmlFor={undefined}
-            >
-              Name
-            </label>
-            <div
-              className="ui inverted input"
-            >
-              <input
-                disabled={undefined}
-                name="name"
-                onChange={[Function]}
-                placeholder="Name"
-                required={undefined}
-                tabIndex={undefined}
-                type="text"
-                value={undefined}
-              />
-            </div>
-          </div>
-        </div>
-        <div
-          className="field"
-        >
-          <div
-            className="field"
-          >
-            <label
-              htmlFor={undefined}
-            >
-              Comments
-            </label>
-            <textarea
-              disabled={undefined}
-              name="Comment"
-              onChange={[Function]}
-              onInput={[Function]}
-              placeholder="Add Comments..."
-              required={undefined}
-              rows={3}
-              style={
-                Object {
-                  "resize": "",
-                }
-              }
-              type={undefined}
-              value={undefined}
-            />
-          </div>
-        </div>
-        <div
-          className="field"
-        >
-          <button
-            className="ui primary button"
-            disabled={undefined}
-            onClick={[Function]}
-            required={undefined}
-            role="button"
-            tabIndex={undefined}
-            type={undefined}
-          >
-            Submit
-          </button>
-        </div>
-      </div>
-    </form>
-  </div>
+          <FormInput
+            as={[Function]}
+            control={[Function]}
+            inverted={true}
+            label="Name"
+            name="name"
+            onChange={undefined}
+            placeholder="Name"
+            value={undefined}
+          />
+        </FormField>
+        <FormField>
+          <FormTextArea
+            as={[Function]}
+            control={[Function]}
+            label="Comments"
+            name="Comment"
+            onChange={undefined}
+            placeholder="Add Comments..."
+            value={undefined}
+          />
+        </FormField>
+        <FormButton
+          as={[Function]}
+          content="Submit"
+          control={[Function]}
+          primary={true}
+        />
+      </FormGroup>
+    </Form>
+  </Segment>
 </div>
 `;
