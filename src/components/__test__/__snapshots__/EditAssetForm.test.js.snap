@@ -14,19 +14,14 @@ exports[`EditAssetForm renders correctly 1`] = `
   <Segment
     color="grey"
     inverted={true}
+    textAlign="center"
   >
     <Form
       as="form"
       inverted={true}
       onSubmit={undefined}
     >
-      <h2
-        style={
-          Object {
-            "textAlign": "center",
-          }
-        }
-      >
+      <h2>
         Edit Asset ID: 
          
       </h2>
@@ -74,7 +69,7 @@ exports[`EditAssetForm renders correctly 1`] = `
           <div
             style={
               Object {
-                "marginTop": "2em",
+                "marginTop": "2.5em",
               }
             }
           >
@@ -84,34 +79,18 @@ exports[`EditAssetForm renders correctly 1`] = `
               control={[Function]}
               inverted={true}
               primary={true}
-              size="large"
             />
           </div>
         </FormField>
       </FormGroup>
-      <Segment
-        color="grey"
-        inverted={true}
-      >
-        <div
-          style={
-            Object {
-              "left": "32%",
-              "position": "relative",
-            }
-          }
-        >
-          <Button
-            as="button"
-            content="Dispatch Asset"
-            disabled={undefined}
-            icon={null}
-            onClick={undefined}
-            primary={true}
-            size="huge"
-          />
-        </div>
-      </Segment>
+      <Button
+        as="button"
+        content="Dispatch Asset"
+        disabled={undefined}
+        icon={null}
+        onClick={undefined}
+        primary={true}
+      />
     </Form>
   </Segment>
 </div>

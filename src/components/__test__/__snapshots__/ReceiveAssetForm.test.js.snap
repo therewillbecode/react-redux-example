@@ -14,19 +14,14 @@ exports[`ReceiveAssetForm renders correctly 1`] = `
   <Segment
     color="grey"
     inverted={true}
+    textAlign="center"
   >
     <Form
       as="form"
       inverted={true}
       onSubmit={undefined}
     >
-      <h2
-        style={
-          Object {
-            "textAlign": "center",
-          }
-        }
-      >
+      <h2>
         Add Received Asset To Inventory
       </h2>
       <FormGroup
@@ -39,7 +34,6 @@ exports[`ReceiveAssetForm renders correctly 1`] = `
           <FormInput
             as={[Function]}
             control={[Function]}
-            inverted={true}
             label="Name"
             name="name"
             onChange={undefined}
