@@ -4,6 +4,8 @@ import { render } from "react-dom";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
+import { persistStore, autoRehydrate } from "redux-persist";
+import immutableTransform from "redux-persist-transform-immutable";
 
 import AppContainer from "./containers/AppContainer";
 import registerServiceWorker from "./registerServiceWorker";
@@ -14,11 +16,12 @@ const middleware = [];
 
 const store = createStore(
   rootReducer,
-  composeWithDevTools(
-    applyMiddleware(...middleware)
-    // other store enhancers if any
-  )
+  composeWithDevTools(applyMiddleware(...middleware), autoRehydrate())
 );
+
+persistStore(store, {
+  transforms: [immutableTransform()]
+});
 
 render(
   <Provider store={store}>
