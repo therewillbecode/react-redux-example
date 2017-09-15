@@ -24,12 +24,10 @@ class EditAssetFormContainer extends Component {
 
   handleNameChange(e, { name, value }) {
     this.setState({ name: value });
-    console.log(this.state);
   }
 
   handleCommentChange(e, { name, value }) {
     this.setState({ comment: value });
-    console.log(this.state);
   }
 
   handleSubmit() {
@@ -41,18 +39,19 @@ class EditAssetFormContainer extends Component {
 
     this.props.editAssetComment(comment);
     this.props.editAssetName(name);
-    this.setState({ name: "", comment: "" });
+    this.setState({ name, comment });
   }
 
   render() {
     const { name, comment } = this.state;
     const { dispatchAsset, asset } = this.props;
-    const { status } = asset;
+    const { status, id } = asset;
     const dispatched = status === "dispatched";
 
     return (
       <EditAssetForm
         name={name}
+        id={id}
         comment={comment}
         dispatched={dispatched}
         handleCommentChange={this.handleCommentChange}

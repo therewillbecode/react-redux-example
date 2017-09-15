@@ -16,8 +16,9 @@ const ReceiveAssetForm = ({
       position: "relative"
     }}
   >
-    <Segment>
-      <Form onSubmit={handleSubmit}>
+    <Segment inverted color="black">
+      <Form onSubmit={handleSubmit} inverted>
+        <h2 style={{ textAlign: "center" }}>Add Received Asset To Inventory</h2>
         <Form.Group inline>
           <Form.Field required error={nameErr !== null}>
             {nameErr ? <Label pointing="below">{nameErr}</Label> : null}
@@ -32,7 +33,6 @@ const ReceiveAssetForm = ({
           </Form.Field>
           <Form.Field>
             <Form.TextArea
-              inverted
               label="Comments"
               placeholder="Add Comments..."
               name="Comment"
