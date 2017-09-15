@@ -2,7 +2,7 @@ import React from "react";
 import { Table } from "semantic-ui-react";
 
 const AssetsList = ({ assets, navigateToAsset }) => (
-  <Table celled padded inverted selectable>
+  <Table celled padded inverted selectablestyle={{ background: "#0CAA94" }}>
     <Table.Header>
       <Table.Row>
         <Table.HeaderCell textAlign="center">ID</Table.HeaderCell>
