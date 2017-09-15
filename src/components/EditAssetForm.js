@@ -44,12 +44,7 @@ const EditAssetForm = ({
           </Form.Field>
           <Form.Field width="4">
             <div style={{ marginTop: "2em" }}>
-              <Form.Button
-                inverted
-                primary
-                size="large"
-                content="Update Asset"
-              />
+              <Form.Button inverted primary content="Update Asset" />
             </div>
           </Form.Field>
         </Form.Group>
@@ -57,7 +52,6 @@ const EditAssetForm = ({
           onClick={dispatchAsset}
           icon={dispatched ? "ship" : null}
           disabled={dispatched}
-          size="huge"
           primary
           content={dispatched ? "Dispatched" : "Dispatch Asset"}
         />
