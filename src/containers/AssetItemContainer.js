@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 
 import AssetItem from "../components/AssetItem";
 import { findAssetById } from "../selectors/index";
 
-export class AssetItemContainer extends Component {
+export class AssetItemContainer extends PureComponent {
   render() {
     const { asset } = this.props;
     return <AssetItem asset={asset} />;

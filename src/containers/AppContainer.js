@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { Route, Router } from "react-router-dom";
 import createHistory from "history/createBrowserHistory";
 import { connect } from "react-redux";
@@ -17,7 +17,7 @@ const auth0Domain = "therewillbecode.auth0.com";
 const auth0ClientId = "2yqWzBSv0zfQEstOyMveQBu4Rw3bqbiT";
 const auth0CallbackUrl = "http://localhost:3000/loading";
 
-export class AppContainer extends Component {
+export class AppContainer extends PureComponent {
   constructor(props) {
     super(props);
     this.login = this.login.bind(this);
