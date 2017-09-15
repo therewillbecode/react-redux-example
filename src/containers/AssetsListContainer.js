@@ -4,7 +4,10 @@ import { withRouter } from "react-router";
 
 import AssetsList from "../components/AssetsList";
 import AssetFilter from "../components/AssetFilter";
-import { filterAssets } from "../selectors/index";
+import {
+  filterAssetsByStatus,
+  filterAssetsBySubstring
+} from "../selectors/index";
 
 export class AssetsListContainer extends PureComponent {
   constructor(props) {
@@ -30,10 +33,11 @@ export class AssetsListContainer extends PureComponent {
   render() {
     const { assets } = this.props;
     const { statusFilter, searchQuery } = this.state;
-    const filteredAssets =
-      statusFilter === "all"
-        ? assets
-        : filterAssets(assets, ({ status }) => status === statusFilter);
+
+    const filteredAssets = filterAssetsBySubstring(
+      filterAssetsByStatus(assets, statusFilter),
+      searchQuery
+    );
 
     return (
       <div>
@@ -43,13 +47,7 @@ export class AssetsListContainer extends PureComponent {
           searchQuery={searchQuery}
         />
         <AssetsList
-          assets={
-            searchQuery ? (
-              filteredAssets.filter(({ name }) => name.includes(searchQuery))
-            ) : (
-              filteredAssets
-            )
-          }
+          assets={filteredAssets}
           navigateToAsset={this.navigateToAsset}
         />
       </div>

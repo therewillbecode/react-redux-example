@@ -71,6 +71,10 @@ describe("selectors", () => {
         ])
       );
     });
+
+    it("should return all assets", () => {
+      expect(selectors.filterAssetsByStatus(assets, "all")).toEqual(assets);
+    });
   });
 
   describe("filterAssetBySubstring", () => {
@@ -95,8 +99,9 @@ describe("selectors", () => {
       );
     });
 
-    it("should return all assets if no value is specified in dispatched assets", () => {
-      expect(selectors.filterAssetsBySubstring(assets, key, undefined)).toEqual(
+    it("should return all assets if substring is undefined", () => {
+      const substring = undefined;
+      expect(selectors.filterAssetsBySubstring(assets, key, substring)).toEqual(
         assets
       );
     });

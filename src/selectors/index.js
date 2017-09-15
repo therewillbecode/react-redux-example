@@ -6,7 +6,7 @@ export const findAssetById = (assets, searchId) =>
   assets.find(({ id }) => id === searchId);
 
 export const filterAssetsByStatus = (assets, status) =>
-  assets.filter(a => a.status === status);
+  status === "all" ? assets : assets.filter(a => a.status === status);
 
 export const filterAssetsBySubstring = (assets, key, substring) =>
   substring ? assets.filter(a => a[key].includes(substring)) : assets;
