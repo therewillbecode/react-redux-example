@@ -57,7 +57,6 @@ class AppContainer extends Component {
   handleAuthentication() {
     //  console.log("called");
     this.auth0.parseHash((err, authResult) => {
-      console.log(authResult, err);
       if (authResult && authResult.idToken) {
         this.setSession(authResult);
         this.history.replace("/assets");
@@ -107,7 +106,13 @@ class AppContainer extends Component {
             logout={this.logout}
             isAuthenticated={isAuthenticated}
           />
-          <Route exact path="/" component={App} />
+          <Route
+            exact
+            path="/"
+            component={() => (
+              <App login={this.login} isAuthenticated={isAuthenticated} />
+            )}
+          />
           <Route path="/assets" component={RequireAuth(AssetsContainer)} />
           <Route
             path="/asset/:id"
