@@ -86,13 +86,8 @@ export default function assets(state = initialState, action) {
       return state.update(
         state.findIndex(({ id }) => id === action.id),
         asset => {
-          if (asset.status === "dispatched") {
-            return asset; // don't edit asset if dispatched
-          } else {
-            asset.comment = action.newComment;
-
-            return asset;
-          }
+          asset.comment = action.newComment;
+          return asset;
         }
       );
     }
