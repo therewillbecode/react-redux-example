@@ -17,7 +17,7 @@ const ReceiveAssetForm = ({
       paddingTop: "2em"
     }}
   >
-    <Segment inverted color="black">
+    <Segment inverted color="grey">
       <Form onSubmit={handleSubmit} inverted>
         <h2 style={{ textAlign: "center" }}>Add Received Asset To Inventory</h2>
         <Form.Group inline>

@@ -19,7 +19,7 @@ const EditAssetForm = ({
       padding: "3em"
     }}
   >
-    <Segment inverted color="black">
+    <Segment inverted color="grey">
       <Form inverted onSubmit={handleSubmit}>
         <h2 style={{ textAlign: "center" }}>Edit Asset ID: {id} </h2>
         <Form.Group>
@@ -54,7 +54,7 @@ const EditAssetForm = ({
           </Form.Field>
         </Form.Group>
 
-        <Segment inverted color="black">
+        <Segment inverted color="grey">
           <div style={{ position: "relative", left: "32%" }}>
             <Button
               onClick={dispatchAsset}
