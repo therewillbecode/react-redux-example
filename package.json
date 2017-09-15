@@ -29,7 +29,6 @@
     "redux": "^3.7.2",
     "redux-persist": "^4.9.1",
     "redux-persist-transform-immutable": "^4.3.0",
-    "reselect": "^3.0.1",
     "semantic-ui-css": "^2.2.12",
     "semantic-ui-react": "^0.73.0"
   },
@@ -41,7 +40,8 @@
     "precommit": "npm run lint",
     "premerge": "npm test",
     "test": "docker-compose run --rm web react-scripts test --env=jsdom",
-    "coverage": "docker-compose run --rm web react-scripts test --coverage --env=jsdom",
+    "coverage":
+      "docker-compose run --rm web react-scripts test --coverage --env=jsdom",
     "eject": "react-scripts eject"
   }
 }
