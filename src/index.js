@@ -3,6 +3,7 @@ import React from "react";
 import { render } from "react-dom";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { persistStore, autoRehydrate } from "redux-persist";
 import immutableTransform from "redux-persist-transform-immutable";
@@ -18,7 +19,7 @@ export const downloadInventoryCSV = () =>
     JSON.stringify(store.getState().assets.toJS()).replace("[", " \n [")
   );
 
-const middleware = [];
+const middleware = [thunk];
 
 const store = createStore(
   rootReducer,
