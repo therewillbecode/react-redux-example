@@ -1,23 +1,24 @@
 import { Map } from "immutable";
 
-import { AUTH_SUCCESS, LOGGED_OUT } from "../actions/types";
+import { AUTH_SUCCESS, LOGGED_OUT, RECEIVE_PROFILE } from "../actions/types";
 
 const initialState = Map({
-  isAuthenticated: false
+  isAuthenticated: false,
+  profile: null
 });
 
 export default function auth(state = initialState, action) {
   switch (action.type) {
     case AUTH_SUCCESS: {
-      return Map({
-        isAuthenticated: true
-      });
+      return state.set("isAuthenticated", true);
     }
 
     case LOGGED_OUT: {
-      return Map({
-        isAuthenticated: false
-      });
+      return initialState;
+    }
+
+    case RECEIVE_PROFILE: {
+      return state.set("profile", action.data);
     }
 
     default:
