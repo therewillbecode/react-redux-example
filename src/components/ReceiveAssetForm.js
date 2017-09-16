@@ -22,7 +22,7 @@ const ReceiveAssetForm = ({
         <h2>Add Received Asset To Inventory</h2>
         <Form.Group inline>
           <Form.Field required error={nameErr !== null}>
-            <Label inverted color="grey" size="huge">
+            <Label color="grey" size="huge">
               Name
             </Label>
             <Form.Input
@@ -34,7 +34,7 @@ const ReceiveAssetForm = ({
             {nameErr ? <Label pointing="above">{nameErr}</Label> : null}
           </Form.Field>
           <Form.Field>
-            <Label inverted color="grey" size="huge">
+            <Label color="grey" size="huge">
               Comments
             </Label>
             <Form.TextArea
@@ -48,7 +48,7 @@ const ReceiveAssetForm = ({
         <Segment inverted color="grey">
           <Form.Button primary content="Submit" />
         </Segment>
-      </Form>{" "}
+      </Form>
     </Segment>
   </div>
 );

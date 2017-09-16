@@ -20,6 +20,7 @@ exports[`ReceiveAssetForm renders correctly 1`] = `
       as="form"
       inverted={true}
       onSubmit={undefined}
+      widths="equal"
     >
       <h2>
         Add Received Asset To Inventory
@@ -31,10 +32,15 @@ exports[`ReceiveAssetForm renders correctly 1`] = `
           error={true}
           required={true}
         >
+          <Label
+            color="grey"
+            size="huge"
+          >
+            Name
+          </Label>
           <FormInput
             as={[Function]}
             control={[Function]}
-            label="Name"
             name="name"
             onChange={undefined}
             placeholder="Name"
@@ -42,23 +48,33 @@ exports[`ReceiveAssetForm renders correctly 1`] = `
           />
         </FormField>
         <FormField>
+          <Label
+            color="grey"
+            size="huge"
+          >
+            Comments
+          </Label>
           <FormTextArea
             as={[Function]}
             control={[Function]}
-            label="Comments"
             name="Comment"
             onChange={undefined}
             placeholder="Add Comments..."
             value={undefined}
           />
         </FormField>
+      </FormGroup>
+      <Segment
+        color="grey"
+        inverted={true}
+      >
         <FormButton
           as={[Function]}
           content="Submit"
           control={[Function]}
           primary={true}
         />
-      </FormGroup>
+      </Segment>
     </Form>
   </Segment>
 </div>

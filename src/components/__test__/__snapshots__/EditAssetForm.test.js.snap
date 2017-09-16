@@ -29,32 +29,31 @@ exports[`EditAssetForm renders correctly 1`] = `
         <FormField
           width="4"
         >
-          <div
-            style={
-              Object {
-                "marginTop": "1.6em",
-              }
-            }
+          <Label
+            color="grey"
+            size="huge"
           >
-            <label>
-              Edit Name
-            </label>
-            <FormInput
-              as={[Function]}
-              control={[Function]}
-              disabled={undefined}
-              name="name"
-              onChange={undefined}
-              value={undefined}
-            />
-          </div>
+            Edit Name
+          </Label>
+          <FormInput
+            as={[Function]}
+            control={[Function]}
+            disabled={undefined}
+            name="name"
+            onChange={undefined}
+            value={undefined}
+          />
         </FormField>
         <FormField
           width="8"
         >
-          <label>
-            Edit Comment
-          </label>
+          <Label
+            color="grey"
+            size="huge"
+          >
+            Edit Comments
+          </Label>
+           
           <FormTextArea
             as={[Function]}
             control={[Function]}
@@ -69,7 +68,7 @@ exports[`EditAssetForm renders correctly 1`] = `
           <div
             style={
               Object {
-                "marginTop": "2.5em",
+                "marginTop": "3.75em",
               }
             }
           >

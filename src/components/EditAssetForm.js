@@ -24,7 +24,7 @@ const EditAssetForm = ({
         <h2>Edit Asset ID: {id} </h2>
         <Form.Group>
           <Form.Field width="4">
-            <Label size="huge" inverted color="grey">
+            <Label size="huge" color="grey">
               Edit Name
             </Label>
             <Form.Input
@@ -35,7 +35,7 @@ const EditAssetForm = ({
             />
           </Form.Field>
           <Form.Field width="8">
-            <Label inverted size="huge" color="grey">
+            <Label size="huge" color="grey">
               Edit Comments
             </Label>{" "}
             <Form.TextArea
