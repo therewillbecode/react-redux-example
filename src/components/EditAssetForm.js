@@ -5,8 +5,7 @@ const EditAssetForm = ({
   dispatched,
   dispatchAsset,
   handleSubmit,
-  handleNameChange,
-  handleCommentChange,
+  onChange,
   name,
   id,
   comment
@@ -31,18 +30,14 @@ const EditAssetForm = ({
               disabled={dispatched}
               name="name"
               value={name}
-              onChange={handleNameChange}
+              onChange={onChange}
             />
           </Form.Field>
           <Form.Field width="8">
             <Label size="huge" color="grey">
               Edit Comments
             </Label>{" "}
-            <Form.TextArea
-              name="comment"
-              value={comment}
-              onChange={handleCommentChange}
-            />
+            <Form.TextArea name="comment" value={comment} onChange={onChange} />
           </Form.Field>
           <Form.Field width="4">
             <div style={{ marginTop: "3.75em" }}>

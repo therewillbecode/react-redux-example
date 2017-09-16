@@ -57,7 +57,7 @@ exports[`ReceiveAssetForm renders correctly 1`] = `
           <FormTextArea
             as={[Function]}
             control={[Function]}
-            name="Comment"
+            name="comment"
             onChange={undefined}
             placeholder="Add Comments..."
             value={undefined}

@@ -8,17 +8,14 @@ export class ReceiveAssetFormContainer extends Component {
   constructor(props) {
     super(props);
     this.state = { name: "", comment: "", nameErr: null };
-    this.handleNameChange = this.handleNameChange.bind(this);
-    this.handleCommentChange = this.handleCommentChange.bind(this);
+    this.onChange = this.onChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleNameChange(e, { value }) {
-    this.setState({ name: value, nameErr: null });
-  }
-
-  handleCommentChange(e, { value }) {
-    this.setState({ comment: value });
+  onChange(e, { name, value }) {
+    const newState = {};
+    newState[name] = value;
+    this.setState(newState);
   }
 
   handleSubmit() {
@@ -42,8 +39,7 @@ export class ReceiveAssetFormContainer extends Component {
         name={name}
         nameErr={nameErr}
         comment={comment}
-        handleCommentChange={this.handleCommentChange}
-        handleNameChange={this.handleNameChange}
+        onChange={this.onChange}
         handleSubmit={this.handleSubmit}
       />
     );

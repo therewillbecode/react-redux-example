@@ -3,8 +3,7 @@ import { Form, Label, Segment } from "semantic-ui-react";
 
 const ReceiveAssetForm = ({
   handleSubmit,
-  handleNameChange,
-  handleCommentChange,
+  onChange,
   name,
   comment,
   nameErr
@@ -29,7 +28,7 @@ const ReceiveAssetForm = ({
               name="name"
               placeholder="Name"
               value={name}
-              onChange={handleNameChange}
+              onChange={onChange}
             />
             {nameErr ? <Label pointing="above">{nameErr}</Label> : null}
           </Form.Field>
@@ -39,9 +38,9 @@ const ReceiveAssetForm = ({
             </Label>
             <Form.TextArea
               placeholder="Add Comments..."
-              name="Comment"
+              name="comment"
               value={comment}
-              onChange={handleCommentChange}
+              onChange={onChange}
             />
           </Form.Field>
         </Form.Group>

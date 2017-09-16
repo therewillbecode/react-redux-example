@@ -12,8 +12,7 @@ export class EditAssetFormContainer extends Component {
   constructor(props) {
     super(props);
     this.state = { name: "", comment: "" };
-    this.handleNameChange = this.handleNameChange.bind(this);
-    this.handleCommentChange = this.handleCommentChange.bind(this);
+    this.onChange = this.onChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -22,12 +21,10 @@ export class EditAssetFormContainer extends Component {
     this.setState({ name, comment });
   }
 
-  handleNameChange(e, { value }) {
-    this.setState({ name: value });
-  }
-
-  handleCommentChange(e, { value }) {
-    this.setState({ comment: value });
+  onChange(e, { name, value }) {
+    const newState = {};
+    newState[name] = value;
+    this.setState(newState);
   }
 
   handleSubmit() {
@@ -54,8 +51,7 @@ export class EditAssetFormContainer extends Component {
         id={id}
         comment={comment}
         dispatched={dispatched}
-        handleCommentChange={this.handleCommentChange}
-        handleNameChange={this.handleNameChange}
+        onChange={this.onChange}
         dispatchAsset={dispatchAsset}
         handleSubmit={this.handleSubmit}
       />

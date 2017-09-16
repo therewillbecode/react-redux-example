@@ -5,10 +5,9 @@ exports[`EditAssetFormContainer renders correctly 1`] = `
   comment=""
   dispatchAsset={undefined}
   dispatched={true}
-  handleCommentChange={[Function]}
-  handleNameChange={[Function]}
   handleSubmit={[Function]}
   id="kj48"
   name=""
+  onChange={[Function]}
 />
 `;
