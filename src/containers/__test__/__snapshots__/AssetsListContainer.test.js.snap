@@ -4,8 +4,8 @@ exports[`AssetsListContainer renders correctly 1`] = `
 <div>
   <AssetFilter
     handleChange={[Function]}
-    handleSearchChange={[Function]}
     searchQuery=""
+    updateSearchQuery={[Function]}
   />
   <AssetsList
     assets={undefined}

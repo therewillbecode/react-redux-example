@@ -7,7 +7,7 @@ const options = [
   { key: 3, text: "Dispatched", value: "dispatched" }
 ];
 
-const AssetFilter = ({ handleChange, handleSearchChange, searchQuery }) => (
+const AssetFilter = ({ handleChange, updateSearchQuery, searchQuery }) => (
   <div
     style={{
       padding: "2em"
@@ -26,7 +26,7 @@ const AssetFilter = ({ handleChange, handleSearchChange, searchQuery }) => (
       label="Search by name"
       placeholder="Name"
       value={searchQuery}
-      onChange={handleSearchChange}
+      onChange={updateSearchQuery}
     />
   </div>
 );

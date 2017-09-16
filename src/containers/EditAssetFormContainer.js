@@ -21,16 +21,16 @@ export class EditAssetFormContainer extends Component {
     this.setState({ name, comment });
   }
 
-  onChange(e, { name, value }) {
+  onChange(e, { key, value }) {
     const newState = {};
-    newState[name] = value;
+    newState[key] = value;
     this.setState(newState);
   }
 
   handleSubmit() {
     const { name, comment } = this.state;
 
-    if (!name) {
+    if (!name || name.length === 0) {
       return;
     }
 

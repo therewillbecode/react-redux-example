@@ -2,8 +2,8 @@
 import React from "react";
 import ReactShallowRenderer from "react-test-renderer/shallow";
 import sinon from "sinon";
-import { shallow, mount } from "enzyme";
-import { Form, Input } from "semantic-ui-react";
+import { shallow } from "enzyme";
+import { Button, Form, Input } from "semantic-ui-react";
 
 import EditAssetForm from "../EditAssetForm";
 
@@ -50,6 +50,12 @@ describe("Calls handler props", () => {
   it("should call handleSubmit prop when form is submitted", () => {
     const wrapper = shallow(<EditAssetForm handleSubmit={spy} />);
     wrapper.find(Form).simulate("submit");
+    expect(spy.calledOnce).toBe(true);
+  });
+
+  it("should call dispatchAsset prop when button is clicked", () => {
+    const wrapper = shallow(<EditAssetForm dispatchAsset={spy} />);
+    wrapper.find(Button).simulate("click");
     expect(spy.calledOnce).toBe(true);
   });
 });

@@ -23,7 +23,7 @@ describe("Calls handler props", () => {
     spy = new sinon.spy();
   });
 
-  it("should call call handleChange prop when filter is changed", () => {
+  it("should call handleChange prop when filter is changed", () => {
     const filterStatus = "received";
     const expectedArg = { target: { value: filterStatus } };
     const wrapper = shallow(<AssetFilter handleChange={spy} />);
@@ -31,10 +31,10 @@ describe("Calls handler props", () => {
     expect(spy.firstCall.args[0]).toEqual(expectedArg);
   });
 
-  it("should call handleSearchChange prop with search query", () => {
+  it("should call updateSearchQuery prop with search query", () => {
     const searchQuery = "Foo";
     const expectedArg = { target: { value: searchQuery } };
-    const wrapper = shallow(<AssetFilter handleSearchChange={spy} />);
+    const wrapper = shallow(<AssetFilter updateSearchQuery={spy} />);
     wrapper.find(Input).simulate("change", expectedArg);
     expect(spy.firstCall.args[0]).toEqual(expectedArg);
   });

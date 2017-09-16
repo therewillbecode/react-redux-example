@@ -12,9 +12,9 @@ export class ReceiveAssetFormContainer extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  onChange(e, { name, value }) {
+  onChange(e, { key, value }) {
     const newState = {};
-    newState[name] = value;
+    newState[key] = value;
     this.setState(newState);
   }
 

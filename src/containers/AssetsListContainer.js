@@ -15,7 +15,7 @@ export class AssetsListContainer extends PureComponent {
     this.state = { statusFilter: "all", searchQuery: "" };
     this.navigateToAsset = this.navigateToAsset.bind(this);
     this.updateStatusFilter = this.updateStatusFilter.bind(this);
-    this.handleSearchChange = this.handleSearchChange.bind(this);
+    this.updateSearchQuery = this.updateSearchQuery.bind(this);
   }
 
   navigateToAsset(id) {
@@ -26,7 +26,7 @@ export class AssetsListContainer extends PureComponent {
     this.setState({ statusFilter: value });
   }
 
-  handleSearchChange(e, { value }) {
+  updateSearchQuery(e, { value }) {
     this.setState({ searchQuery: value });
   }
 
@@ -44,7 +44,7 @@ export class AssetsListContainer extends PureComponent {
       <div>
         <AssetFilter
           handleChange={this.updateStatusFilter}
-          handleSearchChange={this.handleSearchChange}
+          updateSearchQuery={this.updateSearchQuery}
           searchQuery={searchQuery}
         />
         <AssetsList
