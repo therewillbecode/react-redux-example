@@ -48,13 +48,11 @@ describe("actions", () => {
   });
 
   it("should create an authSuccess action", () => {
-    const idToken = "dfgd434f21";
     const expectedAction = {
-      type: types.AUTH_SUCCESS,
-      idToken
+      type: types.AUTH_SUCCESS
     };
 
-    expect(actions.authSuccess(idToken)).toEqual(expectedAction);
+    expect(actions.authSuccess()).toEqual(expectedAction);
   });
 
   it("should create a loggedOut action", () => {
