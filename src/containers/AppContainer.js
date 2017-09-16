@@ -6,6 +6,7 @@ import auth0 from "auth0-js";
 
 import AssetsContainer from "./AssetsContainer"; //
 import AssetItemContainer from "./AssetItemContainer"; //
+import ProfileContainer from "./ProfileContainer";
 import App from "../components/App";
 import AppHeader from "../components/AppHeader";
 import Loading from "../components/Loading";
@@ -112,6 +113,7 @@ export class AppContainer extends PureComponent {
               <App login={this.login} isAuthenticated={isAuthenticated} />
             )}
           />
+          <Route exact path="/profile" component={ProfileContainer} />
           <Route path="/assets" component={RequireAuth(AssetsContainer)} />
           <Route
             path="/asset/:id"

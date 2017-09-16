@@ -44,6 +44,11 @@ exports[`AssetsContainer renders correctly 1`] = `
     />
     <Route
       component={[Function]}
+      exact={true}
+      path="/profile"
+    />
+    <Route
+      component={[Function]}
       path="/assets"
     />
     <Route
