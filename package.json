@@ -31,6 +31,7 @@
     "redux": "^3.7.2",
     "redux-persist": "^4.9.1",
     "redux-persist-transform-immutable": "^4.3.0",
+    "redux-thunk": "^2.2.0",
     "semantic-ui-css": "^2.2.12",
     "semantic-ui-react": "^0.73.0"
   },
