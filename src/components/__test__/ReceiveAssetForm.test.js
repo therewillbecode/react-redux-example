@@ -23,6 +23,24 @@ describe("Calls handler props", () => {
     spy = new sinon.spy();
   });
 
+  it("Input should call onChange handler with correct args", () => {
+    const expectedValue = { name: "name", value: "Foo" };
+    const wrapper = shallow(<ReceiveAssetForm onChange={spy} />);
+    wrapper.find(Form.Input).simulate("change", { target: expectedValue });
+    const { target } = spy.firstCall.args[0];
+
+    expect(target).toEqual(expectedValue);
+  });
+
+  it("TextArea should call onChange handler with correct args", () => {
+    const expectedValue = { name: "comment", value: "Lorem Ipsum" };
+    const wrapper = shallow(<ReceiveAssetForm onChange={spy} />);
+    wrapper.find(Form.TextArea).simulate("change", { target: expectedValue });
+    const { target } = spy.firstCall.args[0];
+
+    expect(target).toEqual(expectedValue);
+  });
+
   it("should call handleSubmit when form is submitted", () => {
     const wrapper = shallow(<ReceiveAssetForm handleSubmit={spy} />);
     wrapper.find(Form).simulate("submit");
