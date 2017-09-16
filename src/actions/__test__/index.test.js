@@ -62,4 +62,42 @@ describe("actions", () => {
 
     expect(actions.loggedOut()).toEqual(expectedAction);
   });
+
+  describe("requestProfile", () => {
+    it("should create a requestProfile action", () => {
+      const expectedAction = {
+        type: types.REQUEST_PROFILE
+      };
+
+      expect(actions.requestProfile()).toEqual(expectedAction);
+    });
+  });
+
+  describe("receiveProfile", () => {
+    it("should create a receiveProfile action", () => {
+      const data = { firstName: "Foo", lastName: "Bar" };
+      const expectedAction = {
+        type: types.RECEIVE_PROFILE,
+        data
+      };
+
+      expect(actions.receiveProfile(data)).toEqual(expectedAction);
+    });
+  });
+
+  describe("requestProfileErr", () => {
+    it("should create a requestProfileErr action", () => {
+      const err = "404";
+      const expectedAction = {
+        type: types.REQUEST_PROFILE_ERR,
+        err
+      };
+
+      expect(actions.requestProfileErr(err)).toEqual(expectedAction);
+    });
+  });
+
+  describe("fetchProfile", () => {
+    it("should ...", () => {});
+  });
 });

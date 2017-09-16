@@ -9,12 +9,12 @@ export const requestProfile = () => ({
   type: types.REQUEST_PROFILE
 });
 
-export const receiveProfile = response => ({
+export const receiveProfile = data => ({
   type: types.RECEIVE_PROFILE,
-  response
+  data
 });
 
-export const receiveProfileErr = err => ({
+export const requestProfileErr = err => ({
   type: types.REQUEST_PROFILE_ERR,
   err
 });
@@ -24,13 +24,12 @@ export const fetchProfile = () => {
     dispatch(requestProfile());
 
     return axios
-      .get(ROOT_URL, {
+      .get(`${ROOT_URL}/userinfo`, {
         headers: {
-          authorization: `Bearer ${localStorage.getItem("access_token")}`,
-          "Content-Type": "application/json"
+          authorization: `Bearer ${localStorage.getItem("access_token")}`
         }
       })
-      .then(response => dispatch(receiveProfile(response)))
+      .then(({ data }) => dispatch(receiveProfile(data)))
       .catch(err => dispatch(requestProfileErr(err)));
   };
 };
