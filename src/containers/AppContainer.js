@@ -26,7 +26,7 @@ export class AppContainer extends PureComponent {
     this.isAuthenticated = this.isAuthenticated.bind(this);
     this.history = createHistory();
     this.history.listen(({ pathname, hash }) => {
-      if (pathname === "/loading" && /id_token|error/.test(hash)) {
+      if (pathname === /access_token|id_token|error/.test(hash)) {
         this.handleAuthentication();
       }
     });
@@ -36,7 +36,7 @@ export class AppContainer extends PureComponent {
       clientID: auth0ClientId,
       redirectUri: auth0CallbackUrl,
       audience: `https://${auth0Domain}/userinfo`,
-      responseType: "id_token",
+      responseType: "token id_token",
       scope: "openid profile"
     });
   }
@@ -56,19 +56,20 @@ export class AppContainer extends PureComponent {
 
   handleAuthentication() {
     this.auth0.parseHash((err, authResult) => {
-      if (authResult && authResult.idToken) {
+      if (err) {
+        this.history.replace("/");
+      } else {
         this.setSession(authResult);
         this.history.replace("/assets");
-      } else if (err) {
-        this.history.replace("/");
       }
     });
   }
 
-  setSession({ expiresIn, idToken }) {
+  setSession({ expiresIn, idToken, accessToken }) {
     // Set the time that the access token will expire at
     let expiresAt = JSON.stringify(expiresIn * 1000 + new Date().getTime());
-    localStorage.setItem("id_token", idToken); // JSON web token - decode on server side
+    localStorage.setItem("id_token", idToken);
+    localStorage.setItem("access_token", accessToken);
     localStorage.setItem("expires_at", expiresAt);
     this.props.authSuccess(idToken);
     // navigate to the assets route
