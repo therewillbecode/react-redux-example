@@ -23,25 +23,25 @@ describe("Calls handler props", () => {
     spy = new sinon.spy();
   });
 
-  it("Input should call onChange handler with correct args", () => {
-    const expectedValue = { name: "name", value: "Foo" };
+  it("Input should call onChange prop with correct args", () => {
+    const expectedArg = { name: "name", value: "Foo" };
     const wrapper = shallow(<ReceiveAssetForm onChange={spy} />);
-    wrapper.find(Form.Input).simulate("change", { target: expectedValue });
+    wrapper.find(Form.Input).simulate("change", { target: expectedArg });
     const { target } = spy.firstCall.args[0];
 
-    expect(target).toEqual(expectedValue);
+    expect(target).toEqual(expectedArg);
   });
 
-  it("TextArea should call onChange handler with correct args", () => {
-    const expectedValue = { name: "comment", value: "Lorem Ipsum" };
+  it("TextArea should call onChange prop with correct args", () => {
+    const expectedArg = { name: "comment", value: "Lorem Ipsum" };
     const wrapper = shallow(<ReceiveAssetForm onChange={spy} />);
-    wrapper.find(Form.TextArea).simulate("change", { target: expectedValue });
+    wrapper.find(Form.TextArea).simulate("change", { target: expectedArg });
     const { target } = spy.firstCall.args[0];
 
-    expect(target).toEqual(expectedValue);
+    expect(target).toEqual(expectedArg);
   });
 
-  it("should call handleSubmit when form is submitted", () => {
+  it("should call handleSubmit prop when form is submitted", () => {
     const wrapper = shallow(<ReceiveAssetForm handleSubmit={spy} />);
     wrapper.find(Form).simulate("submit");
     expect(spy.calledOnce).toBe(true);

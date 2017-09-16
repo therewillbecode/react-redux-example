@@ -23,12 +23,11 @@ describe("Calls handler props", () => {
     spy = new sinon.spy();
   });
 
-  it("should call handleSubmit when form is submitted", () => {
+  it("should call call handleChange prop when filter is changed", () => {
     const filterStatus = "received";
+    const expectedArg = { target: { value: filterStatus } };
     const wrapper = shallow(<AssetFilter handleChange={spy} />);
-    wrapper
-      .find(Dropdown)
-      .simulate("change", { target: { value: filterStatus } });
-    expect(spy.firstCall).toEqual(filterStatus);
+    wrapper.find(Dropdown).simulate("change", expectedArg);
+    expect(spy.firstCall.args[0]).toEqual(expectedArg);
   });
 });
