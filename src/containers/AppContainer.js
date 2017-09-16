@@ -55,7 +55,6 @@ export class AppContainer extends PureComponent {
   }
 
   handleAuthentication() {
-    //  console.log("called");
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.idToken) {
         this.setSession(authResult);
