@@ -23,7 +23,7 @@ const AssetFilter = ({ handleChange, handleSearchChange, searchQuery }) => (
     />
     <Input
       name="name"
-      label="search by name"
+      label="Search by name"
       placeholder="Name"
       value={searchQuery}
       onChange={handleSearchChange}

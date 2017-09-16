@@ -44,7 +44,7 @@ exports[`AssetItem renders correctly 1`] = `
     text="Filter Assets"
   />
   <Input
-    label="search by name"
+    label="Search by name"
     name="name"
     onChange={undefined}
     placeholder="Name"

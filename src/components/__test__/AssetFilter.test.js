@@ -30,4 +30,12 @@ describe("Calls handler props", () => {
     wrapper.find(Dropdown).simulate("change", expectedArg);
     expect(spy.firstCall.args[0]).toEqual(expectedArg);
   });
+
+  it("should call handleSearchChange prop with search query", () => {
+    const searchQuery = "Foo";
+    const expectedArg = { target: { value: searchQuery } };
+    const wrapper = shallow(<AssetFilter handleSearchChange={spy} />);
+    wrapper.find(Input).simulate("change", expectedArg);
+    expect(spy.firstCall.args[0]).toEqual(expectedArg);
+  });
 });

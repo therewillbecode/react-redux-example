@@ -2,7 +2,7 @@
 import React from "react";
 import ReactShallowRenderer from "react-test-renderer/shallow";
 import sinon from "sinon";
-import { shallow, mount } from "enzyme";
+import { shallow } from "enzyme";
 import { Form } from "semantic-ui-react";
 
 import ReceiveAssetForm from "../ReceiveAssetForm";
