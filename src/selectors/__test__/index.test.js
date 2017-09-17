@@ -4,22 +4,18 @@ import { Map, List } from "immutable";
 import * as selectors from "../index";
 
 describe("selectors", () => {
+  const assets = List([]);
+  const auth = Map({});
+  const state = Map({ assets, auth });
+
   describe("assetsSelector", () => {
     it("should return assets", () => {
-      const assets = List([]);
-      const auth = Map({});
-      const state = { assets, auth };
-
       expect(selectors.assetsSelector(state)).toEqual(assets);
     });
   });
 
   describe("authSelector", () => {
     it("should return auth", () => {
-      const assets = List([]);
-      const auth = Map({});
-      const state = { assets, auth };
-
       expect(selectors.authSelector(state)).toEqual(auth);
     });
   });
