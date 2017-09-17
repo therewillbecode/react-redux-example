@@ -43,18 +43,18 @@ Git hooks are set up to run linters on precommit and tests for premerge,
 npm run lint
 ```
 
-#### Docker
+##### Docker
 
 Both tests and linting are run in temporary docker containers.
 
 NPM install is cached in the Dockerfile so as to enable fast image builds.
 
 
-### Redux Thunk
+##### Redux Thunk
 
 Redux thunk was used for async actions such as fetching the users profile.
 
-#### Redux Immutable Persist
+##### Redux Immutable Persist
 
 In order to save assets to CSV Redux Immutable Persist was used to convert the inventory slice of the store from an Immutable data  structure to serialised JSON and then save it to local storage. This was then parsed to csv before being downloaded in the browser.
 
