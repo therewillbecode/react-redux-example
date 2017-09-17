@@ -31,8 +31,13 @@ describe("RequireAuth", () => {
     expect(wrapper.find("AuthenticatedComponent")).toHaveLength(1);
   });
 
-  it("should pass correct props", () => {
-    const tree = renderer.create(<wrapper />).toJSON();
+  it("should render wrapped component when authenticated", () => {
+    const tree = renderer.create(<wrapper isAuthenticated={true} />).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it("should no render wrapped component when not authenticated", () => {
+    const tree = renderer.create(<wrapper isAuthenticated={false} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

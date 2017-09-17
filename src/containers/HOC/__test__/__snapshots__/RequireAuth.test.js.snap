@@ -1,3 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`RequireAuth should pass correct props 1`] = `<wrapper />`;
+exports[`RequireAuth should no render wrapped component when not authenticated 1`] = `
+<wrapper
+  isAuthenticated={false}
+/>
+`;
+
+exports[`RequireAuth should render wrapped component when authenticated 1`] = `
+<wrapper
+  isAuthenticated={true}
+/>
+`;
