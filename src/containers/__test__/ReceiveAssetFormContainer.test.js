@@ -51,10 +51,10 @@ describe("Calls handler props", () => {
 
   it("should setState correctly when onChange method is called", () => {
     const expectedState = { name: "UAV", comment: "", nameErr: null };
-    const key = "name";
+    const name = "name";
     const value = "UAV";
     const wrapper = mount(<ReceiveAssetFormContainer />);
-    wrapper.instance().onChange({}, { key, value });
+    wrapper.instance().onChange({}, { name, value });
     expect(wrapper.state()).toEqual(expectedState);
   });
 });

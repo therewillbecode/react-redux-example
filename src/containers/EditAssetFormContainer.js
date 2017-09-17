@@ -21,7 +21,7 @@ export class EditAssetFormContainer extends Component {
     this.setState({ name, comment });
   }
 
-  onChange(e, { key, value }) {
+  onChange(e, { name: key, value }) {
     const newState = {};
     newState[key] = value;
     this.setState(newState);

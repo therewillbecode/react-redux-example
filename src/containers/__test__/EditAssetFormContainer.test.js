@@ -75,7 +75,7 @@ describe("Calls handler props", () => {
 
   it("should setState correctly when onChange method is called", () => {
     const expectedState = { name: "UAV", comment: "Bar" };
-    const key = "comment";
+    const name = "comment";
     const value = "Bar";
     const wrapper = mount(
       <EditAssetFormContainer
@@ -84,7 +84,7 @@ describe("Calls handler props", () => {
         editAssetComment={() => null}
       />
     );
-    wrapper.instance().onChange({}, { key, value });
+    wrapper.instance().onChange({}, { name, value });
     expect(wrapper.state()).toEqual(expectedState);
   });
 
