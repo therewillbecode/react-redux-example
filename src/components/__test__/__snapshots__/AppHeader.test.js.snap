@@ -18,7 +18,6 @@ exports[`AppHeader renders correctly when user is authenticated 1`] = `
         "background": "#085276",
       }
     }
-    visible={true}
     width="thin"
   >
     <MenuItem
@@ -45,7 +44,6 @@ exports[`AppHeader renders correctly when user is authenticated 1`] = `
       link={true}
       name="assets"
       onClick={[Function]}
-      text={true}
     >
       <h3>
         Assets
@@ -100,7 +98,6 @@ exports[`AppHeader renders correctly when user is not authenticated 1`] = `
         "background": "#085276",
       }
     }
-    visible={true}
     width="thin"
   >
     <MenuItem

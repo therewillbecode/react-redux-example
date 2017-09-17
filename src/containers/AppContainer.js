@@ -42,14 +42,13 @@ export class AppContainer extends PureComponent {
     });
   }
 
-  componentDidMount() {
+  componentDidUpdate() {
     const token = localStorage.getItem("access_token");
-
     // If we have a token, consider the user to be signed in and update state
     if (token && !this.props.isAuthenticated) {
       this.props.authSuccess();
     }
-    if (token && !this.props.profile) {
+    if (token) {
       this.props.fetchProfile(token);
     }
   }
