@@ -33,7 +33,7 @@ export const fetchProfile = accessToken => {
       .then(({ data }) => {
         dispatch(receiveProfile(data));
       })
-      .catch(({ response }) => dispatch(requestProfileErr(response.data)));
+      .catch(({ response }) => dispatch(requestProfileErr(response)));
   };
 };
 
@@ -41,14 +41,14 @@ export const receiveAsset = (name, comment) => ({
   type: types.RECEIVE_ASSET,
   id: cuid(),
   name,
-  timestamp: Date.now(),
+  timestamp: new Date().toLocaleString(),
   comment
 });
 
 export const dispatchAsset = id => ({
   type: types.DISPATCH_ASSET,
   id,
-  timestamp: Date.now()
+  timestamp: new Date().toLocaleString()
 });
 
 export const editAssetName = (id, newName) => ({
