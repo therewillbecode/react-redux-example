@@ -18,10 +18,12 @@ export class ProfileContainer extends Component {
   }
 }
 
+const mapStateToProps = state => ({ profile: state.getIn("profile")[0] });
+
 const mapDispatchToProps = dispatch => {
   return {
     fetchProfile: token => dispatch(fetchProfile(token))
   };
 };
 
-export default connect(undefined, mapDispatchToProps)(ProfileContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileContainer);
