@@ -27,7 +27,7 @@ describe("actions", () => {
 
     expect(action.type).toEqual(types.RECEIVE_ASSET);
     expect(typeof action.id).toEqual("string");
-    expect(typeof action.timestamp).toEqual("number");
+    expect(typeof action.timestamp).toEqual("string");
   });
 
   it("should create an action to dispatch asset", () => {
@@ -36,7 +36,7 @@ describe("actions", () => {
 
     expect(action.type).toEqual(types.DISPATCH_ASSET);
     expect(typeof action.id).toEqual("string");
-    expect(typeof action.timestamp).toEqual("number");
+    expect(typeof action.timestamp).toEqual("string");
   });
 
   it("should create an action to edit asset name", () => {
@@ -168,14 +168,13 @@ describe("actions", () => {
     });
 
     it("should dispatch correction actions when error occurs while fetching user profile", () => {
-      const err = "Unauthorized";
       const store = mockStore({});
       const expectedActions = [
         { type: types.REQUEST_PROFILE },
-        { type: types.REQUEST_PROFILE_ERR, err }
+        { type: types.REQUEST_PROFILE_ERR, err: { data: "Unauthorized" } }
       ];
 
-      stubAxios({ status: 401, response: { data: err } });
+      stubAxios({ status: 401, response: { data: "Unauthorized" } });
 
       return store.dispatch(actions.fetchProfile()).then(() => {
         expect(store.getActions()).toEqual(expectedActions);
