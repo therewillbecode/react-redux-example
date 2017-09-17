@@ -19,7 +19,6 @@ export class AppHeader extends Component {
           as={Menu}
           direction="top"
           width="thin"
-          visible
           borderless
           inverted
           style={{ background: "#085276" }}
@@ -33,7 +32,6 @@ export class AppHeader extends Component {
           {isAuthenticated ? (
             <Menu.Item
               link
-              text
               onClick={() => history.push("/assets")}
               name="assets"
             >
