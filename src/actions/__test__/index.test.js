@@ -1,9 +1,8 @@
 /* eslint-disable */
 import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
-import fetchMock from "fetch-mock";
-
 import axios from "axios";
+
 import * as actions from "../index";
 import * as types from "../types";
 
@@ -140,6 +139,7 @@ describe("actions", () => {
         { type: types.REQUEST_PROFILE },
         { type: types.RECEIVE_PROFILE, data: profile }
       ];
+
       stubAxios({ status: 200, data: profile });
 
       return store.dispatch(actions.fetchProfile()).then(() => {
