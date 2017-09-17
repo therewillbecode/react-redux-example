@@ -1,9 +1,9 @@
-import cuid from "cuid";
 import axios from "axios";
+import cuid from "cuid";
 
 import * as types from "./types";
 
-const ROOT_URL = "https://therewillbecode.auth0.com";
+export const ROOT_URL = "https://therewillbecode.auth0.com";
 
 export const requestProfile = () => ({
   type: types.REQUEST_PROFILE
@@ -19,18 +19,21 @@ export const requestProfileErr = err => ({
   err
 });
 
-export const fetchProfile = () => {
+export const fetchProfile = accessToken => {
   return dispatch => {
     dispatch(requestProfile());
 
     return axios
       .get(`${ROOT_URL}/userinfo`, {
         headers: {
-          authorization: `Bearer ${localStorage.getItem("access_token")}`
+          authorization: `Bearer ${accessToken}`,
+          "Content-Type": "application/json"
         }
       })
-      .then(({ data }) => dispatch(receiveProfile(data)))
-      .catch(err => dispatch(requestProfileErr(err)));
+      .then(({ data }) => {
+        dispatch(receiveProfile(data));
+      })
+      .catch(({ response }) => dispatch(requestProfileErr(response.data)));
   };
 };
 
