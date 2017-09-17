@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
+import Profile from "../components/Profile";
 import { fetchProfile } from "../actions/index.js";
 
 export class ProfileContainer extends Component {
@@ -10,15 +11,25 @@ export class ProfileContainer extends Component {
 
   componentDidMount() {
     const accessToken = localStorage.getItem("access_token");
-    this.props.fetchProfile(accessToken);
+    if (!this.props.profile) {
+      this.props.fetchProfile(accessToken);
+    }
   }
 
   render() {
-    return <div />;
+    const { profile } = this.props;
+
+    return profile ? (
+      <Profile profile={profile} />
+    ) : (
+      <img src="img/loading.svg" alt="loading" />
+    );
   }
 }
 
-const mapStateToProps = state => ({ profile: state.getIn("profile")[0] });
+const mapStateToProps = state => ({
+  profile: state.get("auth").get("profile")
+});
 
 const mapDispatchToProps = dispatch => {
   return {
