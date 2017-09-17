@@ -36,6 +36,7 @@ exports[`AssetsContainer renders correctly 1`] = `
       isAuthenticated={undefined}
       login={[Function]}
       logout={[Function]}
+      profile={undefined}
     />
     <Route
       component={[Function]}
