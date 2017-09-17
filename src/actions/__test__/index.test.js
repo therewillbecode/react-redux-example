@@ -1,6 +1,23 @@
 /* eslint-disable */
+import configureMockStore from "redux-mock-store";
+import thunk from "redux-thunk";
+import fetchMock from "fetch-mock";
+
+import axios from "axios";
 import * as actions from "../index";
 import * as types from "../types";
+
+const stubAxios = response => {
+  axios.get = jest
+    .fn()
+    .mockImplementation(
+      () =>
+        new Promise(
+          (resolve, reject) =>
+            response.status !== 200 ? reject(response) : resolve(response)
+        )
+    );
+};
 
 describe("actions", () => {
   it("should create an action for received asset", () => {
@@ -98,6 +115,71 @@ describe("actions", () => {
   });
 
   describe("fetchProfile", () => {
-    it("should ...", () => {});
+    let mockStore;
+    const profile = {
+      sub: "42768269",
+      name: "Foo"
+    };
+
+    beforeEach(() => {
+      const middlewares = [thunk];
+      mockStore = configureMockStore(middlewares);
+    });
+
+    afterEach(() => {
+      axios.get.mockReset();
+    });
+
+    afterAll(() => {
+      axios.get.mockRestore();
+    });
+
+    it("should dispatch correct actions when user profile is fetched successfully", () => {
+      const store = mockStore({});
+      const expectedActions = [
+        { type: types.REQUEST_PROFILE },
+        { type: types.RECEIVE_PROFILE, data: profile }
+      ];
+      stubAxios({ status: 200, data: profile });
+
+      return store.dispatch(actions.fetchProfile()).then(() => {
+        expect(store.getActions()).toEqual(expectedActions);
+      });
+    });
+
+    it("should pass auth token correctly in http header options", () => {
+      const expectedHeader = {
+        headers: {
+          authorization: "Bearer h73",
+          "Content-Type": "application/json"
+        }
+      };
+      const token = "h73";
+      const store = mockStore({});
+
+      stubAxios({ status: 200, data: profile });
+
+      return store.dispatch(actions.fetchProfile(token)).then(() => {
+        const expectedHeader = {};
+        const headers = axios.get.mock.calls[0][1]["headers"];
+
+        expect(headers.authorization).toEqual("Bearer h73");
+      });
+    });
+
+    it("should dispatch correction actions when error occurs while fetching user profile", () => {
+      const err = "Unauthorized";
+      const store = mockStore({});
+      const expectedActions = [
+        { type: types.REQUEST_PROFILE },
+        { type: types.REQUEST_PROFILE_ERR, err }
+      ];
+
+      stubAxios({ status: 401, response: { data: err } });
+
+      return store.dispatch(actions.fetchProfile()).then(() => {
+        expect(store.getActions()).toEqual(expectedActions);
+      });
+    });
   });
 });
