@@ -8,7 +8,6 @@
     "eslint-config-prettier": "^2.4.0",
     "eslint-plugin-prettier": "^2.2.0",
     "eslint-plugin-react": "^7.3.0",
-    "fetch-mock": "^5.12.2",
     "husky": "^0.14.3",
     "prettier-eslint": "^8.0.0",
     "react-addons-test-utils": "^15.6.0",
