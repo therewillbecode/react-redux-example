@@ -5,14 +5,12 @@ import Profile from "../components/Profile";
 import { fetchProfile } from "../actions/index.js";
 
 export class ProfileContainer extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
-    const accessToken = localStorage.getItem("access_token");
-    if (!this.props.profile) {
-      this.props.fetchProfile(accessToken);
+    const { profile } = this.props;
+    let token = localStorage.getItem("access_token");
+
+    if (!profile && token) {
+      this.props.fetchProfile(token);
     }
   }
 

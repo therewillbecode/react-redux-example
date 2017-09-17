@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProfileContainer renders loading icon if no profile data present 1`] = `
+<img
+  alt="loading"
+  src="img/loading.svg"
+/>
+`;
+
+exports[`ProfileContainer renders profile if data present 1`] = `
+<Profile
+  profile={
+    Object {
+      "family_name": "Bar",
+      "given_name": "Foo",
+      "name": "Foo Bar",
+      "nickname": "Foobar",
+      "picture": "/photo.jpg",
+    }
+  }
+/>
+`;
