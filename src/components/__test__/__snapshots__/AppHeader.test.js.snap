@@ -1,6 +1,88 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AppHeader renders correctly 1`] = `
+exports[`AppHeader renders correctly when user is authenticated 1`] = `
+<div
+  style={
+    Object {
+      "height": "5vh",
+    }
+  }
+>
+  <SidebarPushable
+    as={[Function]}
+    borderless={true}
+    direction="top"
+    inverted={true}
+    style={
+      Object {
+        "background": "#085276",
+      }
+    }
+    visible={true}
+    width="thin"
+  >
+    <MenuItem
+      size="huge"
+    >
+      <Icon
+        as="i"
+        bordered={true}
+        inverted={true}
+        name="barcode"
+        size="big"
+      />
+    </MenuItem>
+    <MenuItem
+      link={true}
+      name="title"
+      onClick={[Function]}
+    >
+      <h2>
+        Supply Chain Project
+      </h2>
+    </MenuItem>
+    <MenuItem
+      link={true}
+      name="assets"
+      onClick={[Function]}
+      text={true}
+    >
+      <h3>
+        Assets
+      </h3>
+    </MenuItem>
+    <MenuItem
+      icon={true}
+      link={true}
+      name="Download"
+      onClick={[Function]}
+      position="right"
+      size="big"
+    >
+      <Icon
+        as="i"
+        name="download"
+        size="large"
+      />
+    </MenuItem>
+    <MenuItem
+      link={true}
+      name="Logout"
+      onClick={undefined}
+      size="huge"
+    >
+      <Icon
+        as="i"
+        name="sign out"
+        size="large"
+      />
+      Logout
+    </MenuItem>
+  </SidebarPushable>
+</div>
+`;
+
+exports[`AppHeader renders correctly when user is not authenticated 1`] = `
 <div
   style={
     Object {
