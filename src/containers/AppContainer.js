@@ -11,7 +11,7 @@ import App from "../components/App";
 import AppHeader from "../components/AppHeader";
 import Loading from "../components/Loading";
 import RequireAuth from "./HOC/RequireAuth";
-import { authSuccess, loggedOut } from "../actions/index";
+import { authSuccess, loggedOut, fetchProfile } from "../actions/index";
 import { isAuthenticated } from "../selectors/index";
 
 const auth0Domain = "therewillbecode.auth0.com";
@@ -46,8 +46,11 @@ export class AppContainer extends PureComponent {
     const token = localStorage.getItem("access_token");
 
     // If we have a token, consider the user to be signed in and update state
-    if (token) {
+    if (token && !this.props.isAuthenticated) {
       this.props.authSuccess();
+    }
+    if (token && !this.props.profile) {
+      this.props.fetchProfile(token);
     }
   }
 
@@ -61,7 +64,6 @@ export class AppContainer extends PureComponent {
         this.history.replace("/");
       } else {
         this.props.authSuccess();
-
         this.setSession(authResult);
         this.history.replace("/assets");
       }
@@ -97,7 +99,7 @@ export class AppContainer extends PureComponent {
   }
 
   render() {
-    const { isAuthenticated, downloadInventoryCSV } = this.props;
+    const { isAuthenticated, downloadInventoryCSV, profile } = this.props;
 
     return (
       <Router history={this.history}>
@@ -107,6 +109,7 @@ export class AppContainer extends PureComponent {
             logout={this.logout}
             isAuthenticated={isAuthenticated}
             downloadInventoryCSV={downloadInventoryCSV}
+            profile={profile}
           />
           <Route
             exact
@@ -140,7 +143,8 @@ export class AppContainer extends PureComponent {
 
 const mapStateToProps = state => {
   return {
-    isAuthenticated: isAuthenticated(state)
+    isAuthenticated: isAuthenticated(state),
+    profile: state.get("auth").get("profile")
   };
 };
 
@@ -149,6 +153,7 @@ const mapDispatchToProps = dispatch => {
     authSuccess: idToken => {
       dispatch(authSuccess(idToken));
     },
+    fetchProfile: token => dispatch(fetchProfile(token)),
     loggedOut: () => {
       dispatch(loggedOut());
     }
