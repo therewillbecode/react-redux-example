@@ -12,7 +12,7 @@ export class AssetItemContainer extends PureComponent {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  asset: findAssetById(state.assets, ownProps.match.params.id)
+  asset: findAssetById(state.get("assets"), ownProps.match.params.id)
 });
 
 export default connect(mapStateToProps)(AssetItemContainer);

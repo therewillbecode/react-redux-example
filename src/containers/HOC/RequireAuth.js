@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
+import { isAuthenticated } from "../../selectors/index";
+
 export class AuthenticatedComponent extends Component {
   componentWillMount() {
     if (!this.props.authenticated) {
@@ -28,7 +30,7 @@ export class AuthenticatedComponent extends Component {
 
 function RequireAuth(ComposedComponent) {
   const mapStateToProps = state => ({
-    authenticated: state.auth.get("isAuthenticated"),
+    authenticated: isAuthenticated(state),
     composedComponent: ComposedComponent
   });
 

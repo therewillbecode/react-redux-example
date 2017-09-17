@@ -56,6 +56,6 @@ export class AssetsListContainer extends PureComponent {
   }
 }
 
-const mapStateToProps = ({ assets }) => ({ assets });
+const mapStateToProps = state => ({ assets: state.get("assets") });
 
 export default withRouter(connect(mapStateToProps)(AssetsListContainer));

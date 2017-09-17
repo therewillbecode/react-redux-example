@@ -5,10 +5,6 @@ import Assets from "../components/Assets";
 
 export const AssetsContainer = ({ assets }) => <Assets assets={assets} />;
 
-const mapStateToProps = state => {
-  return {
-    assets: state.assets
-  };
-};
+const mapStateToProps = state => ({ assets: state.get("assets") });
 
 export default connect(mapStateToProps)(AssetsContainer);

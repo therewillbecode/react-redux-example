@@ -4,15 +4,16 @@ import { render } from "react-dom";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
+import Immutable from "immutable";
+import { persistStore, autoRehydrate } from "redux-persist-immutable";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { persistStore, autoRehydrate } from "redux-persist";
-import immutableTransform from "redux-persist-transform-immutable";
 
 import AppContainer from "./containers/AppContainer";
 import registerServiceWorker from "./registerServiceWorker";
 import rootReducer from "./reducers/index";
-import "semantic-ui-css/semantic.min.css";
 import { downloadCSV } from "./utils";
+
+import "semantic-ui-css/semantic.min.css";
 
 export const downloadInventoryCSV = () =>
   downloadCSV(
@@ -20,14 +21,16 @@ export const downloadInventoryCSV = () =>
   );
 
 const middleware = [thunk];
+const initialState = Immutable.Map({});
 
 const store = createStore(
   rootReducer,
+  initialState,
   composeWithDevTools(applyMiddleware(...middleware), autoRehydrate())
 );
 
-persistStore(store, {
-  transforms: [immutableTransform()]
+persistStore(store, {}, () => {
+  //  console.log("rehydration complete");
 });
 
 render(

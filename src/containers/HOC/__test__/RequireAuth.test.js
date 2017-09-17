@@ -16,7 +16,7 @@ const mockStore = configureStore([]);
 
 describe("RequireAuth", () => {
   const RequireAuthComponent = RequireAuth(Component);
-  const initialState = { auth: fromJS({ isAuthenticated: true }) };
+  const initialState = fromJS({ auth: { isAuthenticated: true } });
   let wrapper = null;
 
   beforeEach(() => {
