@@ -1,6 +1,6 @@
 const exportFilename = "inventory.csv";
 
-export function downloadCSV(data) {
+export const downloadCSV = data => {
   const csvData = new Blob([data], { type: "text/csv;charset=utf-8;" });
   //IE11 & Edge
   if (navigator.msSaveBlob) {
@@ -14,4 +14,14 @@ export function downloadCSV(data) {
     link.click();
     document.body.removeChild(link);
   }
-}
+};
+
+export const downloadStateCSV = (store, key) => () =>
+  downloadCSV(
+    JSON.stringify(
+      store
+        .getState()
+        .get(key)
+        .toJS()
+    ).replace("[", " \n [")
+  );

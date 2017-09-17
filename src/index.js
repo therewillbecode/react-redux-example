@@ -11,14 +11,9 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import AppContainer from "./containers/AppContainer";
 import registerServiceWorker from "./registerServiceWorker";
 import rootReducer from "./reducers/index";
-import { downloadCSV } from "./utils";
+import { downloadStateCSV } from "./utils/index";
 
 import "semantic-ui-css/semantic.min.css";
-
-export const downloadInventoryCSV = () =>
-  downloadCSV(
-    JSON.stringify(store.getState().assets.toJS()).replace("[", " \n [")
-  );
 
 const middleware = [thunk];
 const initialState = Immutable.Map({});
@@ -29,9 +24,9 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(...middleware), autoRehydrate())
 );
 
-persistStore(store, {}, () => {
-  //  console.log("rehydration complete");
-});
+const downloadInventoryCSV = downloadStateCSV(store, "assets");
+
+persistStore(store, {});
 
 render(
   <Provider store={store}>
