@@ -9,7 +9,8 @@ export class ProfileContainer extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchProfile();
+    const accessToken = localStorage.getItem("access_token");
+    this.props.fetchProfile(accessToken);
   }
 
   render() {
@@ -19,7 +20,7 @@ export class ProfileContainer extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchProfile: () => dispatch(fetchProfile())
+    fetchProfile: token => dispatch(fetchProfile(token))
   };
 };
 
