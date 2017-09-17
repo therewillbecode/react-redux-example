@@ -43,11 +43,11 @@ export class AppContainer extends PureComponent {
   }
 
   componentDidMount() {
-    const idToken = localStorage.getItem("id_token");
+    const token = localStorage.getItem("access_token");
 
     // If we have a token, consider the user to be signed in and update state
-    if (idToken) {
-      this.props.authSuccess(idToken);
+    if (token) {
+      this.props.authSuccess();
     }
   }
 
@@ -60,6 +60,8 @@ export class AppContainer extends PureComponent {
       if (err) {
         this.history.replace("/");
       } else {
+        this.props.authSuccess();
+
         this.setSession(authResult);
         this.history.replace("/assets");
       }
