@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router";
-import { Sidebar, Menu, Icon } from "semantic-ui-react";
+import { Sidebar, Menu, Icon, Image } from "semantic-ui-react";
 
 export class AppHeader extends Component {
   render() {
@@ -9,7 +9,8 @@ export class AppHeader extends Component {
       login,
       logout,
       history,
-      downloadInventoryCSV
+      downloadInventoryCSV,
+      profile
     } = this.props;
 
     return (
@@ -55,6 +56,16 @@ export class AppHeader extends Component {
               name="Download"
             >
               <Icon name="download" size="large" />
+            </Menu.Item>
+          ) : null}
+          {isAuthenticated && profile ? (
+            <Menu.Item
+              link
+              onClick={() => history.push("/profile")}
+              size="small"
+            >
+              <Image avatar src={profile.picture} size="mini" />
+              {profile.given_name}
             </Menu.Item>
           ) : null}
           {isAuthenticated ? (
