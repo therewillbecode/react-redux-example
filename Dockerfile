@@ -7,6 +7,8 @@ WORKDIR /usr/src/app
 
 RUN npm install react-scripts eslint eslint-plugin-react eslint-plugin-prettier -g
 
+ENV REACT_APP_PROD_HOST=http://192.81.220.30/
+
 # Install app dependencies
 COPY package.json .
 
