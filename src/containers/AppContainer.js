@@ -16,7 +16,7 @@ import { isAuthenticated } from "../selectors/index";
 
 const auth0Domain = "therewillbecode.auth0.com";
 const auth0ClientId = "2yqWzBSv0zfQEstOyMveQBu4Rw3bqbiT";
-const auth0CallbackUrl = "http://localhost:3000/loading";
+let auth0CallbackUrl = "http://localhost:3000/loading";
 
 if (process.env.NODE_ENV === "production") { 
   const host = process.env.REACT_APP_PROD_HOST
