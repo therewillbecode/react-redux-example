@@ -1,13 +1,27 @@
-# Supply Chain Trial Project
-#### React, Redux, Immutable, Jest, React-Router and Docker
-
-![preview](https://image.ibb.co/djikUQ/screen2_min.png)
+# Example Stock Inventory Management App
+#### React, Redux, Redux-Form, Immutable, Jest, Enzyme, React-Router, 0Auth and Docker
 
 App where users can manage and track assets within an inventory.
 
+This app was created as an example to illustrate the use of a somewhat real application.
+Based on create-react-app this example is aimed at giving you a reference for building a 
+small application that has good test coverage.
+
+Most of the bases in a modern react application are touched here. OAuth is used for authentication.
+Redux thunk is used for asynchronous actions. These async actions are tested in Jest. The testing of react components are carried out using a combination of Jest snapshot testing and Enzyme for testing the behaviour 
+of event handlers. Eslint and prettier are used for linting and style formatting.
+
 #### Starting the App
 
+To run the app just run
 
+```npm install``
+
+followed by.
+
+```npm start```
+
+Alternatively you can run the app from the docker container.
 To start the app ensure docker and docker-compose system dependencies are installed. Then from the project root run:
 
 ```
@@ -69,11 +83,9 @@ To take advantage of  the performance benefits of immutable data structures Pure
 The OAuth api was used for signing in with google credentials. Private routes in the app are protected with an authentication higher order component that uses react router to redirect the user if they try to access restricted routes.
 
 
-#### Possible Future Improvements
+#### Possible Future Improvements to work on for practicing your skills - PRs Welcome
 
 * Use reselect to memoize selectors
-* Make inventory table sortable
-* Time based filtering of inventory table
 * Set up authenticated API and database to serve and store data
 * Websockets for realtime push updates from API
 * Set up continuous integration

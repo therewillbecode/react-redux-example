@@ -27,7 +27,7 @@ export class AppHeader extends Component {
             <Icon name="barcode" bordered inverted size="big" />
           </Menu.Item>
           <Menu.Item link onClick={() => history.push("/")} name="title">
-            <h2>Supply Chain Project</h2>
+            <h2>Home</h2>
           </Menu.Item>
           {isAuthenticated ? (
             <Menu.Item
