@@ -15,7 +15,7 @@ of event handlers. Eslint and prettier are used for linting and style formatting
 
 To run the app just run
 
-```npm install``
+```npm install```
 
 followed by.
 
